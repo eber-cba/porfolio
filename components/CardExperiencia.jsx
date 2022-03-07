@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -9,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
+import { Card } from '@nextui-org/react';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -40,8 +40,8 @@ export default function CardExperiencia() {
           }
         />
         <CardMedia
-          component="img"
-          height="120"
+        className="cardImg"
+          component="img"         
           image="/experiencia/p5.jpeg"
           alt="Paella dish"
         />

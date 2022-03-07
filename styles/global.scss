@@ -305,6 +305,13 @@ h2.linea span {
   background-color: #155263;
   font-family: "Quicksand", sans-serif;
   z-index: 99999;
+  width: 70%;
+}
+.cardImg{
+  display: flex;
+  justify-content: center;
+  height: 50%;
+  width: 80%;
 }
 .subheader {
   color: #ffb482;
