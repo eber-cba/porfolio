@@ -57,7 +57,7 @@ export default function AboutMe() {
             className="paralelogramo2"
             id={styles.paralelogramo}
           ></div>
-          <label className={styles.soyEber}> I'm Eber </label>
+          <label className={styles.soyEber}> I am Eber </label>
         </div>
       </div>
       <div className={styles.contenedor2}>
