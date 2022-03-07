@@ -249,10 +249,26 @@ section {
   cursor: pointer;
   width: 50%;
 }
-//card experiencia
+//modal experiencia
 .cuerpoTexto{
-  font-size:15px
+  font-size:15px;
+  color: #f5914e;
 }
+
+.subtitulo{
+  color: #f5914e;  
+}
+.titulo{
+  color: #f5914e;  
+  font-weight: bold;
+}
+
+.BotonLabelp5{
+  color: #ffffff;  
+  font-weight: bold;
+  font-size: 26px;
+}
+
 .focus {
   box-shadow: 0 0 40px #ffc93c;
   display: inline-block;
@@ -305,13 +321,16 @@ h2.linea span {
   background-color: #155263;
   font-family: "Quicksand", sans-serif;
   z-index: 99999;
-  width: 70%;
+  width: 80%;
+   display: none;
+  
 }
 .cardImg{
   display: flex;
   justify-content: center;
-  height: 50%;
-  width: 80%;
+  height: 10%;
+  width: 70%;
+  margin: 12%;
 }
 .subheader {
   color: #ffb482;
@@ -372,7 +391,7 @@ h2.linea span {
   .sobreMi {
     position: relative;
     width: 320%;
-    height: 135vh;
+    height: ca;
     background: #ff9a3c;
     padding: 20%;
     margin-top: 11rem;
@@ -429,13 +448,43 @@ h2.linea span {
     text-decoration: none;
     color: #ff9a3c;
   }
-
+  .cardExperiencia{
+    display: none;
+  }
+  //modalexperiencia 
+  .modalExperiencia{
+    position: flex;
+    margin: 22% 0% 0% 0%;
+  }
+  .botonExperiencia{
+  display: none;
+  }
+  .cardP5 {
+    
+    color: #ff9a3c;
+    background-color: #155263;
+    font-family: "Quicksand", sans-serif;
+    z-index: 99999;
+    width: 100%;
+     display: flex;     
+    
+  }
+  .titulop5{
+    color: #ff9a3c;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  .imgP5{
+    display: flex;
+    margin: 15%;
+    padding: 3%;
+  }
   // Habilidades
 
   .Habilidades {
     position: relative;
     width: 320%;
-    height: 170vh;
+    height: 190vh;
     background: #155263;
   }
   .botonesHabilidades {
@@ -452,7 +501,7 @@ h2.linea span {
   .Contacto {
     position: relative;
     width: 320%;
-    height: 115vh;
+    height: 135vh;
     background: #ff9a3c;
     padding: 20%;
   }

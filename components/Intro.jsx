@@ -73,7 +73,8 @@ export default function Intro() {
     }
   };
 
-  const validarInput = () => {
+  const validarInput = (e) => {
+    e.preventDefault()
     if (!nombre) {
       mensajeAdvertencia();
     } else {
@@ -88,7 +89,7 @@ export default function Intro() {
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
       >
-        <div className={styles.form}>
+        <form className={styles.form}>
           <label id={styles.bienvenidx} className="bienvenidx">
             ¡WELCOME!
           </label>
@@ -115,10 +116,12 @@ export default function Intro() {
             className="boton"
             disabled={button}
             onClick={validarInput}
+            type="submit"
+
           >
             Get in
           </Button>
-        </div>
+        </form>
       </Backdrop>
 
       {open === false ? <Navbar open={open} nombre={nombre} /> : null}
