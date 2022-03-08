@@ -172,7 +172,7 @@ section {
 .Contacto {
   position: relative;
   width: 100%;
-  height: 110vh;
+  height: 120vh;
   background: #ff9a3c;
   padding: 100px;
 }
@@ -371,7 +371,7 @@ h2.linea span {
 }
 .openBoton{
   color: #f5914e;
-  font-weight: bold;
+  font-weight: bold;  
 }
 @media only screen and (max-width: 850px) {
   // start
@@ -391,6 +391,8 @@ h2.linea span {
   .sobreMi {
     position: relative;
     width: 320%;
+    height: 280%;
+
      
     background: #ff9a3c;
     padding: 20%;
@@ -484,7 +486,7 @@ h2.linea span {
   .Habilidades {
     position: relative;
     width: 320%;
-    height: 150vh;
+    height:200vh;
     background: #155263;
   }
   .botonesHabilidades {
@@ -501,7 +503,7 @@ h2.linea span {
   .Contacto {
     position: relative;
     width: 320%;
-    height: 135vh;
+    height: 170vh;
     background: #ff9a3c;
     padding: 20%;
   }
@@ -524,6 +526,7 @@ h2.linea span {
   }
   .form{
     margin-top: 5rem;
+    
   }
 }
- 
+
