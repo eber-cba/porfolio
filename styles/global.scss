@@ -172,7 +172,7 @@ section {
 .Contacto {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   background: #ff9a3c;
   padding: 100px;
 }
@@ -484,7 +484,7 @@ h2.linea span {
   .Habilidades {
     position: relative;
     width: 320%;
-    height: 190vh;
+    height: 150vh;
     background: #155263;
   }
   .botonesHabilidades {
@@ -514,8 +514,16 @@ h2.linea span {
 
   .inputNombre {
     height: 3rem;
+   
   }
   .botonEnviar {
     height: 3.5rem;
   }
+  .contenedor-seguimeEN{
+    margin: 13%;
+  }
+  .form{
+    margin-top: 5rem;
+  }
 }
+ 

@@ -124,75 +124,78 @@ export default function Contacto() {
           </Button>
         </div>
       </form>
-      <div className="divLabelSeguimeEN">
-        <h2 className="linea">
-          <span>Follow me on ....</span>
-        </h2>
-      </div>
-      <div className="seguimeEnIcon">
-        <div>
-          <Link href="https://github.com/eber-cba">
-            <Tooltip
-              classes={{
-                tooltip: classes.customTooltip,
-                arrow: classes.customArrow,
-              }}
-              arrow
-              placement="bottom"
-              title={
-                <>
-                  <label className="labelTooltipContacto">GitHub</label>
-                </>
-              }
-            >
-              <IconButton
-                className="iconButton"
-                onMouseEnter={onEnter}
-                onMouseLeave={onLeave}
-                component="span"
-              >
-                <Image
-                  src={"/contacto/github.svg"}
-                  height="100%"
-                  width="100%"
-                  name="GitHub"
-                  type="logo"
-                />
-              </IconButton>
-            </Tooltip>
-          </Link>
+      <div className="contenedor-seguimeEN">
+        <div className="divLabelSeguimeEN">
+          <h2 className="linea">
+            <span>Follow me on ....</span>
+          </h2>
         </div>
-        <div>
-          <Link href="https://www.linkedin.com/in/eber-coronel-13536218b/">
-            <Tooltip
-              classes={{
-                tooltip: classes.customTooltip,
-                arrow: classes.customArrow,
-              }}
-              arrow
-              placement="bottom"
-              title={
-                <>
-                  <label className="labelTooltipContacto">LinkedIn</label>
-                </>
-              }
-            >
-              <IconButton
-                className="iconButton"
-                onMouseEnter={onEnter}
-                onMouseLeave={onLeave}
-                component="span"
+
+        <div className="seguimeEnIcon">
+          <div>
+            <Link href="https://github.com/eber-cba">
+              <Tooltip
+                classes={{
+                  tooltip: classes.customTooltip,
+                  arrow: classes.customArrow,
+                }}
+                arrow
+                placement="bottom"
+                title={
+                  <>
+                    <label className="labelTooltipContacto">GitHub</label>
+                  </>
+                }
               >
-                <Image
-                  src={"/contacto/linkedin.svg"}
-                  height="100%"
-                  width="100%"
-                  name="Linkedin"
-                  type="logo"
-                />
-              </IconButton>
-            </Tooltip>
-          </Link>
+                <IconButton
+                  className="iconButton"
+                  onMouseEnter={onEnter}
+                  onMouseLeave={onLeave}
+                  component="span"
+                >
+                  <Image
+                    src={"/contacto/github.svg"}
+                    height="100%"
+                    width="100%"
+                    name="GitHub"
+                    type="logo"
+                  />
+                </IconButton>
+              </Tooltip>
+            </Link>
+          </div>
+          <div>
+            <Link href="https://www.linkedin.com/in/eber-coronel-13536218b/">
+              <Tooltip
+                classes={{
+                  tooltip: classes.customTooltip,
+                  arrow: classes.customArrow,
+                }}
+                arrow
+                placement="bottom"
+                title={
+                  <>
+                    <label className="labelTooltipContacto">LinkedIn</label>
+                  </>
+                }
+              >
+                <IconButton
+                  className="iconButton"
+                  onMouseEnter={onEnter}
+                  onMouseLeave={onLeave}
+                  component="span"
+                >
+                  <Image
+                    src={"/contacto/linkedin.svg"}
+                    height="100%"
+                    width="100%"
+                    name="Linkedin"
+                    type="logo"
+                  />
+                </IconButton>
+              </Tooltip>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
