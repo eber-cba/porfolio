@@ -373,7 +373,7 @@ h2.linea span {
   color: #f5914e;
   font-weight: bold;
 }
-@media (max-width: 700px) {
+@media only screen and (max-width: 850px) {
   // start
   .container {
     display: flex;
@@ -391,7 +391,7 @@ h2.linea span {
   .sobreMi {
     position: relative;
     width: 320%;
-    height: ca;
+     
     background: #ff9a3c;
     padding: 20%;
     margin-top: 11rem;
