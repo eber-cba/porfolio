@@ -77,7 +77,7 @@
 .hola {
   font-family: "Quicksand", sans-serif;
   color: #ff9a3c;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .botones {
@@ -130,5 +130,8 @@
     }
     .contenedor{
       margin-top: 7rem;
+    }
+    .hola{
+      font-size: 2.3 rem;
     }
 }
