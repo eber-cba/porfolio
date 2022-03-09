@@ -299,31 +299,7 @@ h2.linea span {
   padding: 0 15px;
   font-family: "Quicksand", sans-serif;
 }
-//  Experiencia
 
-.cardP5 {
-  border-radius: 21px;
-  color: #ff9a3c;
-  background-color: #155263;
-  font-family: "Quicksand", sans-serif;
-  z-index: 99999;
-  width: 80%;
-  display: none;
-}
-.cardImg {
-  display: flex;
-  justify-content: center;
-  height: 10%;
-  width: 70%;
-  margin: 12%;
-}
-.subheader {
-  color: #ffb482;
-}
-.subEncabezado {
-  color: #f5914e;
-  font-size: 15px;
-}
 // barra de navegacion
 ::-webkit-scrollbar {
   width: 10px;
@@ -360,7 +336,7 @@ h2.linea span {
 }
 
 //pc
-@media (max-width: 1380px) {
+@media screen and (max-width: 1380px) {
   .contenedor-seguimeEN {
     margin: 12%;
   }
@@ -381,88 +357,121 @@ h2.linea span {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    
     height: 100%;
   }
   .soyEber {
-  
     grid-row-start: 1;
     grid-column-start: 1;
     grid-row-end: 2;
     grid-column-end: 2;
   }
   .fullstack {
-  
-   
     grid-row-start: 2;
     grid-column-start: 1;
- 
+
     grid-row-end: 3;
     grid-column-end: 2;
   }
   .developer {
-   
     grid-row-start: 2;
     grid-column-start: 2;
- 
+
     grid-row-end: 3;
     grid-column-end: 3;
   }
-  .containerStart {   
+  .containerStart {
     grid-row-start: 3;
-    grid-column-start: 1; 
+    grid-column-start: 1;
     grid-row-end: 4;
     grid-column-end: 3;
     margin: 12%;
   }
-}
 
-.contenedorSeciones {
-  width: 100%;
-}
+  .PadreHabilidades {
+    position: relative;
+    width: 100%;
+    height: 170vh;
+    background: #155263;
+    padding: 100px;
+  }
+  .padreSobremi {
+    position: relative;
+    width: 100%;
+    height: 110vh;
+    background: #ff9a3c;
+    padding: 100px;
+  }
+  .padreContacto {
+    position: relative;
+    width: 100%;
+    height: 140vh;
+    background: #ff9a3c;
+    padding: 100px;
+  }
+  .padreIntro {
+    width: 100%;
 
-.PadreHabilidades {
-  position: relative;
-  width: 100%;
-  height: 170vh;
-  background: #155263;
-  padding: 100px;
-}
-.padreSobremi {
-  position: relative;
-  width: 100%;
-  height: 110vh;
-  background: #ff9a3c;
-  padding: 100px;
-}
-.padreContacto {
-  position: relative;
-  width: 100%;
-  height: 140vh;
-  background: #ff9a3c;
-  padding: 100px;
-}
-.padreIntro {
-  width: 100%;
+    height: 100vh;
+  }
 
-  height: 100vh;
-}
+  // @media (max-width: 1138px) {
+  //   .sobreMi{
+  //     width: 150vh;
+  //   }
+  //   .Contacto{
+  //     width: 150vh;
+  //   }
+  // }
+  //medium devices(tablets)
 
-// @media (max-width: 1138px) {
-//   .sobreMi{
-//     width: 150vh;
-//   }
-//   .Contacto{
-//     width: 150vh;
-//   }
-// }
-//medium devices(tablets)
-@media (max-width: 768px) {
 }
+  @media (max-width: 1170px) {
+    .padreYoSoy {
+      padding: 5%;
+      background: blue;
+      margin: 0% 0% 0% -2%;
+    }
+  }
 // small devices
-@media (max-width: 576px) {
-}
+@media (max-width: 933px) {
+  .padreYoSoy {
+    display: grid;
+    grid-template-rows: 1fr ;
+    grid-template-columns: 1fr;
+    height: 100%;
+    background: red
+  };
+  .soyEber {
+    
+  }
+  .fullstack {
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 3;
+    grid-column-end: 2;
+  }
+  .developer {
+    grid-row-start: 2;
+    grid-column-start: 2;
 
-* {
-  margin: 0;
+    grid-row-end: 3;
+    grid-column-end: 3;
+  }
+  .containerStart {
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-row-end: 4;
+    grid-column-end: 3;
+    margin: 12%;
+  }
+  body {
+    overflow-x: hidden;
+    height: 100%;
+   
+    display: flex;
+    flex-direction: initial;
+    padding: 0;
+  }
+  
+
 }
