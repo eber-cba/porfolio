@@ -423,27 +423,24 @@ h2.linea span {
   //   }
   // }
   //medium devices(tablets)
-
 }
-  @media (max-width: 1170px) {
-    .padreYoSoy {
-      padding: 5%;
-      background: blue;
-      margin: 0% 0% 0% -2%;
-    }
+@media (max-width: 1170px) {
+  .padreYoSoy {
+    padding: 5%;
+     
+    margin: 0% 0% 0% -2%;
   }
+}
 // small devices
 @media (max-width: 933px) {
   .padreYoSoy {
     display: grid;
-    grid-template-rows: 1fr ;
+    grid-template-rows: 1fr;
     grid-template-columns: 1fr;
     height: 100%;
-    background: red
-  };
-  .soyEber {
     
   }
+ 
   .fullstack {
     grid-row-start: 1;
     grid-column-start: 2;
@@ -467,11 +464,31 @@ h2.linea span {
   body {
     overflow-x: hidden;
     height: 100%;
-   
+
     display: flex;
     flex-direction: initial;
     padding: 0;
   }
-  
+ 
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
+  .padreYoSoy {
+   
+    height: 155%;
+    
+  }
+  .padreSobremi {   
+    height: 160vh;
+  
+  }
+  .PadreHabilidades {
+   
+    height: 200vh;
+   
+  }
+  .padreContacto{
+    
+    height: 150vh;
+  }
 }
