@@ -10,8 +10,7 @@ import React, { useState } from "react";
 import LineaDeTime from "./LineaDeTime";
 import Acordion from "./Acordion";
 import ModalCv from "./ModalCv";
-import CardExperiencia from "./CardExperiencia";
-
+ 
 import ModalExperiencia from "./ModalExperiencia";
 const useStyles = makeStyles((theme) => ({
   tabs: {
@@ -134,7 +133,7 @@ export default function SobreMi() {
             </TabPanel>
             <TabPanel value="4">
               <ModalExperiencia />
-              <CardExperiencia />
+            
             </TabPanel>
             <TabPanel value="5">
               <ModalCv />

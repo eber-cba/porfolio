@@ -469,13 +469,18 @@ h2.linea span {
     flex-direction: initial;
     padding: 0;
   }
+  .cursor {
+   display: none;
+  }
  
 }
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-
+@media  (max-device-width : 410px) {
+  .cursor {
+    display: none;
+   }
   .padreYoSoy {
    
-    height: 155%;
+    height: 100%;
     
   }
   .padreSobremi {   
@@ -484,11 +489,14 @@ h2.linea span {
   }
   .PadreHabilidades {
    
-    height: 200vh;
+    height: 230vh;
    
   }
   .padreContacto{
-    
+
     height: 150vh;
+  }
+  .containerStart{
+    margin: 8%;
   }
 }

@@ -107,3 +107,19 @@
 
   }
 }
+@media  (max-device-width : 410px){
+  #contenedor2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10% 0 0 -60%;
+  }
+  #contenedor3 {
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30% 0 0 -30%;
+
+  }
+}
