@@ -12,8 +12,6 @@ import { gsap } from "gsap";
 
 var Scroll = require("react-scroll");
 
- 
-
 export default function Navbar({ nombre }) {
   const [scrollmi, setScroll] = useState(false);
   const [scrollHabilidades, setScrollHabilidades] = useState(false);
@@ -61,9 +59,8 @@ export default function Navbar({ nombre }) {
     <React.Fragment>
       <CssBaseline />
 
-      <AppBar className={styles.appbar} sx={{ backgroundColor: "#155263" }}>
+      <AppBar className="appbar" sx={{ backgroundColor: "#155263" }}>
         <Toolbar className={styles.contenedorNavb}>
-          
           <div className="Hola" id={styles.Hola}>
             <Typography className={styles.hola} variant="h6" component="div">
               ¡Hi {nombre}!
@@ -99,8 +96,10 @@ export default function Navbar({ nombre }) {
       </AppBar>
 
       <Toolbar />
-      <div>
-        <AboutMe />
+      
+        {/* <div className="aboutMe">
+          <AboutMe />
+        </div>
         <div name="sobreMI" className="sobreMi">
           <SobreMi />
         </div>
@@ -109,8 +108,8 @@ export default function Navbar({ nombre }) {
         </div>
         <div name="Contacto" className="Contacto">
           <Contacto />
-        </div>
-      </div>
+        </div> */}
+       
     </React.Fragment>
   );
 }

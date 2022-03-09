@@ -1,19 +1,22 @@
-.contenedor {
-  margin-top: 3rem;
+#contenedor {
   text-align: start;
   font-family: "Quicksand", sans-serif;
   color: #ff9a3c;
-  margin-left: 3rem;
-}
-.contenedor2 {
-  text-align: center;
+  margin: 12%;
+ }
+#contenedor2 {
+ 
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 8rem;
-}
-
+  align-items: center;  
+  margin: 0 0 0 23%;
+ }
+ #contenedor3{
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;  
+ }
 #contenedorLabel1 {
   position: relative;
   display: inline-block;
@@ -41,7 +44,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #155263;
-  font-size: 7rem;
+  font-size: 5rem;
+  
 }
 
 .fullStack {
@@ -58,20 +62,14 @@
 }
 
 #paralelogramo3 {
-  width: 700px;
+  width: 550px;
   height: 200px;
   background: #ff9a3c;
   transform: skew(-20deg);
   border-radius: 7px;
 }
 
-.cajaTexto1 {
-  float: left;
-}
-
-.cajaTexto2 {
-  float: left;
-}
+ 
 
 /* navbar  */
 .hola {
@@ -96,42 +94,4 @@
 .contenedorNavb {
   display: flex;
   justify-content: space-between;
-}
-
-@media (max-width: 700px) {
-  #paralelogramo3 {
-    width: 870px;
-    height: 230px;
-  }
-  .fullStack {
-    font-size: 6rem;
-  }
-  .contenedor2 {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-auto-rows: 100px;
-    align-items: center;
-    justify-content: center;
-    margin: 60% 0% 0% 155%;
-    gap: 40%;
-  }
-  .Developer{
-    font-size: 9rem;
-  }
-
-  .appbar{
-    padding: 3%;
-  }
-  .botones{
-     width: 55%;
-    }
-    .hola{
-      font-size: 3rem
-    }
-    .contenedor{
-      margin-top: 7rem;
-    }
-    .hola{
-      font-size: 2.3 rem;
-    }
 }

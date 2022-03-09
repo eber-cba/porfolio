@@ -44,7 +44,7 @@ export default function Habilidades() {
     gsap.to(currentTarget, { duration: 0.5, y: 0 });
   };
   return (
-    <div>
+    <div className="PadreHabilidades">
       <div data-aos="fade-down">
         <Button
           NormalWeights="black"

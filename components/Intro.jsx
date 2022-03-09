@@ -6,6 +6,10 @@ import styles from "../styles/intro.module.css";
 import Input from "@mui/material/Input";
 import { gsap } from "gsap";
 import Navbar from "./Navbar";
+import AboutMe from "./AboutMe"
+import SobreMi from"./SobreMi"
+import Habilidades from "./Habilidades"
+import Contacto from "./Contacto"
 export default function Intro() {
   const [open, setOpen] = useState(true);
   const [nombre, setNombre] = useState("");
@@ -84,7 +88,7 @@ export default function Intro() {
   };
 
   return (
-    <div>
+    <div className="padreIntro">
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={open}
@@ -125,6 +129,16 @@ export default function Intro() {
       </Backdrop>
 
       {open === false ? <Navbar open={open} nombre={nombre} /> : null}
+      
+     
+
+      {open === false ? <AboutMe/> : null}
+     
+      {open === false ? <SobreMi/> : null}
+      {open === false ? <Habilidades/> : null}
+      {open === false ? <Contacto/> : null}
+     
+
 
       {/* {open === false ? (
         

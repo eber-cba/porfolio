@@ -77,7 +77,7 @@ export default function Contacto() {
     gsap.to(currentTarget, { duration: 0.5, y: 0 });
   };
   return (
-    <div>
+    <div className="padreContacto">
       <form ref={form} onSubmit={sendEmail} className="form">
         <div className="nombre">
           <Input
@@ -97,7 +97,7 @@ export default function Contacto() {
           />
         </div>
 
-        <div className="span-col-2">
+        <div className="subjet">
           <Input
             className="inputAsunto"
             placeholder=" Subject "
@@ -105,7 +105,7 @@ export default function Contacto() {
             name="asunto"
           />
         </div>
-        <div className="span-col-2">
+        <div className="mensaje">
           <Textarea
             rows={19}
             className="textArea"
@@ -113,7 +113,7 @@ export default function Contacto() {
             name="message"
           />
         </div>
-        <div className="span-col-2">
+        <div className="boton">
           <Button
             disabled={button}
             className="botonEnviar"

@@ -48,9 +48,9 @@ export default function AboutMe() {
   }
 
   return (
-    <section>
-      <div className={styles.contenedor}>
-        <div className="soyEber" id={styles.contenedorLabel1}>
+    <div className="padreYoSoy">
+      <div  className="soyEber"  id={styles.contenedor}>
+        <div id={styles.contenedorLabel1}>
           <div
             onMouseEnter={onEnter ? efectoEnter : onEnter}
             onMouseLeave={onLeave ? efectoLeave : onLeave}
@@ -60,14 +60,15 @@ export default function AboutMe() {
           <label className={styles.soyEber}> I am Eber </label>
         </div>
       </div>
-      <div className={styles.contenedor2}>
-        <div className={styles.cajaTexto1}>
-          <div className="fullstack">
+      <div  className="fullstack" id={styles.contenedor2}>
+        <div >
+          <div className="divFullstack">
             <label className={styles.fullStack}>Full Stack</label>
           </div>
         </div>
-        <div id={styles.contenedorLabel2} className={styles.cajaTexto2}>
-          <div className="developer">
+      </div>
+        <div className="developer" id={styles.contenedor3}  >
+          <div id={styles.contenedorLabel2}>
             <div
               onMouseEnter={onEnter ? efectoEnter : onEnter}
               onMouseLeave={onLeave ? efectoLeave : onLeave}
@@ -77,13 +78,12 @@ export default function AboutMe() {
             <label className={styles.Developer}>Developer</label>
           </div>
         </div>
-      </div>
-      <div className="container">
+      <div className="containerStart">
         <label className="LabelScroll">Start</label>
         <div className="chevron"></div>
         <div className="chevron"></div>
         <div className="chevron"></div>
       </div>
-    </section>
+    </div>
   );
 }
