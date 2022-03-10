@@ -20,6 +20,7 @@ export default function BasicModal() {
   return (
     <div>
       <Button
+      
         color="gradient"
         auto
         shadow
@@ -28,16 +29,7 @@ export default function BasicModal() {
       >
         Open resume 🚀{" "}
       </Button>
-      <Button color="gradient" auto shadow className="btonDescargarPDF">
-        <a
-          href="./Eber_Coronel_CV.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          download="Eber_Coronel.pdf"
-        >
-          Download pdf
-        </a>
-      </Button>
+      
       <Modal
         open={open}
         onClose={handleClose}

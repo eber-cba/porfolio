@@ -10,7 +10,8 @@ import React, { useState } from "react";
 import LineaDeTime from "./LineaDeTime";
 import Acordion from "./Acordion";
 import ModalCv from "./ModalCv";
- 
+import { Button } from "@nextui-org/react";
+
 import ModalExperiencia from "./ModalExperiencia";
 const useStyles = makeStyles((theme) => ({
   tabs: {
@@ -32,7 +33,7 @@ export default function SobreMi() {
   const classes = useStyles();
 
   return (
-    <div className="padreSobremi">  
+    <div className="padreSobremi">
       <div className="kard">
         <Card
           data-aos="fade-right"
@@ -133,10 +134,19 @@ export default function SobreMi() {
             </TabPanel>
             <TabPanel value="4">
               <ModalExperiencia />
-            
             </TabPanel>
             <TabPanel value="5">
               <ModalCv />
+              <Button color="gradient" auto shadow className="btonDescargarPDF">
+                <a
+                  href="./Eber_Coronel_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Eber_Coronel.pdf"
+                >
+                  Download pdf
+                </a>
+              </Button>
             </TabPanel>
           </div>
         </TabContext>

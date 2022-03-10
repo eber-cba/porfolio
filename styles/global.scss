@@ -326,16 +326,15 @@ h2.linea span {
   background: #155263;
 }
 // boton pdf
-.btonDescargarPDF {
-  display: none;
-}
-.openBoton {
-  color: #f5914e;
-  font-weight: bold;
-}
+
 
 //pc
 @media screen and (max-width: 1380px) {
+  
+  .openBoton {
+    color: #f5914e;
+    font-weight: bold;
+  }
   .contenedor-seguimeEN {
     margin: 12%;
   }
@@ -412,7 +411,10 @@ h2.linea span {
 
     height: 100vh;
   }
-
+.btonDescargarPDF{
+  display: none;
+  
+}
 }
 @media (max-width: 1170px) {
   .padreYoSoy {
@@ -420,6 +422,8 @@ h2.linea span {
      
     margin: 0% 0% 0% -2%;
   }
+  
+ 
 }
 @media (max-width: 933px) {
   .padreYoSoy {
@@ -458,9 +462,14 @@ h2.linea span {
     flex-direction: initial;
     padding: 0;
   }
-  .cursor {
-   display: none;
+  .btonDescargarPDF{
+    display: inline;
+    
   }
+  .openBoton{
+    display: none;
+  }
+   
  
 }
 @media  (max-device-width : 320px) {
@@ -485,8 +494,12 @@ h2.linea span {
 
     height: 200vh;
   }
-  
+  .btonDescargarPDF{
+    display: inline;
+    
+  }
+  .openBoton{
+    display: none;
+  }
 }
-.cursor {
-  display: none;
- }
+ 
