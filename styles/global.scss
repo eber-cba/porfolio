@@ -125,13 +125,13 @@ $base: 0.6rem;
   z-index: 9999;
 }
 .botonColapso {
-  color: #155263;
+  color: #155263 !important;
 }
 
 .botonColapso:hover{
-  background-color: #155263;
-  color: #ff9a3c;
-  border: 0px solid;
+  background: #155263!important;
+  color: #ff9a3c!important;
+  border: 0px solid!important;
 
 }
 

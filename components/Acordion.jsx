@@ -58,7 +58,7 @@ export default function Acordion() {
             variant="outlined"
             startIcon={<GitHubIcon/> }
           >
-            repository
+           <span  className="botonColapso"> repository </span> 
           </Button>
         </Collapse>
       </Collapse.Group>
