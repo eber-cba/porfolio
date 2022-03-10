@@ -2,12 +2,8 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
-import AboutMe from "./AboutMe";
 import styles from "../styles/AboutMe.module.css";
 import React, { useState, useEffect } from "react";
-import SobreMi from "./SobreMi";
-import Habilidades from "./Habilidades";
-import Contacto from "./Contacto";
 import { gsap } from "gsap";
 
 var Scroll = require("react-scroll");
@@ -50,10 +46,10 @@ export default function Navbar({ nombre }) {
     scrolle.scrollTo(935);
   }
   function habilidadesScroll() {
-    scrolle.scrollTo(1800);
+    scrolle.scrollTo(1850);
   }
   function contactoScroll() {
-    scrolle.scrollTo(3500);
+    scrolle.scrollTo(3299);
   }
   return (
     <React.Fragment>
@@ -62,9 +58,9 @@ export default function Navbar({ nombre }) {
       <AppBar className="appbar" sx={{ backgroundColor: "#155263" }}>
         <Toolbar className={styles.contenedorNavb}>
           <div className="Hola" id={styles.Hola}>
-            <Typography className={styles.hola} variant="h6" component="div">
+            <label className={styles.hola} >
               ¡Hi {nombre}!
-            </Typography>
+            </label>
           </div>
           <div className={styles.botones}>
             <button
@@ -96,20 +92,6 @@ export default function Navbar({ nombre }) {
       </AppBar>
 
       <Toolbar />
-      
-        {/* <div className="aboutMe">
-          <AboutMe />
-        </div>
-        <div name="sobreMI" className="sobreMi">
-          <SobreMi />
-        </div>
-        <div name="Habilidades" className="Habilidades">
-          <Habilidades />
-        </div>
-        <div name="Contacto" className="Contacto">
-          <Contacto />
-        </div> */}
-       
     </React.Fragment>
   );
 }

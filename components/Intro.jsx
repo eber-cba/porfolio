@@ -95,7 +95,7 @@ export default function Intro() {
       >
         <form className={styles.form}>
           <label id={styles.bienvenidx} className="bienvenidx">
-            ¡WELCOME!
+            WELCOME!
           </label>
 
           <Input

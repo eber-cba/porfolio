@@ -1,7 +1,7 @@
 import React from "react";
 import { Collapse } from "@nextui-org/react";
 import Button from "@mui/material/Button";
-
+import GitHubIcon from '@mui/icons-material/GitHub';
 export default function Acordion() {
   return (
     <div>
@@ -20,9 +20,7 @@ export default function Acordion() {
             href="https://github.com/eber-cba/TECHO-Teams"
             className="botonColapso"
             variant="outlined"
-            startIcon={
-              <box-icon name="github" type="logo" color="#155263"></box-icon>
-            }
+            startIcon={<GitHubIcon/> }
           >
             repository
           </Button>
@@ -41,9 +39,7 @@ export default function Acordion() {
             href="https://github.com/eber-cba/ecommerce"
             className="botonColapso"
             variant="outlined"
-            startIcon={
-              <box-icon name="github" type="logo" color="#155263"></box-icon>
-            }
+            startIcon={<GitHubIcon/> }
           >
             repository
           </Button>
@@ -60,9 +56,7 @@ export default function Acordion() {
             href="https://github.com/eber-cba/26-checkpoint-OMDB"
             className="botonColapso"
             variant="outlined"
-            startIcon={
-              <box-icon name="github" type="logo" color="#155263"></box-icon>
-            }
+            startIcon={<GitHubIcon/> }
           >
             repository
           </Button>

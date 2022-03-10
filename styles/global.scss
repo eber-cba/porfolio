@@ -127,6 +127,14 @@ $base: 0.6rem;
 .botonColapso {
   color: #155263;
 }
+
+.botonColapso:hover{
+  background-color: #155263;
+  color: #ff9a3c;
+  border: 0px solid;
+
+}
+
 .tituloTab {
   color: #155263;
 }
@@ -414,15 +422,6 @@ h2.linea span {
     height: 100vh;
   }
 
-  // @media (max-width: 1138px) {
-  //   .sobreMi{
-  //     width: 150vh;
-  //   }
-  //   .Contacto{
-  //     width: 150vh;
-  //   }
-  // }
-  //medium devices(tablets)
 }
 @media (max-width: 1170px) {
   .padreYoSoy {
@@ -431,7 +430,6 @@ h2.linea span {
     margin: 0% 0% 0% -2%;
   }
 }
-// small devices
 @media (max-width: 933px) {
   .padreYoSoy {
     display: grid;

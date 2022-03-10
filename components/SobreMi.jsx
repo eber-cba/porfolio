@@ -79,7 +79,7 @@ export default function SobreMi() {
               <Tab
                 label={
                   <>
-                    <label className="tituloTab">Studies</label>
+                    <label className="tituloTab">Education</label>
                   </>
                 }
                 value="2"

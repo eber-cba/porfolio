@@ -48,7 +48,7 @@ export default function Contacto() {
       setButton(false);
     }
   };
-
+console.log("form",form.value)
   const sendEmail = (e) => {
     e.preventDefault();
 

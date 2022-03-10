@@ -35,8 +35,8 @@ export default function ModalExperiencia() {
             {" "}
             PLATAFORMA 5
           </Typography>
-          <Typography variant="body2" className="subEncabezado">
-            March 03, 2022 - Present
+          <Typography  variant="body2"  className="subtitulo">
+            March 2022 - Present
           </Typography>
           <label className="subtitulo">
             I am in charge of :
