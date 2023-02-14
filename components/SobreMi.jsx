@@ -33,27 +33,27 @@ export default function SobreMi() {
   const classes = useStyles();
 
   return (
-    <div className="padreSobremi">
-      <div className="kard">
+    <div className='padreSobremi'>
+      <div className='kard'>
         <Card
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          className="card"
+          data-aos='fade-right'
+          data-aos-offset='300'
+          data-aos-easing='ease-in-sine'
+          className='card'
           animated
           hoverable
           clickable
           cover
         >
           <Card.Image
-            src="/yo.jpg"
-            height={600}
-            width={500}
-            alt="Card image background"
+            src='/yo.jpg'
+            height={100}
+            width={400}
+            alt='Card image background'
           />
         </Card>
       </div>
-      <Box className="sobreMi-tab" data-aos="fade-left" sx={{ width: "100%" }}>
+      <Box className='sobreMi-tab' data-aos='fade-left' sx={{ width: "100%" }}>
         <TabContext value={value}>
           <Box
             sx={{
@@ -64,56 +64,56 @@ export default function SobreMi() {
             }}
           >
             <TabList
-              id="tabList"
+              id='tabList'
               className={classes.tabs}
               onChange={handleChange}
-              aria-label="lab API tabs example"
+              aria-label='lab API tabs example'
             >
               <Tab
                 label={
                   <>
-                    <label className="tituloTab">About me</label>
+                    <label className='tituloTab'>About me</label>
                   </>
                 }
-                value="1"
+                value='1'
               />
               <Tab
                 label={
                   <>
-                    <label className="tituloTab">Education</label>
+                    <label className='tituloTab'>Education</label>
                   </>
                 }
-                value="2"
+                value='2'
               />
               <Tab
                 label={
                   <>
-                    <label className="tituloTab">Projects</label>
+                    <label className='tituloTab'>Projects</label>
                   </>
                 }
-                value="3"
+                value='3'
               />
               <Tab
                 label={
                   <>
-                    <label className="tituloTab">Experience</label>
+                    <label className='tituloTab'>Experience</label>
                   </>
                 }
-                value="4"
+                value='4'
               />
               <Tab
                 label={
                   <>
-                    <label className="tituloTab">Resume</label>
+                    <label className='tituloTab'>Resume</label>
                   </>
                 }
-                value="5"
+                value='5'
               />
             </TabList>
           </Box>
-          <div className="tabSobreMi">
-            <TabPanel value="1">
-              <label className="label-Aboutme">
+          <div className='tabSobreMi'>
+            <TabPanel value='1'>
+              <label className='label-Aboutme'>
                 {" "}
                 As a child I was passionate about looking at the world from
                 another perspective and I did and continue to do so through
@@ -126,23 +126,23 @@ export default function SobreMi() {
                 Front-End.
               </label>
             </TabPanel>
-            <TabPanel value="2">
+            <TabPanel value='2'>
               <LineaDeTime />
             </TabPanel>
-            <TabPanel value="3">
+            <TabPanel value='3'>
               <Acordion />
             </TabPanel>
-            <TabPanel value="4">
+            <TabPanel value='4'>
               <ModalExperiencia />
             </TabPanel>
-            <TabPanel value="5">
+            <TabPanel value='5'>
               <ModalCv />
-              <Button color="gradient" auto shadow className="btonDescargarPDF">
+              <Button color='gradient' auto shadow className='btonDescargarPDF'>
                 <a
-                  href="./Eber_Coronel_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download="Eber_Coronel.pdf"
+                  href='./Eber_Coronel_CV.pdf'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  download='Eber_Coronel.pdf'
                 >
                   Download pdf
                 </a>
