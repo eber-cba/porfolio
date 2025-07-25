@@ -1,5 +1,4 @@
- 
-import styles from "../styles/AboutMe.module.css";
+import styles from "../../styles/AboutMe.module.css";
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 
@@ -13,7 +12,7 @@ export default function AboutMe() {
     const soyEber = document.querySelectorAll(".soyEber");
     const developer = document.querySelectorAll(".developer");
     const container = document.querySelectorAll(".container");
-   
+
     Timeline.from(soyEber, { y: 20, x: -300 })
       .from(fullstack, { y: -10, x: -70, scale: 1 })
       .from(developer, { y: -50, x: 150, scale: 1 }, "-=1")
@@ -49,7 +48,7 @@ export default function AboutMe() {
 
   return (
     <div className="padreYoSoy">
-      <div  className="soyEber"  id={styles.contenedor}>
+      <div className="soyEber" id={styles.contenedor}>
         <div id={styles.contenedorLabel1}>
           <div
             onMouseEnter={onEnter ? efectoEnter : onEnter}
@@ -60,24 +59,24 @@ export default function AboutMe() {
           <label className={styles.soyEber}> I am Eber </label>
         </div>
       </div>
-      <div  className="fullstack" id={styles.contenedor2}>
-        <div >
+      <div className="fullstack" id={styles.contenedor2}>
+        <div>
           <div className="divFullstack">
             <label className={styles.fullStack}>Full Stack</label>
           </div>
         </div>
       </div>
-        <div className="developer" id={styles.contenedor3}  >
-          <div id={styles.contenedorLabel2}>
-            <div
-              onMouseEnter={onEnter ? efectoEnter : onEnter}
-              onMouseLeave={onLeave ? efectoLeave : onLeave}
-              className="paralelogramo2"
-              id={styles.paralelogramo3}
-            ></div>
-            <label className={styles.Developer}>Developer</label>
-          </div>
+      <div className="developer" id={styles.contenedor3}>
+        <div id={styles.contenedorLabel2}>
+          <div
+            onMouseEnter={onEnter ? efectoEnter : onEnter}
+            onMouseLeave={onLeave ? efectoLeave : onLeave}
+            className="paralelogramo2"
+            id={styles.paralelogramo3}
+          ></div>
+          <label className={styles.Developer}>Developer</label>
         </div>
+      </div>
       <div className="containerStart">
         <label className="LabelScroll">Start</label>
         <div className="chevron"></div>

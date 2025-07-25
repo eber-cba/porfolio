@@ -20,10 +20,10 @@ export default function BasicModal() {
   return (
     <div>
       <Button
-        color='gradient'
+        color="gradient"
         auto
         shadow
-        className='openBoton'
+        className="openBoton"
         onClick={handleOpen}
       >
         Open resume 🚀{" "}
@@ -32,15 +32,15 @@ export default function BasicModal() {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
           <embed
-            src='/Fullstack_EberCoronel_cv.pdf'
-            frameBorder='0'
-            width='100%'
-            height='900px'
+            src="/FullStack_Eber_Coronel.pdf"
+            frameBorder="0"
+            width="100%"
+            height="900px"
           />
         </Box>
       </Modal>

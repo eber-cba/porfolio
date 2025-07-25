@@ -2,7 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
-import styles from "../styles/AboutMe.module.css";
+import styles from "../../styles/AboutMe.module.css";
 import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
 
@@ -58,9 +58,7 @@ export default function Navbar({ nombre }) {
       <AppBar className="appbar" sx={{ backgroundColor: "#155263" }}>
         <Toolbar className={styles.contenedorNavb}>
           <div className="Hola" id={styles.Hola}>
-            <label className={styles.hola} >
-              ¡Hi {nombre}!
-            </label>
+            <label className={styles.hola}>¡Hi {nombre}!</label>
           </div>
           <div className={styles.botones}>
             <button

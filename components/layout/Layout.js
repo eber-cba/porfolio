@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Particulas from "./Particulas";
+import Particulas from "../ui/Particulas";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect } from "react";
+import Navbar from "./Navbar";
 
 function Layout({ children }) {
   const cursorX = useMotionValue(-100);

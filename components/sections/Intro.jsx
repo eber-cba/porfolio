@@ -2,14 +2,14 @@ import Backdrop from "@mui/material/Backdrop";
 import Button from "@mui/material/Button";
 import React, { useState, useEffect } from "react";
 import { useSnackbar } from "notistack";
-import styles from "../styles/intro.module.css";
+import styles from "../../styles/intro.module.css";
 import Input from "@mui/material/Input";
 import { gsap } from "gsap";
-import Navbar from "./Navbar";
-import AboutMe from "./AboutMe"
-import SobreMi from"./SobreMi"
-import Habilidades from "./Habilidades"
-import Contacto from "./Contacto"
+import Navbar from "../layout/Navbar";
+import AboutMe from "./AboutMe";
+import SobreMi from "./SobreMi";
+import Habilidades from "../Habilidades";
+import Contacto from "./Contacto";
 export default function Intro() {
   const [open, setOpen] = useState(true);
   const [nombre, setNombre] = useState("");
@@ -78,7 +78,7 @@ export default function Intro() {
   };
 
   const validarInput = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!nombre) {
       mensajeAdvertencia();
     } else {
@@ -121,7 +121,6 @@ export default function Intro() {
             disabled={button}
             onClick={validarInput}
             type="submit"
-
           >
             Get in
           </Button>
@@ -129,16 +128,12 @@ export default function Intro() {
       </Backdrop>
 
       {open === false ? <Navbar open={open} nombre={nombre} /> : null}
-      
-     
 
-      {open === false ? <AboutMe/> : null}
-     
-      {open === false ? <SobreMi/> : null}
-      {open === false ? <Habilidades/> : null}
-      {open === false ? <Contacto/> : null}
-     
+      {open === false ? <AboutMe /> : null}
 
+      {open === false ? <SobreMi /> : null}
+      {open === false ? <Habilidades /> : null}
+      {open === false ? <Contacto /> : null}
 
       {/* {open === false ? (
         

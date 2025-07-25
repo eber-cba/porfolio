@@ -414,7 +414,21 @@ h2.linea span {
   display: none;
 }
 
+.sobreMi-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
 @media only screen and (max-width: 768px) {
+  .sobreMi-img {
+    max-height: 180px;
+    min-height: 100px;
+    border-radius: 10px;
+  }
   .padreYoSoy {
     display: grid;
     grid-template-rows: 1fr;

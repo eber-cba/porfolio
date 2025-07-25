@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import BotonExperiencia from "./BotonExperiencia";
+import BotonExperiencia from "../ui/BotonExperiencia";
 const style = {
   position: "absolute",
   top: "50%",
@@ -31,16 +31,19 @@ export default function ModalExperiencia() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style} className="modalExperiencia">
-          <Typography className="titulo" id="modal-modal-title" variant="h6" component="h2">
+          <Typography
+            className="titulo"
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+          >
             {" "}
             PLATAFORMA 5
           </Typography>
-          <Typography  variant="body2"  className="subtitulo">
+          <Typography variant="body2" className="subtitulo">
             March 2022 - Present
           </Typography>
-          <label className="subtitulo">
-            I am in charge of :
-          </label>
+          <label className="subtitulo">I am in charge of :</label>
           <p paragraph className="cuerpoTexto">
             <ul>
               <li>Support the teacher during class hours. </li>
