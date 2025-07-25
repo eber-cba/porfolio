@@ -1,12 +1,12 @@
 export const experiences = {
-  desarrollador: [
+  developer: [
     {
       title: "FullStack Developer",
       company: "ABSTRACT",
-      period: "10/2024 - Actualidad",
-      summary: "Creación de componentes .ASTRO y JSX.",
+      period: "10/2024 - Present",
+      summary: "Creation of .ASTRO and JSX components.",
       details:
-        "Responsable de diseñar y desarrollar componentes reutilizables en Astro y React/JSX, colaborando en equipos ágiles y aplicando buenas prácticas de UI/UX.",
+        "Responsible for designing and developing reusable components in Astro and React/JSX, collaborating in agile teams and applying UI/UX best practices.",
       icon: "💻",
       gradient: "135deg, #155263 60%, #ffb347 100%",
       shape: "rounded",
@@ -15,43 +15,43 @@ export const experiences = {
       title: "Frontend Developer",
       company: "CODEMATE",
       period: "10/2022 - 1/2023",
-      summary: "Creación de una SPA moderna usando React.",
+      summary: "Creation of a modern SPA using React.",
       details:
-        "Desarrollo de una SPA moderna usando React, integración de APIs y despliegue en la nube.",
+        "Development of a modern SPA using React, API integration, and cloud deployment.",
       icon: "🖥️",
       gradient: "135deg, #ffb347 60%, #155263 100%",
       shape: "rounded",
     },
     {
-      title: "Asistente de investigación en IA",
-      company: "UNIVERSIDAD TECNOLÓGICA",
+      title: "AI Research Assistant",
+      company: "TECHNOLOGICAL UNIVERSITY",
       period: "01/2021 - 12/2021",
-      summary: "Colaboración en proyectos de inteligencia artificial.",
+      summary: "Collaboration on artificial intelligence projects.",
       details:
-        "Participación en equipos de investigación, desarrollando modelos de IA y análisis de datos.",
+        "Participation in research teams, developing AI models and data analysis.",
       icon: "🤖",
       gradient: "135deg, #ff512f 60%, #dd2476 100%",
       shape: "blob",
     },
   ],
-  docente: [
+  academic: [
     {
-      title: "Docente y tutor en la carrera full stack",
+      title: "Teacher and tutor in the full stack career",
       company: "DESAFIO LATAM",
-      period: "04/2023 - Actualidad",
-      summary: "Docente y tutor en React y Node.js.",
+      period: "04/2023 - Present",
+      summary: "Teacher and tutor in React and Node.js.",
       details:
-        "Encargado de la formación y acompañamiento de estudiantes en proyectos reales.",
+        "Responsible for training and supporting students in real projects.",
       icon: "🌐",
       gradient: "135deg, #ffb347 60%, #155263 100%",
       shape: "wave",
     },
     {
-      title: "Docente en desarrollo web",
+      title: "Web development teacher",
       company: "ARGENTINA PROGRAMA 4.0 - UTN",
       period: "02/2023 - 11/2023",
-      summary: "Introducción a HTML, CSS, JS y React.",
-      details: "Clases introductorias y mentoring en tecnologías web.",
+      summary: "Introduction to HTML, CSS, JS, and React.",
+      details: "Introductory classes and mentoring in web technologies.",
       icon: "🧑‍🏫",
       gradient: "135deg, #155263 60%, #ffb347 100%",
       shape: "hex",
