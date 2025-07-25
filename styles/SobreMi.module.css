@@ -1,0 +1,52 @@
+.padreSobremi {
+  background: #ffa14a;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 32px 0 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.sobreMi-tab {
+  background: #ffa14a;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  padding: 0 12px 32px;
+  box-sizing: border-box;
+}
+
+.exp-section {
+  margin-bottom: 48px;
+}
+
+.exp-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #155263;
+  margin-bottom: 16px;
+}
+
+.exp-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.exp-card-container {
+  cursor: pointer;
+  perspective: 900px;
+}
+
+.exp-card-container .exp-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.exp-button {
+  margin-top: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}

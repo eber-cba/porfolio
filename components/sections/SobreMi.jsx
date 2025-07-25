@@ -10,7 +10,9 @@ import React, { useState } from "react";
 import LineaDeTime from "../ui/LineaDeTime";
 import Acordion from "../ui/Acordion";
 import ModalCv from "../ui/ModalCv";
-import ModalExperiencia from "../ui/ModalExperiencia";
+import ExperienceCard from "../ui/ExperienceCard";
+import { experiences } from "../../data/experiencesData";
+import { Modal } from "@nextui-org/react";
 const useStyles = makeStyles((theme) => ({
   tabs: {
     "& .MuiTabs-indicator": {
@@ -19,19 +21,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function SobreMi() {
-  AOS.init({
-    duration: 1000,
-  });
-  const [value, setValue] = useState("1");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+  AOS.init({ duration: 1000 });
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalSection, setModalSection] = useState(null);
+  const [tab, setTab] = useState("2");
   const classes = useStyles();
 
+  const openModal = (section) => {
+    setModalSection(section);
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalSection(null);
+  };
+  const handleTab = (_, val) => setTab(val);
+
   return (
-    <div className="padreSobremi">
+    <div
+      className="padreSobremi"
+      style={{
+        background: "#ffa14a",
+        minHeight: "100vh",
+        width: "100vw",
+        maxWidth: "100vw",
+        boxSizing: "border-box",
+        padding: "32px 0 64px 0",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        overflowX: "hidden",
+      }}
+    >
       <div
         style={{
           display: "flex",
@@ -41,6 +63,8 @@ export default function SobreMi() {
           gap: 40,
           marginBottom: 32,
           flexWrap: "wrap",
+          width: "100%",
+          maxWidth: 1100,
         }}
       >
         <img
@@ -91,8 +115,21 @@ export default function SobreMi() {
           </div>
         </div>
       </div>
-      <Box className="sobreMi-tab" data-aos="fade-left" sx={{ width: "100%" }}>
-        <TabContext value={value}>
+      <Box
+        className="sobreMi-tab"
+        data-aos="fade-left"
+        sx={{ width: "100%", maxWidth: 1200, margin: "0 auto" }}
+        style={{
+          background: "#ffa14a",
+          borderRadius: 24,
+          boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+          padding: "0 12px 32px 12px",
+          minHeight: 400,
+          width: "100%",
+          boxSizing: "border-box",
+        }}
+      >
+        <TabContext value={tab}>
           <Box
             sx={{
               color: "red",
@@ -104,8 +141,9 @@ export default function SobreMi() {
             <TabList
               id="tabList"
               className={classes.tabs}
-              onChange={handleChange}
+              onChange={handleTab}
               aria-label="lab API tabs example"
+              centered
             >
               <Tab
                 label={<label className="tituloTab">Education</label>}
@@ -133,24 +171,90 @@ export default function SobreMi() {
               <Acordion />
             </TabPanel>
             <TabPanel value="4">
-              <ModalExperiencia />
+              <div style={{ display: "flex", gap: 24, margin: "32px 0" }}>
+                <Button
+                  auto
+                  color="warning"
+                  onClick={() => openModal("desarrollador")}
+                >
+                  Desarrollador
+                </Button>
+                <Button
+                  auto
+                  color="primary"
+                  onClick={() => openModal("docente")}
+                >
+                  Docente / Académico
+                </Button>
+              </div>
             </TabPanel>
             <TabPanel value="5">
               <ModalCv />
-              <Button color="gradient" auto shadow className="btonDescargarPDF">
-                <a
-                  href="./Eber_Coronel_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download="Eber_Coronel_CV.pdf"
-                >
-                  Download pdf
-                </a>
-              </Button>
+              <a
+                href="./Eber_Coronel_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Eber_Coronel_CV.pdf"
+                style={{
+                  display: "inline-block",
+                  padding: "10px 24px",
+                  background:
+                    "linear-gradient(90deg, #ffb347 60%, #155263 100%)",
+                  color: "#fff",
+                  borderRadius: 8,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  marginTop: 16,
+                  boxShadow: "0 2px 8px rgba(21,82,99,0.12)",
+                  letterSpacing: 1,
+                }}
+              >
+                Download pdf
+              </a>
             </TabPanel>
           </div>
         </TabContext>
       </Box>
+
+      <Modal
+        open={modalOpen}
+        onClose={closeModal}
+        width={800}
+        closeButton
+        aria-labelledby="exp-modal-title"
+      >
+        <Modal.Header>
+          <h2 id="exp-modal-title" style={{ margin: 0 }}>
+            {modalSection === "desarrollador"
+              ? "Experiencias como Desarrollador"
+              : "Experiencias como Docente / Académico"}
+          </h2>
+        </Modal.Header>
+        <Modal.Body>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: 24,
+              justifyItems: "center",
+              alignItems: "stretch",
+              width: "100%",
+              maxWidth: 700,
+              boxSizing: "border-box",
+              overflowX: "hidden",
+            }}
+          >
+            {modalSection &&
+              experiences[modalSection].map((item, i) => (
+                <ExperienceCard
+                  key={i}
+                  {...item}
+                  color={`linear-gradient(${item.gradient})`}
+                />
+              ))}
+          </div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
