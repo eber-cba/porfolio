@@ -1,7 +1,443 @@
-/* ===================================== */
-/* Holographic buttons with new palette  */
-/* ===================================== */
+/* Base Styles */
+.padreSobremi {
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange) 0%,
+    var(--dark-orange) 100%
+  );
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+  padding: 32px 0 64px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+}
 
+.smoothTransition {
+  transition: all 0.3s ease;
+}
+
+/* Profile Section */
+.profileSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+  position: relative;
+  padding: 40px 0;
+}
+
+.decorativeCircles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 30% 50%,
+      rgba(255, 154, 60, 0.1) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(21, 82, 99, 0.1) 0%,
+      transparent 40%
+    );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Profile Picture Container */
+.profilePictureContainer {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  z-index: 2;
+}
+
+.profileHaloOuter {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--primary-blue)
+  );
+  filter: blur(20px);
+  opacity: 0.5;
+  z-index: 1;
+  animation: haloPulse 6s ease-in-out infinite;
+}
+
+.profileHaloInner {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 15px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--primary-blue)
+  );
+  filter: blur(10px);
+  opacity: 0.3;
+  z-index: 2;
+  animation: haloPulse 4s ease-in-out infinite reverse;
+}
+
+@keyframes haloPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+.profileFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  border: 4px solid var(--white);
+  background: linear-gradient(45deg, var(--light-orange), var(--light-blue));
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  z-index: 3;
+}
+
+.profilePictureContainer:hover .profileFrame {
+  transform: translateZ(20px) rotateY(5deg) rotateX(5deg);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  transform: translateZ(10px);
+}
+
+.profilePictureContainer:hover .profileImage {
+  transform: translateZ(30px) scale(1.05);
+}
+
+/* Profile Particles */
+.profileParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.profileParticle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation-name: floatParticle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  filter: blur(2px);
+}
+
+@keyframes floatParticle {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.2);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-15px, -50px) scale(1.3);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(25px, -70px) scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+/* Name Tag */
+.nameTag {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-blue);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  animation: nameTagFloat 3s ease-in-out infinite;
+}
+
+.nameTagInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nameFirst {
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+}
+
+.nameLast {
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  opacity: 0.9;
+}
+
+@keyframes nameTagFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+/* About Card */
+.aboutCard {
+  max-width: 500px;
+  min-width: 300px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transform-style: preserve-3d;
+  z-index: 2;
+}
+
+.cardShine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  transform: skewX(-25deg);
+  transition: all 0.8s;
+}
+
+.aboutCard:hover .cardShine {
+  left: 150%;
+}
+
+/* About Title */
+.aboutTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  transform: translateZ(10px);
+}
+
+.titleLine {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--primary-orange),
+    transparent
+  );
+}
+
+.aboutTitle {
+  font-size: 1.8rem;
+  color: var(--primary-blue);
+  margin: 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.aboutTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primary-orange);
+  border-radius: 3px;
+}
+
+/* About Text */
+.aboutText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+  transform: translateZ(5px);
+}
+
+.aboutText p {
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.aboutText p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--primary-orange);
+  border-radius: 50%;
+}
+
+.highlight {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 154, 60, 0.2),
+    rgba(255, 154, 60, 0.1)
+  );
+  padding: 0 5px;
+  border-radius: 3px;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.highlight:hover {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 154, 60, 0.3),
+    rgba(255, 154, 60, 0.2)
+  );
+  transform: translateY(-2px);
+}
+
+/* Skills Icons */
+.skillsIcons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.skillIcon {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  transform: translateZ(10px);
+}
+
+.skillIcon:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.skillIcon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.skillIcon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-blue);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skillIcon:hover::after {
+  opacity: 1;
+}
+
+/* Tab Section */
+.sobreMiTab {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 0 12px 32px 12px;
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.tabSobreMi {
+  padding: 20px;
+}
+
+/* Experience Buttons */
+.experienceButtonsContainer {
+  display: flex;
+  gap: 24px;
+  margin: 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Holographic Buttons */
 .holographicButton {
   position: relative;
   overflow: hidden;
@@ -11,8 +447,7 @@
   border-radius: 50px;
   padding: 16px 40px;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15),
-    0 0 15px rgba(255, 255, 255, 0.1) inset;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   transform: translateY(0);
   cursor: pointer;
   outline: none;
@@ -35,9 +470,8 @@
 }
 
 .holographicButton:hover {
-  transform: translateY(-5px) rotateX(10deg) rotateY(5deg);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25),
-    0 0 20px rgba(255, 255, 255, 0.2) inset;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
 .primaryButton:hover {
@@ -77,168 +511,39 @@
   position: relative;
   overflow: hidden;
   height: 1.2em;
+  font-weight: 600;
 }
 
-.holographicEffect {
+.floatingParticlesContainer {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.3) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transform: rotate(0deg);
-  transition: opacity 0.3s ease, transform 0.5s linear;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 2;
 }
 
-.holographicEffect.active {
-  opacity: 1;
-  transform: rotate(360deg);
-}
-
-.particle {
+.floatingParticle {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 2;
-  animation: particleFloat 1.5s ease-out forwards;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  animation: particleFloat 3s ease-in-out infinite;
 }
 
 @keyframes particleFloat {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
+  0%,
   100% {
-    transform: translate(
-        calc((var(--dx, 0) - 0.5) * 100px),
-        calc((var(--dy, 0) - 0.5) * 100px)
-      )
-      scale(0);
-    opacity: 0;
+    transform: translate(-50%, -50%) translate(0, 0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(0, -10px);
   }
 }
 
-/* ===================================== */
-/* General styles with new palette       */
-/* ===================================== */
-
-.smoothTransition {
-  transition: all 0.3s ease;
-}
-
-.profilePictureContainer {
-  position: relative;
-  border-radius: 50%;
-  padding: 8px;
-  background: linear-gradient(
-    135deg,
-    var(--primary-blue),
-    var(--primary-orange)
-  );
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-}
-
-.profileImage {
-  width: 220px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 4px solid #fff;
-  background: #eee;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.4s cubic-bezier(0.4, 2, 0.6, 1);
-}
-
-.profileImage:hover {
-  transform: scale(1.04);
-}
-
-.profilePictureHalo {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border-radius: 50%;
-  background: linear-gradient(
-    135deg,
-    var(--primary-blue),
-    var(--primary-orange)
-  );
-  z-index: 1;
-  animation: rotateHalo 10s linear infinite;
-  opacity: 0.8;
-  filter: blur(10px);
-}
-
-@keyframes rotateHalo {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.aboutCard {
-  max-width: 500px;
-  min-width: 260px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  padding: 32px;
-  color: var(--primary-blue);
-  font-size: 1.1rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.aboutTitle {
-  font-size: 1.8rem;
-  color: var(--primary-blue);
-  margin-bottom: 16px;
-  display: block;
-}
-
-.aboutText {
-  line-height: 1.6;
-}
-
-.cardShine {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
-  transform: skewX(-25deg);
-  transition: all 0.6s;
-}
-
-.aboutCard:hover .cardShine {
-  left: 150%;
-}
-
-.experienceButtonsContainer {
-  display: flex;
-  gap: 24px;
-  margin: 32px 0;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
+/* Download Button */
 .neonDownloadButton {
   position: relative;
   display: inline-block;
@@ -323,6 +628,7 @@
   transition-delay: 0.375s;
 }
 
+/* Floating Particles */
 .floatingParticles {
   position: fixed;
   top: 0;
@@ -362,26 +668,54 @@
   }
 }
 
-/* Estilos para el contenedor principal */
-.padreSobremi {
-  background: linear-gradient(
-    135deg,
-    var(--primary-orange),
-    var(--dark-orange)
-  );
-  min-height: 100vh;
-  width: 100vw;
-  padding: 32px 0 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .profileSection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutCard {
+    max-width: 90%;
+    margin-top: 50px;
+  }
 }
 
-.sobreMi-tab {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  padding: 0 12px 32px;
-  box-sizing: border-box;
+@media (max-width: 480px) {
+  .nameTag {
+    font-size: 1rem;
+    padding: 8px 15px;
+    bottom: -20px;
+  }
+
+  .nameFirst {
+    font-size: 1.1rem;
+  }
+
+  .nameLast {
+    font-size: 0.9rem;
+  }
+
+  .aboutTitle {
+    font-size: 1.5rem;
+  }
+
+  .aboutText {
+    font-size: 1rem;
+  }
+
+  .skillIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .skillIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .holographicButton {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
 }

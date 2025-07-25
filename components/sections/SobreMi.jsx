@@ -13,8 +13,6 @@ import ModalCv from "../ui/ModalCv";
 import ExperienceCard from "../ui/ExperienceCard";
 import { experiences } from "../../data/experiencesData";
 import { Modal } from "@nextui-org/react";
-
-// Animaciones personalizadas
 import styles from "../../styles/SobreMi.module.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,40 +42,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Componente de botón personalizado
 const HolographicButton = ({ label, onClick, isPrimary, icon }) => {
   const buttonRef = useRef(null);
   const [particles, setParticles] = useState([]);
-  const [hover, setHover] = useState(false);
-
-  const createParticle = (e) => {
-    if (!buttonRef.current) return;
-
-    const rect = buttonRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const newParticle = {
-      id: Date.now(),
-      x,
-      y,
-      size: Math.random() * 8 + 3,
-      color: isPrimary ? "rgba(255, 154, 60, 0.8)" : "rgba(21, 82, 99, 0.8)",
-      life: Math.random() * 20 + 10,
-    };
-
-    setParticles((prev) => [...prev, newParticle]);
-  };
 
   useEffect(() => {
-    if (particles.length === 0) return;
+    // Crear partículas iniciales
+    const initialParticles = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 10 + 5,
+      speedX: (Math.random() - 0.5) * 0.5,
+      speedY: (Math.random() - 0.5) * 0.5,
+      color: isPrimary ? "rgba(255, 154, 60, 0.8)" : "rgba(21, 82, 99, 0.8)",
+      opacity: Math.random() * 0.6 + 0.2,
+    }));
 
-    const timer = setTimeout(() => {
-      setParticles((prev) => prev.slice(1));
-    }, 100);
+    setParticles(initialParticles);
 
-    return () => clearTimeout(timer);
-  }, [particles]);
+    // Animación de flotación
+    const interval = setInterval(() => {
+      setParticles((prev) =>
+        prev.map((p) => {
+          let newX = p.x + p.speedX;
+          let newY = p.y + p.speedY;
+          let newSpeedX = p.speedX;
+          let newSpeedY = p.speedY;
+
+          // Rebotar en los bordes
+          if (newX <= 0 || newX >= 100) newSpeedX = -newSpeedX;
+          if (newY <= 0 || newY >= 100) newSpeedY = -newSpeedY;
+
+          return {
+            ...p,
+            x: newX,
+            y: newY,
+            speedX: newSpeedX,
+            speedY: newSpeedY,
+          };
+        })
+      );
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isPrimary]);
 
   return (
     <div
@@ -85,9 +94,6 @@ const HolographicButton = ({ label, onClick, isPrimary, icon }) => {
         isPrimary ? styles.primaryButton : styles.secondaryButton
       }`}
       ref={buttonRef}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onMouseMove={createParticle}
       onClick={onClick}
     >
       <div className={styles.buttonContent}>
@@ -95,24 +101,22 @@ const HolographicButton = ({ label, onClick, isPrimary, icon }) => {
         <div className={styles.buttonLabel}>{label}</div>
       </div>
 
-      <div
-        className={`${styles.holographicEffect} ${hover ? styles.active : ""}`}
-      ></div>
-
-      {particles.map((particle) => (
-        <div
-          key={particle.id}
-          className={styles.particle}
-          style={{
-            left: `${particle.x}px`,
-            top: `${particle.y}px`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            backgroundColor: particle.color,
-            opacity: particle.life / 30,
-          }}
-        />
-      ))}
+      <div className={styles.floatingParticlesContainer}>
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className={styles.floatingParticle}
+            style={{
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              backgroundColor: particle.color,
+              opacity: particle.opacity,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };
@@ -129,6 +133,8 @@ export default function SobreMi() {
   const [modalSection, setModalSection] = useState(null);
   const [tab, setTab] = useState("2");
   const classes = useStyles();
+  const profileRef = useRef(null);
+  const textRef = useRef(null);
 
   const openModal = (section) => {
     setModalSection(section);
@@ -143,81 +149,129 @@ export default function SobreMi() {
   const handleTab = (_, val) => setTab(val);
 
   return (
-    <div
-      className={`padreSobremi ${styles.smoothTransition}`}
-      style={{
-        background: "linear-gradient(135deg, #ff9a3c 0%, #e68a35 100%)",
-        minHeight: "100vh",
-        width: "100vw",
-        maxWidth: "100vw",
-        boxSizing: "border-box",
-        padding: "32px 0 64px 0",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        overflowX: "hidden",
-        fontFamily: "'Poppins', sans-serif",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 40,
-          marginBottom: 32,
-          flexWrap: "wrap",
-          width: "100%",
-          maxWidth: 1100,
-        }}
-      >
-        <div className={styles.profilePictureContainer} data-aos="fade-right">
-          <div className={styles.profilePictureHalo}></div>
-          <img
-            src="/yo.jpg"
-            alt="Foto de perfil"
-            className={styles.profileImage}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src =
-                "https://via.placeholder.com/220x280?text=No+Image";
-            }}
-          />
+    <div className={`${styles.padreSobremi} ${styles.smoothTransition}`}>
+      <div className={styles.profileSection}>
+        <div className={styles.decorativeCircles}></div>
+
+        <div
+          className={styles.profilePictureContainer}
+          data-aos="fade-right"
+          ref={profileRef}
+        >
+          <div className={styles.profileHaloOuter}></div>
+          <div className={styles.profileHaloInner}></div>
+
+          <div className={styles.profileFrame}>
+            <img
+              src="/yo.jpg"
+              alt="Profile"
+              className={styles.profileImage}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src =
+                  "https://via.placeholder.com/300x400?text=Profile+Image";
+              }}
+            />
+          </div>
+
+          <div className={styles.profileParticles}>
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className={styles.profileParticle}
+                style={{
+                  animationDuration: `${Math.random() * 6 + 4}s`,
+                  animationDelay: `${Math.random() * 2}s`,
+                  width: `${Math.random() * 20 + 10}px`,
+                  height: `${Math.random() * 20 + 10}px`,
+                  background: `radial-gradient(circle, ${
+                    i % 2 === 0 ? "#ff9a3c" : "#155263"
+                  }, transparent)`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className={styles.nameTag}>
+            <div className={styles.nameTagInner}>
+              <span className={styles.nameFirst}>EBER</span>
+              <span className={styles.nameLast}>CORONEL</span>
+            </div>
+          </div>
         </div>
 
-        <div data-aos="fade-left" className={styles.aboutCard}>
+        <div data-aos="fade-left" className={styles.aboutCard} ref={textRef}>
           <div className={styles.cardShine}></div>
-          <b className={styles.aboutTitle}>About me</b>
+
+          <div className={styles.aboutTitleContainer}>
+            <div className={styles.titleLine}></div>
+            <h2 className={styles.aboutTitle}>ABOUT ME</h2>
+            <div className={styles.titleLine}></div>
+          </div>
+
           <div className={styles.aboutText}>
-            As a child I was passionate about looking at the world from another
-            perspective and I did and continue to do so through photography.
-            Then I met the graphic design that allowed me to create new worlds.
-            Today I can implement these passions as a Full Stack Developer in
-            web programming with JavaScript and object-oriented programming with
-            Microsoft .NET (c#). My last challenge was to carry out a Coding
-            Bootcamp for more than 800 hours in Platform 5, in which I found an
-            affinity for the Front-End.
+            <p>
+              <span className={styles.highlight}>
+                My graphic design knowledge
+              </span>{" "}
+              and passion for learning new technologies led me to become a{" "}
+              <span className={styles.highlight}>Full Stack Developer</span>{" "}
+              with expertise in web programming with{" "}
+              <span className={styles.highlight}>JavaScript</span> and
+              object-oriented programming with{" "}
+              <span className={styles.highlight}>Microsoft .NET (C#)</span>.
+            </p>
+            <p>
+              My latest challenge was completing an{" "}
+              <span className={styles.highlight}>
+                800+ hour Coding Bootcamp
+              </span>
+              , where I discovered my affinity for{" "}
+              <span className={styles.highlight}>Front-End</span> development.
+            </p>
+          </div>
+
+          <div className={styles.skillsIcons}>
+            <div className={styles.skillIcon} data-tooltip="JavaScript">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 630 630"
+                fill="#F7DF1E"
+              >
+                <rect width="630" height="630" fill="none" />
+                <path d="M423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z" />
+              </svg>
+            </div>
+            <div className={styles.skillIcon} data-tooltip=".NET">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                fill="#512BD4"
+              >
+                <path d="M6.5 17.5v13l10 5.9v-13.1l-10-5.8zm35 0l-10 5.9v13.1l10-5.9v-13zm-25 0v13.1l10 5.9v-13.1l-10-5.9z" />
+                <path
+                  d="M24 2.2l-21.3 12v23.6l21.3 12.3 21.3-12.3v-23.6l-21.3-12zm17.3 34.2l-17.3 10-17.3-10v-20l17.3-10 17.3 10v20z"
+                  fill="#512BD4"
+                />
+              </svg>
+            </div>
+            <div className={styles.skillIcon} data-tooltip="Frontend">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="#61DAFB"
+              >
+                <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
 
       <Box
-        className="sobreMi-tab"
+        className={styles.sobreMiTab}
         data-aos="fade-up"
         sx={{ width: "100%", maxWidth: 1200, margin: "0 auto" }}
-        style={{
-          background: "rgba(255, 255, 255, 0.15)",
-          backdropFilter: "blur(10px)",
-          borderRadius: "24px",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
-          padding: "0 12px 32px 12px",
-          minHeight: 400,
-          width: "100%",
-          boxSizing: "border-box",
-          border: "1px solid rgba(255, 255, 255, 0.18)",
-        }}
       >
         <TabContext value={tab}>
           <Box
@@ -260,7 +314,7 @@ export default function SobreMi() {
             </TabList>
           </Box>
 
-          <div className="tabSobreMi">
+          <div className={styles.tabSobreMi}>
             <TabPanel value="2">
               <LineaDeTime />
             </TabPanel>
@@ -364,9 +418,9 @@ export default function SobreMi() {
               fontSize: "2rem",
             }}
           >
-            {modalSection === "desarrollador"
-              ? "Experiencias como Desarrollador"
-              : "Experiencias como Docente / Académico"}
+            {modalSection === "developer"
+              ? "Development Experience"
+              : "Academic Experience"}
           </h2>
         </Modal.Header>
         <Modal.Body>
