@@ -20,6 +20,7 @@ import skillsStyles from "../../styles/SkillsIcons.module.css";
 import sobreMiTabStyles from "../../styles/SobreMiTab.module.css";
 import experienceButtonsStyles from "../../styles/ExperienceButtons.module.css";
 import downloadButtonStyles from "../../styles/DownloadButton.module.css";
+import styles from "../../styles/ExperienceButtons.module.css";
 
 const useStyles = makeStyles((theme) => ({
   tabs: {
