@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "../../styles/SobreMi.module.css";
+import styles from "../../styles/Timeline.module.css";
 
 // Registramos los plugins de GSAP
 gsap.registerPlugin(ScrollTrigger);

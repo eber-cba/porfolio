@@ -1,0 +1,277 @@
+/* Timeline styles for SobreMi */
+.timelineContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px 0;
+}
+
+.timeline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  z-index: 1;
+}
+
+.timelineCenterLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #ff9a3c, #155263);
+  border-radius: 3px;
+  box-shadow: 0 0 20px rgba(255, 154, 60, 0.5);
+}
+
+.timelineGlow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 154, 60, 0.3), transparent 70%);
+  filter: blur(10px);
+  z-index: 0;
+}
+
+.timelineItems {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.timelineItem {
+  position: relative;
+  width: 45%;
+  margin-bottom: 100px;
+  perspective: 1000px;
+}
+
+.timelineItemLeft {
+  left: 0;
+}
+
+.timelineItemRight {
+  left: 55%;
+}
+
+.timelineDot {
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.timelineItemLeft .timelineDot {
+  right: -45px;
+}
+
+.timelineItemRight .timelineDot {
+  left: -45px;
+}
+
+.timelineDotInner {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #ff9a3c, 0 0 30px #155263;
+  z-index: 2;
+}
+
+.timelineDotPulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ff9a3c;
+  opacity: 0.6;
+  animation: pulse 2s infinite;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.timelineContent {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.timelineItem:hover .timelineContent {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 30px rgba(255, 154, 60, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.timelineContent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #ff9a3c, #155263);
+}
+
+.timelineDate {
+  font-size: 0.9rem;
+  color: #ff9a3c;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.timelineTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.timelineDescription {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+.timelineIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.timelineItem:hover .timelineIcon {
+  transform: scale(1.2) rotate(15deg);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.timelineIcon svg {
+  width: 30px;
+  height: 30px;
+  stroke: #ff9a3c;
+}
+
+.timelineParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timelineParticle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatParticle 8s linear infinite;
+  filter: blur(2px);
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .timeline {
+    left: 30px;
+  }
+  .timelineItem {
+    width: 85%;
+    margin-left: 70px;
+  }
+  .timelineItemRight {
+    left: 0;
+  }
+  .timelineItemLeft .timelineDot,
+  .timelineItemRight .timelineDot {
+    left: -45px;
+    right: auto;
+  }
+}
+@media (max-width: 600px) {
+  .timelineItem {
+    width: 95%;
+    margin-left: 50px;
+  }
+  .timelineDot {
+    width: 25px;
+    height: 25px;
+  }
+  .timelineItemLeft .timelineDot,
+  .timelineItemRight .timelineDot {
+    left: -35px;
+  }
+  .timelineDotInner {
+    width: 15px;
+    height: 15px;
+  }
+  .timelineTitle {
+    font-size: 1.2rem;
+  }
+  .timelineDescription {
+    font-size: 1rem;
+  }
+  .timelineIcon {
+    width: 40px;
+    height: 40px;
+  }
+  .timelineIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+}

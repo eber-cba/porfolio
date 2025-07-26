@@ -1,0 +1,441 @@
+/* src/styles/Accordion.module.css */
+.container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, sans-serif;
+}
+
+.headerSection {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg, #ff9a3c, #ff6b6b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.accordion {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0f172a;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.accordionItem {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.accordionItem:last-child {
+  border-bottom: none;
+}
+
+.accordionItem.active {
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.accordionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.8rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.accordionHeader:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.headerContent h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.25px;
+}
+
+.headerContent p {
+  font-size: 1rem;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 500;
+}
+
+.accordionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.accordionItem.active .accordionIcon {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.accordionContent {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contentInner {
+  padding: 0 2rem 2rem;
+}
+
+.description {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+}
+
+.techStack {
+  margin-bottom: 1.5rem;
+}
+
+.techStack h4 {
+  color: #f1f5f9;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+.techStack h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9a3c, #ff6b6b);
+  border-radius: 3px;
+}
+
+.techIcons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 0 auto;
+}
+
+.techItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.techIcon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  transition: all 0.3s ease;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.techItem span {
+  color: #f1f5f9;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.linkButton {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.linkButton.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.linkButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footerNote {
+  text-align: center;
+  margin-top: 2.5rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.footerNote::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+}
+
+/* Notification Styles - CENTERED AND LARGER */
+.notification {
+  position: fixed;
+  /* left y top se pasan desde React con style */
+  /* transform: none; */
+  z-index: 10000;
+  background: rgba(30, 41, 59, 0.97);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.2vw 4vw;
+  border: 2px solid #ffca28;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  min-width: 220px;
+  min-height: 60px;
+  pointer-events: all;
+  transition: top 0.2s;
+}
+
+.notificationContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  flex: 1;
+  text-align: center;
+}
+
+.notificationIcon {
+  font-size: 48px;
+  color: #ffca28;
+  display: flex;
+  justify-content: center;
+  animation: pulse 1.5s infinite;
+}
+
+.notificationText {
+  color: #f1f5f9;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+  transform: rotate(90deg);
+}
+
+.smileIcon {
+  color: #ffca28;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.accordionItem:not(.active):hover {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 1rem;
+  }
+
+  .accordionHeader {
+    padding: 1.2rem;
+  }
+
+  .headerContent h3 {
+    font-size: 1.3rem;
+  }
+
+  .contentInner {
+    padding: 0 1.2rem 1.5rem;
+  }
+
+  .projectLinks {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .linkButton {
+    justify-content: center;
+  }
+
+  .techIcons {
+    gap: 0.8rem;
+  }
+
+  .techItem {
+    min-width: 70px;
+    padding: 0.8rem;
+  }
+
+  .notification {
+    padding: 4vw 2vw;
+    min-height: 80px;
+    max-width: 98vw;
+    font-size: 1rem;
+  }
+
+  .notificationIcon {
+    font-size: 36px;
+  }
+
+  .notificationText {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+
+  .headerContent h3 {
+    font-size: 1.2rem;
+  }
+
+  .headerContent p {
+    font-size: 0.9rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .notification {
+    padding: 3vw 1vw;
+    min-height: 60px;
+    max-width: 99vw;
+    font-size: 0.95rem;
+  }
+
+  .notificationIcon {
+    font-size: 32px;
+  }
+
+  .notificationText {
+    font-size: 1.1rem;
+  }
+}

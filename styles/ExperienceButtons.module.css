@@ -1,0 +1,113 @@
+/* Experience and holographic button styles for SobreMi */
+.experienceButtonsContainer {
+  display: flex;
+  gap: 24px;
+  margin: 32px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.holographicButton {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  padding: 16px 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  cursor: pointer;
+  outline: none;
+  color: white;
+  z-index: 1;
+}
+
+.primaryButton {
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--dark-orange)
+  );
+  box-shadow: 0 6px 20px rgba(255, 154, 60, 0.3);
+}
+
+.secondaryButton {
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+  box-shadow: 0 6px 20px rgba(21, 82, 99, 0.3);
+}
+
+.holographicButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.primaryButton:hover {
+  box-shadow: 0 12px 30px rgba(255, 154, 60, 0.4);
+}
+
+.secondaryButton:hover {
+  box-shadow: 0 12px 30px rgba(21, 82, 99, 0.4);
+}
+
+.holographicButton:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buttonContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.buttonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.holographicButton:hover .buttonIcon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.buttonLabel {
+  position: relative;
+  overflow: hidden;
+  height: 1.2em;
+  font-weight: 600;
+}
+
+.floatingParticlesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.floatingParticle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translate(0, 0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translate(0, -10px);
+  }
+}

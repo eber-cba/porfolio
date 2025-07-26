@@ -13,7 +13,13 @@ import ModalCv from "../ui/ModalCv";
 import ExperienceCard from "../ui/ExperienceCard";
 import { experiences } from "../../data/experiencesData";
 import { Modal } from "@nextui-org/react";
-import styles from "../../styles/SobreMi.module.css";
+import sobreMiContainerStyles from "../../styles/SobreMiContainer.module.css";
+import profileStyles from "../../styles/ProfileSection.module.css";
+import aboutCardStyles from "../../styles/AboutCard.module.css";
+import skillsStyles from "../../styles/SkillsIcons.module.css";
+import sobreMiTabStyles from "../../styles/SobreMiTab.module.css";
+import experienceButtonsStyles from "../../styles/ExperienceButtons.module.css";
+import downloadButtonStyles from "../../styles/DownloadButton.module.css";
 
 const useStyles = makeStyles((theme) => ({
   tabs: {
@@ -149,23 +155,25 @@ export default function SobreMi() {
   const handleTab = (_, val) => setTab(val);
 
   return (
-    <div className={`${styles.padreSobremi} ${styles.smoothTransition}`}>
-      <div className={styles.profileSection}>
-        <div className={styles.decorativeCircles}></div>
+    <div
+      className={`${sobreMiContainerStyles.padreSobremi} ${sobreMiContainerStyles.smoothTransition}`}
+    >
+      <div className={profileStyles.profileSection}>
+        <div className={profileStyles.decorativeCircles}></div>
 
         <div
-          className={styles.profilePictureContainer}
+          className={profileStyles.profilePictureContainer}
           data-aos="fade-right"
           ref={profileRef}
         >
-          <div className={styles.profileHaloOuter}></div>
-          <div className={styles.profileHaloInner}></div>
+          <div className={profileStyles.profileHaloOuter}></div>
+          <div className={profileStyles.profileHaloInner}></div>
 
-          <div className={styles.profileFrame}>
+          <div className={profileStyles.profileFrame}>
             <img
               src="/yo.jpg"
               alt="Profile"
-              className={styles.profileImage}
+              className={profileStyles.profileImage}
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src =
@@ -174,11 +182,11 @@ export default function SobreMi() {
             />
           </div>
 
-          <div className={styles.profileParticles}>
+          <div className={profileStyles.profileParticles}>
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
-                className={styles.profileParticle}
+                className={profileStyles.profileParticle}
                 style={{
                   animationDuration: `${Math.random() * 6 + 4}s`,
                   animationDelay: `${Math.random() * 2}s`,
@@ -192,47 +200,57 @@ export default function SobreMi() {
             ))}
           </div>
 
-          <div className={styles.nameTag}>
-            <div className={styles.nameTagInner}>
-              <span className={styles.nameFirst}>EBER</span>
-              <span className={styles.nameLast}>CORONEL</span>
+          <div className={profileStyles.nameTag}>
+            <div className={profileStyles.nameTagInner}>
+              <span className={profileStyles.nameFirst}>EBER</span>
+              <span className={profileStyles.nameLast}>CORONEL</span>
             </div>
           </div>
         </div>
 
-        <div data-aos="fade-left" className={styles.aboutCard} ref={textRef}>
-          <div className={styles.cardShine}></div>
+        <div
+          data-aos="fade-left"
+          className={aboutCardStyles.aboutCard}
+          ref={textRef}
+        >
+          <div className={aboutCardStyles.cardShine}></div>
 
-          <div className={styles.aboutTitleContainer}>
-            <div className={styles.titleLine}></div>
-            <h2 className={styles.aboutTitle}>ABOUT ME</h2>
-            <div className={styles.titleLine}></div>
+          <div className={aboutCardStyles.aboutTitleContainer}>
+            <div className={aboutCardStyles.titleLine}></div>
+            <h2 className={aboutCardStyles.aboutTitle}>ABOUT ME</h2>
+            <div className={aboutCardStyles.titleLine}></div>
           </div>
 
-          <div className={styles.aboutText}>
+          <div className={aboutCardStyles.aboutText}>
             <p>
-              <span className={styles.highlight}>
+              <span className={aboutCardStyles.highlight}>
                 My graphic design knowledge
               </span>{" "}
               and passion for learning new technologies led me to become a{" "}
-              <span className={styles.highlight}>Full Stack Developer</span>{" "}
+              <span className={aboutCardStyles.highlight}>
+                Full Stack Developer
+              </span>{" "}
               with expertise in web programming with{" "}
-              <span className={styles.highlight}>JavaScript</span> and
+              <span className={aboutCardStyles.highlight}>JavaScript</span> and
               object-oriented programming with{" "}
-              <span className={styles.highlight}>Microsoft .NET (C#)</span>.
+              <span className={aboutCardStyles.highlight}>
+                Microsoft .NET (C#)
+              </span>
+              .
             </p>
             <p>
               My latest challenge was completing an{" "}
-              <span className={styles.highlight}>
+              <span className={aboutCardStyles.highlight}>
                 800+ hour Coding Bootcamp
               </span>
               , where I discovered my affinity for{" "}
-              <span className={styles.highlight}>Front-End</span> development.
+              <span className={aboutCardStyles.highlight}>Front-End</span>{" "}
+              development.
             </p>
           </div>
 
-          <div className={styles.skillsIcons}>
-            <div className={styles.skillIcon} data-tooltip="JavaScript">
+          <div className={skillsStyles.skillsIcons}>
+            <div className={skillsStyles.skillIcon} data-tooltip="JavaScript">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 630 630"
@@ -242,7 +260,7 @@ export default function SobreMi() {
                 <path d="M423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z" />
               </svg>
             </div>
-            <div className={styles.skillIcon} data-tooltip=".NET">
+            <div className={skillsStyles.skillIcon} data-tooltip=".NET">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
@@ -255,7 +273,7 @@ export default function SobreMi() {
                 />
               </svg>
             </div>
-            <div className={styles.skillIcon} data-tooltip="Frontend">
+            <div className={skillsStyles.skillIcon} data-tooltip="Frontend">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -269,7 +287,7 @@ export default function SobreMi() {
       </div>
 
       <Box
-        className={styles.sobreMiTab}
+        className={sobreMiTabStyles.sobreMiTab}
         data-aos="fade-up"
         sx={{ width: "100%", maxWidth: 1200, margin: "0 auto" }}
       >
@@ -314,7 +332,7 @@ export default function SobreMi() {
             </TabList>
           </Box>
 
-          <div className={styles.tabSobreMi}>
+          <div className={sobreMiTabStyles.tabSobreMi}>
             <TabPanel value="2">
               <LineaDeTime />
             </TabPanel>
@@ -324,7 +342,9 @@ export default function SobreMi() {
             </TabPanel>
 
             <TabPanel value="4">
-              <div className={styles.experienceButtonsContainer}>
+              <div
+                className={experienceButtonsStyles.experienceButtonsContainer}
+              >
                 <HolographicButton
                   label="Developer"
                   onClick={() => openModal("developer")}
@@ -380,7 +400,7 @@ export default function SobreMi() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download="Eber_Coronel_CV.pdf"
-                className={styles.neonDownloadButton}
+                className={downloadButtonStyles.neonDownloadButton}
               >
                 <span></span>
                 <span></span>
@@ -448,22 +468,6 @@ export default function SobreMi() {
           </div>
         </Modal.Body>
       </Modal>
-
-      <div className={styles.floatingParticles}>
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className={styles.particleBg}
-            style={{
-              "--i": i,
-              "--size": `${Math.random() * 20 + 5}px`,
-              "--duration": `${Math.random() * 20 + 10}s`,
-              "--delay": `${Math.random() * 5}s`,
-              "--color": `rgba(21, 82, 99, ${Math.random() * 0.4 + 0.1})`,
-            }}
-          ></div>
-        ))}
-      </div>
     </div>
   );
 }

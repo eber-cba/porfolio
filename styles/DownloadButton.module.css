@@ -1,0 +1,123 @@
+/* Download button and floating particles styles for SobreMi */
+.neonDownloadButton {
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.2s;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 25px;
+  background: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(21, 82, 99, 0.5);
+}
+
+.neonDownloadButton:hover {
+  background: var(--dark-blue);
+  box-shadow: 0 0 10px var(--primary-blue), 0 0 40px rgba(21, 82, 99, 0.6),
+    0 0 80px rgba(21, 82, 99, 0.4);
+  transform: translateY(-3px);
+}
+
+.neonDownloadButton span {
+  position: absolute;
+  display: block;
+}
+
+.neonDownloadButton span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-orange));
+}
+
+.neonDownloadButton:hover span:nth-child(1) {
+  left: 100%;
+  transition: 0.5s;
+}
+
+.neonDownloadButton span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--primary-orange));
+}
+
+.neonDownloadButton:hover span:nth-child(2) {
+  top: 100%;
+  transition: 0.5s;
+  transition-delay: 0.125s;
+}
+
+.neonDownloadButton span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, var(--primary-orange));
+}
+
+.neonDownloadButton:hover span:nth-child(3) {
+  right: 100%;
+  transition: 0.5s;
+  transition-delay: 0.25s;
+}
+
+.neonDownloadButton span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(0deg, transparent, var(--primary-orange));
+}
+
+.neonDownloadButton:hover span:nth-child(4) {
+  bottom: 100%;
+  transition: 0.5s;
+  transition-delay: 0.375s;
+}
+
+.floatingParticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particleBg {
+  position: absolute;
+  background: var(--color);
+  border-radius: 50%;
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+  left: calc(var(--i) * 7%);
+  animation: float var(--duration) infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-20vh) scale(1.2);
+    opacity: 0;
+  }
+}
