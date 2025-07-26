@@ -5,15 +5,12 @@ import CssBaseline from "@mui/material/CssBaseline";
 import styles from "../../styles/AboutMe.module.css";
 import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-
-var Scroll = require("react-scroll");
+import { animatedScrollTo } from "../../utils/smoothScroll";
 
 export default function Navbar({ nombre }) {
   const [scrollmi, setScroll] = useState(false);
   const [scrollHabilidades, setScrollHabilidades] = useState(false);
   const [scrollContacto, setScrollContacto] = useState(false);
-
-  var scrolle = Scroll.animateScroll;
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -42,14 +39,21 @@ export default function Navbar({ nombre }) {
       .from(botonContacto, { duration: 0.5, stagger: 0.3 });
   }, []);
 
+  function smoothScrollToSection(sectionId) {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      animatedScrollTo(el);
+    }
+  }
+
   function sobremiScroll() {
-    scrolle.scrollTo(935);
+    smoothScrollToSection("sobremi-section");
   }
   function habilidadesScroll() {
-    scrolle.scrollTo(1850);
+    smoothScrollToSection("habilidades-section");
   }
   function contactoScroll() {
-    scrolle.scrollTo(3299);
+    smoothScrollToSection("contacto-section");
   }
   return (
     <React.Fragment>

@@ -7,6 +7,10 @@
   --dark-blue: #10414d;
   --light-blue: #1a6b7a;
 }
+html,
+body {
+  scroll-behavior: smooth;
+}
 body {
   overflow-x: hidden;
   height: 100%;

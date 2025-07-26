@@ -207,6 +207,7 @@ export default function SobreMi() {
 
   return (
     <div
+      id="sobremi-section"
       className={`${sobreMiContainerStyles.padreSobremi} ${sobreMiContainerStyles.smoothTransition}`}
     >
       <div className={sobreMiContainerStyles.profileAboutRow}>

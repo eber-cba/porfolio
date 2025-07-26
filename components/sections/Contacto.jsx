@@ -44,11 +44,10 @@ export default function Contacto() {
       setButton(true);
     } else {
       closeSnackbar();
-
       setButton(false);
     }
   };
-console.log("form",form.value)
+  console.log("form", form.value);
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -77,7 +76,7 @@ console.log("form",form.value)
     gsap.to(currentTarget, { duration: 0.5, y: 0 });
   };
   return (
-    <div className="padreContacto">
+    <div id="contacto-section" className="padreContacto">
       <form ref={form} onSubmit={sendEmail} className="form">
         <div className="nombre">
           <Input
