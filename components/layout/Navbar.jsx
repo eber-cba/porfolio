@@ -13,15 +13,28 @@ export default function Navbar({ nombre }) {
   const [scrollContacto, setScrollContacto] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScrollMi = () => {
       setScroll(window.scrollY > 920 && window.scrollY <= 1500);
-    });
-    window.addEventListener("scroll", () => {
+    };
+    
+    const handleScrollHabilidades = () => {
       setScrollHabilidades(window.scrollY > 1500 && window.scrollY <= 2500);
-    });
-    window.addEventListener("scroll", () => {
+    };
+    
+    const handleScrollContacto = () => {
       setScrollContacto(window.scrollY > 2900 && window.scrollY <= 3800);
-    });
+    };
+    
+    window.addEventListener("scroll", handleScrollMi);
+    window.addEventListener("scroll", handleScrollHabilidades);
+    window.addEventListener("scroll", handleScrollContacto);
+    
+    // Limpieza de event listeners cuando el componente se desmonta
+    return () => {
+      window.removeEventListener("scroll", handleScrollMi);
+      window.removeEventListener("scroll", handleScrollHabilidades);
+      window.removeEventListener("scroll", handleScrollContacto);
+    };
   }, []);
 
   const Timeline = gsap.timeline({

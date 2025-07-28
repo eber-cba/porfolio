@@ -8,25 +8,30 @@ export default function AboutMe() {
   });
 
   useEffect(() => {
+    // Verificar que los elementos existan antes de animarlos
     const fullstack = document.querySelectorAll(".fullstack");
     const soyEber = document.querySelectorAll(".soyEber");
     const developer = document.querySelectorAll(".developer");
-    const container = document.querySelectorAll(".container");
+    const container = document.querySelectorAll(".containerStart");
 
-    Timeline.from(soyEber, { y: 20, x: -300 })
-      .from(fullstack, { y: -10, x: -70, scale: 1 })
-      .from(developer, { y: -50, x: 150, scale: 1 }, "-=1")
-      .from(container, { y: -100, ease: "power4.out" });
+    if (soyEber.length > 0 && fullstack.length > 0 && developer.length > 0 && container.length > 0) {
+      Timeline.from(soyEber, { y: 20, x: -300 })
+        .from(fullstack, { y: -10, x: -70, scale: 1 })
+        .from(developer, { y: -50, x: 150, scale: 1 }, "-=1")
+        .from(container, { y: -100, ease: "power4.out" });
+    }
   }, []);
 
   useEffect(() => {
     const LabelScroll = document.querySelector(".LabelScroll");
-    gsap.from(LabelScroll, {
-      scale: 1.8,
-      yoyo: true,
-      repeat: -1,
-      duration: 0.9,
-    });
+    if (LabelScroll) {
+      gsap.from(LabelScroll, {
+        scale: 1.8,
+        yoyo: true,
+        repeat: -1,
+        duration: 0.9,
+      });
+    }
   }, []);
 
   const onEnter = ({ currentTarget }) => {
