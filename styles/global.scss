@@ -415,7 +415,9 @@ h2.linea span {
   position: relative;
   width: 100%;
   height: 140vh;
-  background: #ff9a3c;
+  background: #ff9a3ca8;
+  backdrop-filter: blur(8px);
+
   padding: 100px;
 }
 .padreIntro {

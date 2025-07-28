@@ -104,10 +104,9 @@
     justify-content: flex-start;
     align-items: center;
     margin: 15% 0 0 -30%;
-
   }
 }
-@media  (max-device-width : 410px){
+@media (max-device-width: 410px) {
   #contenedor2 {
     display: flex;
     justify-content: center;
@@ -120,6 +119,5 @@
     justify-content: flex-start;
     align-items: center;
     margin: 30% 0 0 -30%;
-
   }
 }
