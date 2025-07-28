@@ -50,7 +50,7 @@ export default function Navbar({ nombre }) {
     smoothScrollToSection("sobremi-section");
   }
   function habilidadesScroll() {
-    smoothScrollToSection("habilidades-section");
+    smoothScrollToSection("skills-section");
   }
   function contactoScroll() {
     smoothScrollToSection("contacto-section");
