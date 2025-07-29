@@ -1,60 +1,86 @@
+import React, { useState, useEffect, useRef } from "react";
 import AppBar from "@mui/material/AppBar";
-import React, { useState, useEffect } from "react";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import { gsap } from "gsap";
-import styles from "../../styles/Navbar.module.scss";
+import styles from '../../styles/Navbar.module.scss';
 import { animatedScrollTo } from "../../utils/animatedScroll";
 
 function Navbar({ nombre = "Invitado" }) {
   const [scrollmi, setScrollMi] = useState(false);
   const [scrollHabilidades, setScrollHabilidades] = useState(false);
   const [scrollContacto, setScrollContacto] = useState(false);
+  const navbarRef = useRef(null);
+  const buttonsRef = useRef([]);
+  const waveRef = useRef(null);
 
+  // Scroll effect for navbar background
   useEffect(() => {
-    const handleScrollMi = () => {
+    const handleScroll = () => {
       setScrollMi(window.scrollY > 0 && window.scrollY <= 1500);
-    };
-
-    const handleScrollContacto = () => {
-      setScrollContacto(window.scrollY > 2500);
-    };
-
-    window.addEventListener("scroll", handleScrollMi);
-    window.addEventListener("scroll", handleScrollHabilidades);
-    window.addEventListener("scroll", handleScrollContacto);
-
-    const handleScrollHabilidades = () => {
       setScrollHabilidades(window.scrollY > 1500 && window.scrollY <= 2500);
-    };
-    window.addEventListener("scroll", handleScrollContacto);
+      setScrollContacto(window.scrollY > 2500);
 
-    // Limpieza de event listeners cuando el componente se desmonta
-    return () => {
-      window.removeEventListener("scroll", handleScrollMi);
-      window.removeEventListener("scroll", handleScrollHabilidades);
-      window.removeEventListener("scroll", handleScrollContacto);
+      // Navbar background effect on scroll
+      if (navbarRef.current) {
+        const scrollY = window.scrollY;
+        const opacity = Math.min(0.95, scrollY / 300);
+        const scale = Math.max(0.9, 1 - scrollY / 2000);
+        const borderRadius = Math.max(0, 30 - scrollY / 20);
+
+        gsap.to(navbarRef.current, {
+          backgroundColor: `rgba(21, 82, 99, ${opacity})`,
+          scale: scale,
+          borderRadius: `${borderRadius}px`,
+          duration: 0.3,
+        });
+      }
     };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const Timeline = gsap.timeline({
-    defaults: { opacity: 1, y: 0 },
-  });
-
+  // Initial animations
   useEffect(() => {
-    const Hola = document.querySelectorAll(".Hola");
-    const botonSobreMi = document.querySelectorAll("#btnsobreMI");
-    const botonHabilidades = document.querySelectorAll("#btnHabilidades");
-    const botonContacto = document.querySelectorAll("#btnContacto");
+    // Wave animation
+    gsap.from(waveRef.current, {
+      duration: 1.5,
+      rotate: 30,
+      y: 20,
+      opacity: 0,
+      ease: "elastic.out(1, 0.8)",
+      delay: 0.3,
+    });
 
-    // Asegurar que los botones sean visibles antes de animar
-    gsap.set([botonSobreMi, botonHabilidades, botonContacto], { opacity: 1 });
+    // Text animation
+    gsap.from(".Hola", {
+      duration: 1.2,
+      y: 30,
+      opacity: 0,
+      ease: "back.out(1.7)",
+      delay: 0.5,
+    });
 
-    Timeline.from(Hola, { duration: 1, y: 20 })
-      .from(botonSobreMi, { duration: 0.5, y: 20, stagger: 0.2 })
-      .from(botonHabilidades, { duration: 0.5, y: 20, stagger: 0.2 })
-      .from(botonContacto, { duration: 0.5, y: 20, stagger: 0.2 });
+    // Button animations
+    gsap.from(buttonsRef.current, {
+      duration: 0.8,
+      y: 40,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "bounce.out",
+      delay: 0.7,
+    });
+
+    // Floating effect for navbar
+    gsap.to(navbarRef.current, {
+      y: -10,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 1.5,
+    });
   }, []);
 
   function smoothScrollToSection(sectionId) {
@@ -67,51 +93,82 @@ function Navbar({ nombre = "Invitado" }) {
   function sobremiScroll() {
     smoothScrollToSection("sobremi-section");
   }
+
   function habilidadesScroll() {
     smoothScrollToSection("skills-section");
   }
+
   function contactoScroll() {
     smoothScrollToSection("contacto-section");
   }
+
   return (
     <React.Fragment>
       <CssBaseline />
 
       <AppBar
+        ref={navbarRef}
         className="appbar"
-        sx={{ backgroundColor: "#155263", height: "70px" }}
+        sx={{
+          backgroundColor: "#155263",
+          height: "90px",
+          borderRadius: "30px 30px 30px 30px",
+          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+          margin: "10px 20px 0 20px",
+          width: "calc(100% - 40px)",
+          overflow: "hidden",
+          transformOrigin: "center top",
+          transition: "all 0.3s ease",
+        }}
       >
+        <div className={styles.navbarShape}></div>
         <Toolbar
           className={styles.contenedorNavb}
-          sx={{ minHeight: "70px", height: "70px" }}
+          sx={{ minHeight: "90px", height: "90px" }}
         >
-          <div className="Hola" id={styles.Hola}>
+          <div className={`Hola ${styles.Hola}`}>
+            <div className={styles.waveContainer}>
+              <span ref={waveRef} className={styles.wave}>
+                👋
+              </span>
+            </div>
             <label className={styles.hola}>¡Hi {nombre}!</label>
           </div>
           <div className={styles.botones}>
             <button
+              ref={(el) => (buttonsRef.current[0] = el)}
               id="btnsobreMI"
-              className={scrollmi ? styles.focus : styles.normalButton}
+              className={`${styles.liquidButton} ${
+                scrollmi ? styles.liquidActive : ""
+              }`}
               onClick={sobremiScroll}
             >
-              About me
+              <span className={styles.buttonText}>About me</span>
+              <span className={styles.liquid}></span>
             </button>
 
             <button
+              ref={(el) => (buttonsRef.current[1] = el)}
               id="btnHabilidades"
-              className={scrollHabilidades ? styles.focus : styles.normalButton}
+              className={`${styles.liquidButton} ${
+                scrollHabilidades ? styles.liquidActive : ""
+              }`}
               onClick={habilidadesScroll}
             >
-              Skills
+              <span className={styles.buttonText}>Skills</span>
+              <span className={styles.liquid}></span>
             </button>
+
             <button
+              ref={(el) => (buttonsRef.current[2] = el)}
               id="btnContacto"
-              className={scrollContacto ? styles.focus : styles.normalButton}
-              color="warning"
-              size="sm"
+              className={`${styles.liquidButton} ${
+                scrollContacto ? styles.liquidActive : ""
+              }`}
               onClick={contactoScroll}
             >
-              Contact
+              <span className={styles.buttonText}>Contact</span>
+              <span className={styles.liquid}></span>
             </button>
           </div>
         </Toolbar>

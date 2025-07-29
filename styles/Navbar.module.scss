@@ -1,14 +1,45 @@
+/* Navbar.module.scss */
 .contenedorNavb {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 30px;
+  padding: 0 40px;
   position: relative;
   z-index: 1000;
-  min-height: 70px;
-  height: 70px;
+  min-height: 90px;
+  height: 90px;
   box-sizing: border-box;
+}
+
+.navbarShape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #155263 0%, #0d3b4d 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+  z-index: -1;
+  transition: all 0.5s ease;
+}
+
+.Hola {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.waveContainer {
+  position: relative;
+  margin-right: 15px;
+}
+
+.wave {
+  font-size: 2rem;
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
 }
 
 .hola {
@@ -16,150 +47,213 @@
   color: white;
   font-weight: 600;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  height: 70px;
-  margin: 0;
-  padding: 0;
+  background: linear-gradient(to right, #ffd166, #ff9a3c);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  animation: textGlow 3s ease-in-out infinite alternate;
 }
 
 .botones {
   display: flex;
-  gap: 15px;
+  gap: 25px;
   align-items: center;
   position: relative;
-  height: 70px;
+  height: 90px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.normalButton {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 154, 60, 0.1),
-    rgba(255, 154, 60, 0.05)
-  );
-  border: 2px solid rgba(255, 154, 60, 0.3);
+.liquidButton {
+  position: relative;
+  background: transparent;
+  border: 2px solid rgba(255, 154, 60, 0.5);
   color: #ff9a3c;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 8px 20px;
-  border-radius: 25px;
+  padding: 12px 30px;
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  min-width: 130px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  backdrop-filter: blur(5px);
+}
+
+.buttonText {
+  position: relative;
+  z-index: 2;
   transition: all 0.3s ease;
-  opacity: 1 !important;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(255, 154, 60, 0.1);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  line-height: 1;
-  margin: 0;
 }
 
-.normalButton:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 154, 60, 0.2),
-    rgba(255, 154, 60, 0.1)
-  );
-  border-color: rgba(255, 154, 60, 0.6);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255, 154, 60, 0.2);
+.liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(to top, #ff7a1a, #ff9a3c);
+  transition: height 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: -1;
 }
 
-.normalButton:active {
-  transform: translateY(0);
+.liquidButton:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 154, 60, 0.3);
 }
 
-.focus {
-  background: linear-gradient(135deg, #ff9a3c, #ff7a1a);
-  border: 2px solid #ff9a3c;
+.liquidButton:hover .liquid {
+  height: 100%;
+}
+
+.liquidButton:hover .buttonText {
   color: white;
-  font-size: 0.95rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.liquidActive {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 154, 60, 0.5);
+  border: 2px solid #ff9a3c;
+  animation: pulse 1.5s infinite;
+}
+
+.liquidActive .liquid {
+  height: 100%;
+}
+
+.liquidActive .buttonText {
+  color: white;
   font-weight: 600;
-  cursor: pointer;
-  padding: 8px 20px;
-  border-radius: 25px;
-  opacity: 1 !important;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 6px 20px rgba(255, 154, 60, 0.3);
-  position: relative;
-  overflow: hidden;
-  transform: translateY(-1px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  line-height: 1;
-  margin: 0;
 }
 
-.focus:hover {
-  background: linear-gradient(135deg, #ff7a1a, #ff9a3c);
-  box-shadow: 0 8px 25px rgba(255, 154, 60, 0.4);
-  transform: translateY(-2px);
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  45% {
+    transform: rotate(14deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-.normalButton,
-.focus {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  min-width: 90px;
-  margin: 0;
-  padding: 0 20px;
-  font-size: 1rem;
-  line-height: 1;
-  box-sizing: border-box;
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 154, 60, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(255, 154, 60, 0.7);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 154, 60, 0.5);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 154, 60, 0.7);
+  }
+  100% {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 154, 60, 0.5);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 // Responsive design
 @media (max-width: 768px) {
   .contenedorNavb {
-    padding: 0 15px;
-    min-height: 60px;
-    height: 60px;
+    padding: 0 20px;
+    min-height: 80px;
+    height: 80px;
+  }
+
+  .navbarShape {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
   }
 
   .hola {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+  }
+
+  .wave {
+    font-size: 1.8rem;
   }
 
   .botones {
-    gap: 10px;
+    gap: 12px;
   }
 
-  .normalButton,
-  .focus {
-    padding: 8px 14px;
-    font-size: 0.85rem;
-    height: 34px;
+  .liquidButton {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    height: 44px;
+    min-width: 100px;
   }
 }
 
 @media (max-width: 480px) {
   .contenedorNavb {
-    padding: 0 10px;
+    padding: 0 15px;
+    min-height: 70px;
+    height: 70px;
+  }
+
+  .navbarShape {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%);
   }
 
   .hola {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+  }
+
+  .wave {
+    font-size: 1.5rem;
+    margin-right: 8px;
   }
 
   .botones {
     gap: 8px;
   }
 
-  .normalButton,
-  .focus {
-    padding: 6px 10px;
+  .liquidButton {
+    padding: 8px 14px;
     font-size: 0.8rem;
-    height: 28px;
+    height: 38px;
+    min-width: 80px;
   }
 }
