@@ -7,8 +7,7 @@ import { gsap } from "gsap";
 import styles from "../../styles/Navbar.module.scss";
 import { animatedScrollTo } from "../../utils/animatedScroll";
 
-function Navbar() {
-  const [nombre, setNombre] = useState("Invitado");
+function Navbar({ nombre = "Invitado" }) {
   const [scrollmi, setScrollMi] = useState(false);
   const [scrollHabilidades, setScrollHabilidades] = useState(false);
   const [scrollContacto, setScrollContacto] = useState(false);
@@ -25,12 +24,12 @@ function Navbar() {
     window.addEventListener("scroll", handleScrollMi);
     window.addEventListener("scroll", handleScrollHabilidades);
     window.addEventListener("scroll", handleScrollContacto);
-    
+
     const handleScrollHabilidades = () => {
       setScrollHabilidades(window.scrollY > 1500 && window.scrollY <= 2500);
     };
     window.addEventListener("scroll", handleScrollContacto);
-    
+
     // Limpieza de event listeners cuando el componente se desmonta
     return () => {
       window.removeEventListener("scroll", handleScrollMi);
@@ -40,7 +39,7 @@ function Navbar() {
   }, []);
 
   const Timeline = gsap.timeline({
-    defaults: { opacity: 0, y: -40 },
+    defaults: { opacity: 1, y: 0 },
   });
 
   useEffect(() => {
@@ -48,10 +47,14 @@ function Navbar() {
     const botonSobreMi = document.querySelectorAll("#btnsobreMI");
     const botonHabilidades = document.querySelectorAll("#btnHabilidades");
     const botonContacto = document.querySelectorAll("#btnContacto");
-    Timeline.from(Hola, { duration: 1 })
-      .from(botonSobreMi, { duration: 0.5, stagger: 0.3 })
-      .from(botonHabilidades, { duration: 0.5, stagger: 0.3 })
-      .from(botonContacto, { duration: 0.5, stagger: 0.3 });
+
+    // Asegurar que los botones sean visibles antes de animar
+    gsap.set([botonSobreMi, botonHabilidades, botonContacto], { opacity: 1 });
+
+    Timeline.from(Hola, { duration: 1, y: 20 })
+      .from(botonSobreMi, { duration: 0.5, y: 20, stagger: 0.2 })
+      .from(botonHabilidades, { duration: 0.5, y: 20, stagger: 0.2 })
+      .from(botonContacto, { duration: 0.5, y: 20, stagger: 0.2 });
   }, []);
 
   function smoothScrollToSection(sectionId) {
@@ -74,15 +77,21 @@ function Navbar() {
     <React.Fragment>
       <CssBaseline />
 
-      <AppBar className="appbar" sx={{ backgroundColor: "#155263" }}>
-        <Toolbar className={styles.contenedorNavb}>
+      <AppBar
+        className="appbar"
+        sx={{ backgroundColor: "#155263", height: "70px" }}
+      >
+        <Toolbar
+          className={styles.contenedorNavb}
+          sx={{ minHeight: "70px", height: "70px" }}
+        >
           <div className="Hola" id={styles.Hola}>
             <label className={styles.hola}>¡Hi {nombre}!</label>
           </div>
           <div className={styles.botones}>
             <button
               id="btnsobreMI"
-              className={scrollmi ? "focus" : "normalButton"}
+              className={scrollmi ? styles.focus : styles.normalButton}
               onClick={sobremiScroll}
             >
               About me
@@ -90,14 +99,14 @@ function Navbar() {
 
             <button
               id="btnHabilidades"
-              className={scrollHabilidades ? "focus" : "normalButton"}
+              className={scrollHabilidades ? styles.focus : styles.normalButton}
               onClick={habilidadesScroll}
             >
               Skills
             </button>
             <button
               id="btnContacto"
-              className={scrollContacto ? "focus" : "normalButton"}
+              className={scrollContacto ? styles.focus : styles.normalButton}
               color="warning"
               size="sm"
               onClick={contactoScroll}

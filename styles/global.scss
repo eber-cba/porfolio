@@ -216,28 +216,29 @@ $base: 0.6rem;
 }
 //navbar
 
-.normalButton {
-  display: inline-block;
-  width: 100%;
-  padding: 20px;
-  background: #ff9a3c;
-  text-align: center;
-  color: white;
-  font-size: 13px;
-  font-weight: bold;
-  transition: all 0.9s ease;
-  box-shadow: -4px 1px 3px 0px rgb(248, 70, 0);
-  border-radius: 43px 0px;
-  cursor: pointer;
-}
-.normalButton:hover {
-  background: transparent;
-  color: rgb(255, 255, 255);
-  box-shadow: none;
-  border-radius: 10px;
-  cursor: pointer;
-  width: 50%;
-}
+// Estilos globales de botones comentados para usar estilos del módulo
+// .normalButton {
+//   display: inline-block;
+//   width: 100%;
+//   padding: 20px;
+//   background: #ff9a3c;
+//   text-align: center;
+//   color: white;
+//   font-size: 13px;
+//   font-weight: bold;
+//   transition: all 0.9s ease;
+//   box-shadow: -4px 1px 3px 0px rgb(248, 70, 0);
+//   border-radius: 43px 0px;
+//   cursor: pointer;
+// }
+// .normalButton:hover {
+//   background: transparent;
+//   color: rgb(255, 255, 255);
+//   box-shadow: none;
+//   border-radius: 10px;
+//   cursor: pointer;
+//   width: 50%;
+// }
 //modal experiencia
 .cuerpoTexto {
   font-size: 15px;
@@ -258,21 +259,21 @@ $base: 0.6rem;
   font-size: 26px;
 }
 
-.focus {
-  overflow: hidden;
-  display: inline-block;
-  width: 50%;
-  padding: 15px;
-  background: #ff9a3c;
-
-  text-align: center;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  transition: all 0.9s ease;
-  border-radius: 43px 0px;
-  cursor: pointer;
-}
+// Estilos globales de focus comentados para usar estilos del módulo
+// .focus {
+//   overflow: hidden;
+//   display: inline-block;
+//   width: 50%;
+//   padding: 15px;
+//   background: #ff9a3c;
+//   text-align: center;
+//   color: white;
+//   font-size: 15px;
+//   font-weight: bold;
+//   transition: all 0.9s ease;
+//   border-radius: 43px 0px;
+//   cursor: pointer;
+// }
 
 // encontrarme en
 h2 {
