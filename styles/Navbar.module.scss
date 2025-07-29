@@ -1,0 +1,42 @@
+.contenedorNavb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.hola {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.botones {
+  display: flex;
+  gap: 10px;
+}
+
+.normalButton {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.focus {
+  background-color: #0070f3;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+}

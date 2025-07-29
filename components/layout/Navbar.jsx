@@ -1,32 +1,34 @@
 import AppBar from "@mui/material/AppBar";
+import React, { useState, useEffect } from "react";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
-import styles from "../../styles/AboutMe.module.css";
-import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import { animatedScrollTo } from "../../utils/smoothScroll";
+import styles from "../../styles/Navbar.module.scss";
+import { animatedScrollTo } from "../../utils/animatedScroll";
 
-export default function Navbar({ nombre }) {
-  const [scrollmi, setScroll] = useState(false);
+function Navbar() {
+  const [nombre, setNombre] = useState("Invitado");
+  const [scrollmi, setScrollMi] = useState(false);
   const [scrollHabilidades, setScrollHabilidades] = useState(false);
   const [scrollContacto, setScrollContacto] = useState(false);
 
   useEffect(() => {
     const handleScrollMi = () => {
-      setScroll(window.scrollY > 920 && window.scrollY <= 1500);
+      setScrollMi(window.scrollY > 0 && window.scrollY <= 1500);
     };
+
+    const handleScrollContacto = () => {
+      setScrollContacto(window.scrollY > 2500);
+    };
+
+    window.addEventListener("scroll", handleScrollMi);
+    window.addEventListener("scroll", handleScrollHabilidades);
+    window.addEventListener("scroll", handleScrollContacto);
     
     const handleScrollHabilidades = () => {
       setScrollHabilidades(window.scrollY > 1500 && window.scrollY <= 2500);
     };
-    
-    const handleScrollContacto = () => {
-      setScrollContacto(window.scrollY > 2900 && window.scrollY <= 3800);
-    };
-    
-    window.addEventListener("scroll", handleScrollMi);
-    window.addEventListener("scroll", handleScrollHabilidades);
     window.addEventListener("scroll", handleScrollContacto);
     
     // Limpieza de event listeners cuando el componente se desmonta
@@ -110,3 +112,5 @@ export default function Navbar({ nombre }) {
     </React.Fragment>
   );
 }
+
+export default Navbar;

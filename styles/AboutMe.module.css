@@ -78,6 +78,7 @@
   display: flex;
   align-items: center;
 
+
   gap: 9px;
   color: #ff9a3c;
   width: 50%;
@@ -89,22 +90,6 @@
 
 .contenedorNavb {
   display: flex;
-  justify-content: space-between;
-}
-@media (max-width: 933px) {
-  #contenedor2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 0 0 -60%;
-  }
-  #contenedor3 {
-    text-align: center;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 15% 0 0 -30%;
-  }
 }
 @media (max-device-width: 410px) {
   #contenedor2 {

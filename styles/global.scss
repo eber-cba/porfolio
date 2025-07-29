@@ -7,6 +7,7 @@
   --dark-blue: #10414d;
   --light-blue: #1a6b7a;
 }
+
 html,
 body {
   scroll-behavior: smooth;
@@ -19,7 +20,6 @@ body {
   flex-direction: column;
   padding: 0;
 }
-
 .cursor {
   position: fixed;
   left: 0;
@@ -144,7 +144,7 @@ $base: 0.6rem;
 .botonColapso:hover {
   background: #155263 !important;
   color: #ff9a3c !important;
-  border: 0px solid !important;
+  overflow: hidden;
 }
 
 .tituloTab {
@@ -166,13 +166,6 @@ $base: 0.6rem;
 .labelTooltip {
   color: #ffffff;
   font-family: "Quicksand", sans-serif;
-  font-weight: 900;
-  font-size: 18px;
-}
-// Contacto
-.Contacto {
-  position: relative;
-  width: 100%;
   height: 120vh;
   background: #ff9a3c;
   padding: 100px;
@@ -266,7 +259,7 @@ $base: 0.6rem;
 }
 
 .focus {
-  box-shadow: 0 0 40px #ffc93c;
+  overflow: hidden;
   display: inline-block;
   width: 50%;
   padding: 15px;
@@ -318,6 +311,7 @@ h2.linea span {
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  overflow: hidden;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
@@ -367,7 +361,7 @@ h2.linea span {
   height: 100%;
 }
 .soyEber {
-  grid-row-start: 1;
+  overflow: hidden;
   grid-column-start: 1;
   grid-row-end: 2;
   grid-column-end: 2;
@@ -502,3 +496,6 @@ h2.linea span {
     display: none;
   }
 }
+
+
+
