@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, createContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -6,10 +6,16 @@ import { gsap } from "gsap";
 import styles from '../../styles/Navbar.module.scss';
 import { animatedScrollTo } from "../../utils/animatedScroll";
 
+export const ScrollContext = createContext();
+
 function Navbar({ nombre = "Invitado" }) {
-  const [scrollmi, setScrollMi] = useState(false);
-  const [scrollHabilidades, setScrollHabilidades] = useState(false);
-  const [scrollContacto, setScrollContacto] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const sectionRefs = useRef({
+    'sobremi': useRef(null),
+    'skills': useRef(null),
+    'contacto': useRef(null),
+    'skin': useRef(null)
+  });
   const navbarRef = useRef(null);
   const buttonsRef = useRef([]);
   const waveRef = useRef(null);
@@ -17,9 +23,20 @@ function Navbar({ nombre = "Invitado" }) {
   // Scroll effect for navbar background
   useEffect(() => {
     const handleScroll = () => {
-      setScrollMi(window.scrollY > 0 && window.scrollY <= 1500);
-      setScrollHabilidades(window.scrollY > 1500 && window.scrollY <= 2500);
-      setScrollContacto(window.scrollY > 2500);
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+    const offset = 100;
+
+    Object.entries(sectionRefs.current).forEach(([sectionName, ref]) => {
+      if (ref.current) {
+        const { top, bottom } = ref.current.getBoundingClientRect();
+        const sectionTop = top + window.scrollY - offset;
+        const sectionBottom = bottom + window.scrollY - offset;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          setActiveSection(sectionName);
+        }
+      }
+    });
 
       // Navbar background effect on scroll
       if (navbarRef.current) {
@@ -139,19 +156,21 @@ function Navbar({ nombre = "Invitado" }) {
               ref={(el) => (buttonsRef.current[0] = el)}
               id="btnsobreMI"
               className={`${styles.liquidButton} ${
-                scrollmi ? styles.liquidActive : ""
+                activeSection === 'sobremi' ? styles.liquidActive : ""
               }`}
               onClick={sobremiScroll}
             >
               <span className={styles.buttonText}>About me</span>
-              <span className={styles.liquid}></span>
-            </button>
+            <span className={styles.liquid}></span>
+          </button>
+
+          
 
             <button
               ref={(el) => (buttonsRef.current[1] = el)}
               id="btnHabilidades"
               className={`${styles.liquidButton} ${
-                scrollHabilidades ? styles.liquidActive : ""
+                activeSection === 'skills' ? styles.liquidActive : ""
               }`}
               onClick={habilidadesScroll}
             >
@@ -163,10 +182,12 @@ function Navbar({ nombre = "Invitado" }) {
               ref={(el) => (buttonsRef.current[2] = el)}
               id="btnContacto"
               className={`${styles.liquidButton} ${
-                scrollContacto ? styles.liquidActive : ""
+                activeSection === 'contacto' ? styles.liquidActive : ""
               }`}
               onClick={contactoScroll}
             >
+          
+          
               <span className={styles.buttonText}>Contact</span>
               <span className={styles.liquid}></span>
             </button>
