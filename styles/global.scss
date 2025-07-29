@@ -361,7 +361,7 @@ h2.linea span {
   height: 100%;
 }
 .soyEber {
-  overflow: hidden;
+  overflow: visible;
   grid-column-start: 1;
   grid-row-end: 2;
   grid-column-end: 2;
@@ -496,6 +496,3 @@ h2.linea span {
     display: none;
   }
 }
-
-
-
