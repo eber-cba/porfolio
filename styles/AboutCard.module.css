@@ -2,7 +2,7 @@
 .aboutCard {
   max-width: 500px;
   min-width: 300px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(21, 84, 101, 0.445);
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
   padding: 30px;
@@ -78,7 +78,7 @@
 .aboutText {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-dark);
+  color: #fff;
   margin-bottom: 25px;
   transform: translateZ(5px);
 }
@@ -101,11 +101,8 @@
 }
 
 .highlight {
-  background: linear-gradient(
-    120deg,
-    rgba(255, 154, 60, 0.2),
-    rgba(255, 154, 60, 0.1)
-  );
+  background: linear-gradient(120deg, #ff9a3c 60%, #ffb347 100%);
+  color: #fff;
   padding: 0 5px;
   border-radius: 3px;
   font-weight: 600;
@@ -114,10 +111,7 @@
 }
 
 .highlight:hover {
-  background: linear-gradient(
-    120deg,
-    rgba(255, 154, 60, 0.3),
-    rgba(255, 154, 60, 0.2)
-  );
+  background: linear-gradient(120deg, #ffb347 60%, #ff9a3c 100%);
+  color: #fff;
   transform: translateY(-2px);
 }
