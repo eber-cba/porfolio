@@ -71,13 +71,13 @@ export default function AboutMe() {
   return (
     <div className="padreYoSoy">
       <div className="soyEber" id={styles.contenedor}>
-        <div id={styles.contenedorLabel1}>
-          <div
-            onMouseEnter={onEnter ? efectoEnter : onEnter}
-            onMouseLeave={onLeave ? efectoLeave : onLeave}
-            className="paralelogramo2"
-            id={styles.paralelogramo}
-          ></div>
+        <div
+          id={styles.contenedorLabel1}
+          onMouseEnter={efectoEnter}
+          onMouseLeave={efectoLeave}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="paralelogramo2" id={styles.paralelogramo}></div>
           <label className={styles.soyEber}> I am Eber </label>
         </div>
       </div>
@@ -89,13 +89,13 @@ export default function AboutMe() {
         </div>
       </div>
       <div className="developer" id={styles.contenedor3}>
-        <div id={styles.contenedorLabel2}>
-          <div
-            onMouseEnter={onEnter ? efectoEnter : onEnter}
-            onMouseLeave={onLeave ? efectoLeave : onLeave}
-            className="paralelogramo2"
-            id={styles.paralelogramo3}
-          ></div>
+        <div
+          id={styles.contenedorLabel2}
+          onMouseEnter={efectoEnter}
+          onMouseLeave={efectoLeave}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="paralelogramo2" id={styles.paralelogramo3}></div>
           <label className={styles.Developer}>Developer</label>
         </div>
       </div>

@@ -23,12 +23,16 @@
   position: relative;
   display: inline-block;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 #contenedorLabel2 {
   position: relative;
   display: inline-block;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .soyEber {
@@ -98,6 +102,11 @@
   #contenedor {
     margin: 8% 4% 4% 4%;
     text-align: center;
+  }
+
+  #contenedorLabel1,
+  #contenedorLabel2 {
+    cursor: default;
   }
   #contenedor2 {
     flex-direction: column;
