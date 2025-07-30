@@ -1,7 +1,8 @@
 // utils/smoothScroll.js
 export function animatedScrollTo(element) {
   if (!element) return;
-  const targetY = element.getBoundingClientRect().top + window.pageYOffset;
+  const NAVBAR_HEIGHT = 0; // Offset ajustado para alinear con el inicio del contenedor
+  const targetY = element.getBoundingClientRect().top + window.pageYOffset - NAVBAR_HEIGHT;
   const startY = window.pageYOffset;
   const distance = targetY - startY;
   const duration = 700;

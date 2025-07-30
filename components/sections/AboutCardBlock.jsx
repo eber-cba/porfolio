@@ -13,27 +13,10 @@ export default function AboutCardBlock() {
       </div>
       <div className={aboutCardStyles.aboutText}>
         <p>
-          <span className={aboutCardStyles.highlight}>
-            My graphic design knowledge
-          </span>{" "}
-          and passion for learning new technologies led me to become a{" "}
-          <span className={aboutCardStyles.highlight}>
-            Full Stack Developer
-          </span>{" "}
-          with expertise in web programming with{" "}
-          <span className={aboutCardStyles.highlight}>JavaScript</span> and
-          object-oriented programming with{" "}
-          <span className={aboutCardStyles.highlight}>Microsoft .NET (C#)</span>
-          .
+          <span className={aboutCardStyles.highlight}>Frontend enthusiast</span> with solid experience in <span className={aboutCardStyles.highlight}>React</span> and <span className={aboutCardStyles.highlight}>Node.js</span>. Currently a <span className={aboutCardStyles.highlight}>Full Stack Developer</span> (frontend focus), building Astro components and delivering projects for clients like <span className={aboutCardStyles.highlight}>TECHO</span> and <span className={aboutCardStyles.highlight}>Code & Mate</span>.
         </p>
         <p>
-          My latest challenge was completing an{" "}
-          <span className={aboutCardStyles.highlight}>
-            800+ hour Coding Bootcamp
-          </span>
-          , where I discovered my affinity for{" "}
-          <span className={aboutCardStyles.highlight}>Front-End</span>{" "}
-          development.
+          Also experienced as an instructor and tutor, passionate about sharing knowledge and supporting students.
         </p>
       </div>
       <div className={skillsStyles.skillsIcons}>

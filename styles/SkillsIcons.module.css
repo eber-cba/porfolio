@@ -4,6 +4,9 @@
   justify-content: center;
   gap: 25px;
   margin-top: 20px;
+  background: rgba(21, 82, 99, 0.45);
+  border-radius: 20px;
+  padding: 20px 0;
 }
 
 .skillIcon {
