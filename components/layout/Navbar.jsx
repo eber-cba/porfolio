@@ -3,40 +3,54 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import CssBaseline from "@mui/material/CssBaseline";
 import { gsap } from "gsap";
-import styles from '../../styles/Navbar.module.scss';
+import styles from "../../styles/Navbar.module.scss";
 import { animatedScrollTo } from "../../utils/animatedScroll";
 
 export const ScrollContext = createContext();
 
 function Navbar({ nombre = "Invitado" }) {
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRefs = useRef({
-    'sobremi': useRef(null),
-    'skills': useRef(null),
-    'contacto': useRef(null),
-    'skin': useRef(null)
+    sobremi: useRef(null),
+    skills: useRef(null),
+    contacto: useRef(null),
+    skin: useRef(null),
   });
   const navbarRef = useRef(null);
   const buttonsRef = useRef([]);
   const waveRef = useRef(null);
+  const mobileMenuRef = useRef(null);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Scroll effect for navbar background
   useEffect(() => {
     const handleScroll = () => {
-    const scrollPosition = window.scrollY + window.innerHeight / 2;
-    const offset = 100;
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const offset = 100;
 
-    Object.entries(sectionRefs.current).forEach(([sectionName, ref]) => {
-      if (ref.current) {
-        const { top, bottom } = ref.current.getBoundingClientRect();
-        const sectionTop = top + window.scrollY - offset;
-        const sectionBottom = bottom + window.scrollY - offset;
+      Object.entries(sectionRefs.current).forEach(([sectionName, ref]) => {
+        if (ref.current) {
+          const { top, bottom } = ref.current.getBoundingClientRect();
+          const sectionTop = top + window.scrollY - offset;
+          const sectionBottom = bottom + window.scrollY - offset;
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          setActiveSection(sectionName);
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            setActiveSection(sectionName);
+          }
         }
-      }
-    });
+      });
 
       // Navbar background effect on scroll
       if (navbarRef.current) {
@@ -100,10 +114,35 @@ function Navbar({ nombre = "Invitado" }) {
     });
   }, []);
 
+  // Mobile menu animations
+  useEffect(() => {
+    if (mobileMenuRef.current) {
+      if (isMobileMenuOpen) {
+        gsap.to(mobileMenuRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: "back.out(1.7)",
+        });
+      } else {
+        gsap.to(mobileMenuRef.current, {
+          opacity: 0,
+          y: -20,
+          duration: 0.3,
+          ease: "power2.in",
+        });
+      }
+    }
+  }, [isMobileMenuOpen]);
+
   function smoothScrollToSection(sectionId) {
     const el = document.getElementById(sectionId);
     if (el) {
       animatedScrollTo(el);
+      // Close mobile menu after clicking a link
+      if (isMobile) {
+        setIsMobileMenuOpen(false);
+      }
     }
   }
 
@@ -119,6 +158,10 @@ function Navbar({ nombre = "Invitado" }) {
     smoothScrollToSection("contacto-section");
   }
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -128,7 +171,7 @@ function Navbar({ nombre = "Invitado" }) {
         className="appbar"
         sx={{
           backgroundColor: "#155263",
-          height: "90px",
+          height: isMobile ? "70px" : "90px",
           borderRadius: "30px 30px 30px 30px",
           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
           margin: "10px 20px 0 20px",
@@ -141,7 +184,10 @@ function Navbar({ nombre = "Invitado" }) {
         <div className={styles.navbarShape}></div>
         <Toolbar
           className={styles.contenedorNavb}
-          sx={{ minHeight: "90px", height: "90px" }}
+          sx={{
+            minHeight: isMobile ? "70px" : "90px",
+            height: isMobile ? "70px" : "90px",
+          }}
         >
           <div className={`Hola ${styles.Hola}`}>
             <div className={styles.waveContainer}>
@@ -151,49 +197,115 @@ function Navbar({ nombre = "Invitado" }) {
             </div>
             <label className={styles.hola}>¡Hi {nombre}!</label>
           </div>
-          <div className={styles.botones}>
-            <button
-              ref={(el) => (buttonsRef.current[0] = el)}
-              id="btnsobreMI"
-              className={`${styles.liquidButton} ${
-                activeSection === 'sobremi' ? styles.liquidActive : ""
-              }`}
-              onClick={sobremiScroll}
-            >
-              <span className={styles.buttonText}>About me</span>
-            <span className={styles.liquid}></span>
-          </button>
 
-          
+          {!isMobile ? (
+            <div className={styles.botones}>
+              <button
+                ref={(el) => (buttonsRef.current[0] = el)}
+                id="btnsobreMI"
+                className={`${styles.liquidButton} ${
+                  activeSection === "sobremi" ? styles.liquidActive : ""
+                }`}
+                onClick={sobremiScroll}
+              >
+                <span className={styles.buttonText}>About me</span>
+                <span className={styles.liquid}></span>
+              </button>
 
-            <button
-              ref={(el) => (buttonsRef.current[1] = el)}
-              id="btnHabilidades"
-              className={`${styles.liquidButton} ${
-                activeSection === 'skills' ? styles.liquidActive : ""
-              }`}
-              onClick={habilidadesScroll}
-            >
-              <span className={styles.buttonText}>Skills</span>
-              <span className={styles.liquid}></span>
-            </button>
+              <button
+                ref={(el) => (buttonsRef.current[1] = el)}
+                id="btnHabilidades"
+                className={`${styles.liquidButton} ${
+                  activeSection === "skills" ? styles.liquidActive : ""
+                }`}
+                onClick={habilidadesScroll}
+              >
+                <span className={styles.buttonText}>Skills</span>
+                <span className={styles.liquid}></span>
+              </button>
 
-            <button
-              ref={(el) => (buttonsRef.current[2] = el)}
-              id="btnContacto"
-              className={`${styles.liquidButton} ${
-                activeSection === 'contacto' ? styles.liquidActive : ""
-              }`}
-              onClick={contactoScroll}
-            >
-          
-          
-              <span className={styles.buttonText}>Contact</span>
-              <span className={styles.liquid}></span>
-            </button>
-          </div>
+              <button
+                ref={(el) => (buttonsRef.current[2] = el)}
+                id="btnContacto"
+                className={`${styles.liquidButton} ${
+                  activeSection === "contacto" ? styles.liquidActive : ""
+                }`}
+                onClick={contactoScroll}
+              >
+                <span className={styles.buttonText}>Contact</span>
+                <span className={styles.liquid}></span>
+              </button>
+            </div>
+          ) : (
+            <div className={styles.mobileMenuContainer}>
+              <button
+                className={`${styles.hamburgerButton} ${
+                  isMobileMenuOpen ? styles.hamburgerActive : ""
+                }`}
+                onClick={toggleMobileMenu}
+                aria-label="Toggle menu"
+              >
+                <span className={styles.hamburgerLine}></span>
+                <span className={styles.hamburgerLine}></span>
+                <span className={styles.hamburgerLine}></span>
+              </button>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
+
+      {/* Mobile Menu Overlay */}
+      {isMobile && (
+        <div
+          ref={mobileMenuRef}
+          className={`${styles.mobileMenuOverlay} ${
+            isMobileMenuOpen ? styles.mobileMenuOpen : ""
+          }`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <div
+            className={styles.mobileMenu}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={styles.mobileMenuHeader}>
+              <span className={styles.mobileMenuTitle}>Menu</span>
+            </div>
+            <div className={styles.mobileMenuItems}>
+              <button
+                className={`${styles.mobileMenuItem} ${
+                  activeSection === "sobremi" ? styles.mobileMenuItemActive : ""
+                }`}
+                onClick={sobremiScroll}
+              >
+                <span className={styles.mobileMenuItemText}>About me</span>
+                <span className={styles.mobileMenuItemIcon}>👤</span>
+              </button>
+
+              <button
+                className={`${styles.mobileMenuItem} ${
+                  activeSection === "skills" ? styles.mobileMenuItemActive : ""
+                }`}
+                onClick={habilidadesScroll}
+              >
+                <span className={styles.mobileMenuItemText}>Skills</span>
+                <span className={styles.mobileMenuItemIcon}>💻</span>
+              </button>
+
+              <button
+                className={`${styles.mobileMenuItem} ${
+                  activeSection === "contacto"
+                    ? styles.mobileMenuItemActive
+                    : ""
+                }`}
+                onClick={contactoScroll}
+              >
+                <span className={styles.mobileMenuItemText}>Contact</span>
+                <span className={styles.mobileMenuItemIcon}>📧</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Toolbar />
     </React.Fragment>

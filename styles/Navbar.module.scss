@@ -134,6 +134,178 @@
   font-weight: 600;
 }
 
+// Mobile Menu Styles
+.mobileMenuContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburgerButton {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.hamburgerButton:hover {
+  background: rgba(255, 154, 60, 0.1);
+  transform: scale(1.05);
+}
+
+.hamburgerLine {
+  width: 24px;
+  height: 3px;
+  background: linear-gradient(to right, #ffd166, #ff9a3c);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+}
+
+.hamburgerActive .hamburgerLine:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburgerActive .hamburgerLine:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.hamburgerActive .hamburgerLine:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  width: 280px;
+  background: linear-gradient(135deg, #155263 0%, #0d3b4d 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transform: translateY(-20px);
+  border: 2px solid rgba(255, 154, 60, 0.3);
+  z-index: 1000;
+}
+
+.mobileMenuHeader {
+  padding: 20px 25px 15px;
+  border-bottom: 1px solid rgba(255, 154, 60, 0.2);
+  background: linear-gradient(135deg, rgba(255, 154, 60, 0.1), transparent);
+}
+
+.mobileMenuTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff9a3c;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.mobileMenuItems {
+  padding: 15px 0;
+}
+
+.mobileMenuItem {
+  width: 100%;
+  padding: 18px 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileMenuItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 154, 60, 0.2), transparent);
+  transition: width 0.3s ease;
+}
+
+.mobileMenuItem:hover::before {
+  width: 100%;
+}
+
+.mobileMenuItem:hover {
+  background: rgba(255, 154, 60, 0.1);
+  transform: translateX(10px);
+}
+
+.mobileMenuItemText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.mobileMenuItemIcon {
+  font-size: 1.3rem;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.mobileMenuItem:hover .mobileMenuItemIcon {
+  transform: scale(1.2);
+}
+
+.mobileMenuItemActive {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 154, 60, 0.3),
+    rgba(255, 154, 60, 0.1)
+  );
+  border-left: 4px solid #ff9a3c;
+}
+
+.mobileMenuItemActive .mobileMenuItemText {
+  color: #ff9a3c;
+  font-weight: 700;
+}
+
 @keyframes wave {
   0% {
     transform: rotate(0deg);
@@ -224,6 +396,11 @@
     height: 44px;
     min-width: 100px;
   }
+
+  .mobileMenu {
+    top: 110px;
+    width: 260px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -256,6 +433,42 @@
     height: 38px;
     min-width: 80px;
   }
+
+  .hamburgerButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hamburgerLine {
+    width: 20px;
+    height: 2.5px;
+  }
+
+  .mobileMenu {
+    top: 100px;
+    right: 15px;
+    width: 240px;
+  }
+
+  .mobileMenuHeader {
+    padding: 18px 20px 12px;
+  }
+
+  .mobileMenuTitle {
+    font-size: 1.1rem;
+  }
+
+  .mobileMenuItem {
+    padding: 16px 20px;
+  }
+
+  .mobileMenuItemText {
+    font-size: 1rem;
+  }
+
+  .mobileMenuItemIcon {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -276,5 +489,21 @@
     min-width: 80px;
     height: 36px;
     padding: 8px 10px;
+  }
+
+  .hamburgerButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hamburgerLine {
+    width: 18px;
+    height: 2px;
+  }
+
+  .mobileMenu {
+    top: 90px;
+    right: 8px;
+    width: 220px;
   }
 }
