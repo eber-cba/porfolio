@@ -19,10 +19,11 @@
   text-align: center;
   font-size: 25px;
   border: none;
-  border-bottom: 1px solid #FFC93C;
+  border-bottom: 1px solid #ffc93c;
 }
-#input:focus{
-  
+#input:focus {
+  outline: none;
+  border-bottom: 2px solid #ff9a3c;
 }
 
 #boton {
@@ -30,8 +31,24 @@
   font-family: "Quicksand", sans-serif;
   font-size: 2rem;
 }
-@media (max-width: 700px){
-  #bienvenidx{
+@media (max-width: 700px) {
+  #bienvenidx {
     font-size: 4rem;
+  }
+}
+@media (max-width: 600px) {
+  #bienvenidx {
+    font-size: 2.2rem;
+  }
+  .form {
+    margin: 10% 2% 2% 2%;
+    gap: 1.2rem;
+    grid-auto-rows: 60px;
+  }
+  #input {
+    font-size: 1rem;
+  }
+  #boton {
+    font-size: 1.1rem;
   }
 }

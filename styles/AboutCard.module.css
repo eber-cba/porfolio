@@ -115,3 +115,33 @@
   color: #fff;
   transform: translateY(-2px);
 }
+
+@media (max-width: 600px) {
+  .aboutCard {
+    max-width: 95vw;
+    min-width: unset;
+    padding: 16px;
+    border-radius: 14px;
+  }
+  .aboutTitle {
+    font-size: 1.2rem;
+    margin: 0 8px;
+  }
+  .aboutTitle::after {
+    width: 40px;
+    height: 2px;
+  }
+  .aboutText {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .aboutText p {
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+  .highlight {
+    padding: 0 3px;
+    font-size: 0.98rem;
+  }
+}

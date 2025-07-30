@@ -244,13 +244,77 @@
   }
 }
 @media (max-width: 600px) {
+  .timelineContainer {
+    max-width: 100vw;
+    padding: 8px 0;
+    margin: 18px auto;
+  }
+  .timeline {
+    left: 10px;
+    transform: none;
+    width: 4px;
+  }
+  .timelineItems {
+    width: 100vw;
+  }
   .timelineItem {
-    width: 95%;
-    margin-left: 50px;
+    width: 95vw;
+    margin-bottom: 40px;
+    left: 0 !important;
+  }
+  .timelineItemLeft, .timelineItemRight {
+    left: 0 !important;
   }
   .timelineDot {
-    width: 25px;
-    height: 25px;
+    left: -22px !important;
+    right: unset !important;
+    width: 18px;
+    height: 18px;
+  }
+  .timelineDotInner {
+    width: 12px;
+    height: 12px;
+  }
+  .timelineContent {
+    padding: 12px;
+    border-radius: 10px;
+  }
+  .timelineDate {
+    font-size: 0.8rem;
+  }
+  .timelineTitle {
+    font-size: 1rem;
+  }
+  .timelineDescription {
+    font-size: 0.92rem;
+  }
+  .timelineIcon {
+    width: 28px;
+    height: 28px;
+    top: 8px;
+    right: 8px;
+  }
+  .timelineItemLeft .timelineDot,
+  .timelineItemRight .timelineDot {
+    left: -35px;
+  }
+  .timelineDotInner {
+    width: 15px;
+    height: 15px;
+  }
+  .timelineTitle {
+    font-size: 1.2rem;
+  }
+  .timelineDescription {
+    font-size: 1rem;
+  }
+  .timelineIcon {
+    width: 40px;
+    height: 40px;
+  }
+  .timelineIcon svg {
+    width: 20px;
+    height: 20px;
   }
   .timelineItemLeft .timelineDot,
   .timelineItemRight .timelineDot {
