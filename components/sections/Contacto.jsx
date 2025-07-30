@@ -61,7 +61,7 @@ export default function Contact() {
   };
 
   return (
-    <div className={styles.page}>
+    <div id="contacto-section" className={styles.page}>
       <motion.div
         className={styles.blob1}
         variants={blobVariants}
