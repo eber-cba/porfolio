@@ -75,7 +75,6 @@
   font-weight: 500;
   cursor: pointer;
   padding: 12px 30px;
-  border-radius: 50px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -85,12 +84,15 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 1;
   backdrop-filter: blur(5px);
+  transform: skew(15deg);
+  border-radius: 7px;
 }
 
 .buttonText {
   position: relative;
   z-index: 2;
   transition: all 0.3s ease;
+  transform: skew(-15deg);
 }
 
 .liquid {
@@ -102,10 +104,11 @@
   background: linear-gradient(to top, #ff7a1a, #ff9a3c);
   transition: height 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: -1;
+  transform: skew(15deg);
 }
 
 .liquidButton:hover {
-  transform: translateY(-5px);
+  transform: skew(15deg) translateY(-5px) scale(1.05);
   box-shadow: 0 10px 20px rgba(255, 154, 60, 0.3);
 }
 
@@ -119,7 +122,7 @@
 }
 
 .liquidActive {
-  transform: translateY(-5px);
+  transform: skew(15deg) translateY(-5px);
   box-shadow: 0 10px 25px rgba(255, 154, 60, 0.5);
   border: 2px solid #ff9a3c;
   animation: pulse 1.5s infinite;
@@ -341,15 +344,15 @@
 
 @keyframes pulse {
   0% {
-    transform: translateY(-5px);
+    transform: skew(15deg) translateY(-5px);
     box-shadow: 0 10px 25px rgba(255, 154, 60, 0.5);
   }
   50% {
-    transform: translateY(-5px) scale(1.05);
+    transform: skew(15deg) translateY(-5px) scale(1.05);
     box-shadow: 0 10px 30px rgba(255, 154, 60, 0.7);
   }
   100% {
-    transform: translateY(-5px);
+    transform: skew(15deg) translateY(-5px);
     box-shadow: 0 10px 25px rgba(255, 154, 60, 0.5);
   }
 }
@@ -395,6 +398,24 @@
     font-size: 0.9rem;
     height: 44px;
     min-width: 100px;
+    transform: skew(12deg);
+    border-radius: 6px;
+  }
+
+  .liquidButton:hover {
+    transform: skew(12deg) translateY(-5px) scale(1.05);
+  }
+
+  .liquidActive {
+    transform: skew(12deg) translateY(-5px);
+  }
+
+  .liquidButton .buttonText {
+    transform: skew(-12deg);
+  }
+
+  .liquidButton .liquid {
+    transform: skew(12deg);
   }
 
   .mobileMenu {
@@ -432,6 +453,24 @@
     font-size: 0.8rem;
     height: 38px;
     min-width: 80px;
+    transform: skew(10deg);
+    border-radius: 5px;
+  }
+
+  .liquidButton:hover {
+    transform: skew(10deg) translateY(-5px) scale(1.05);
+  }
+
+  .liquidActive {
+    transform: skew(10deg) translateY(-5px);
+  }
+
+  .liquidButton .buttonText {
+    transform: skew(-10deg);
+  }
+
+  .liquidButton .liquid {
+    transform: skew(10deg);
   }
 
   .hamburgerButton {
@@ -489,6 +528,24 @@
     min-width: 80px;
     height: 36px;
     padding: 8px 10px;
+    transform: skew(8deg);
+    border-radius: 4px;
+  }
+
+  .liquidButton:hover {
+    transform: skew(8deg) translateY(-5px) scale(1.05);
+  }
+
+  .liquidActive {
+    transform: skew(8deg) translateY(-5px);
+  }
+
+  .liquidButton .buttonText {
+    transform: skew(-8deg);
+  }
+
+  .liquidButton .liquid {
+    transform: skew(8deg);
   }
 
   .hamburgerButton {
