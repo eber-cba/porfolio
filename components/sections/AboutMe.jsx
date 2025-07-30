@@ -14,11 +14,28 @@ export default function AboutMe() {
     const developer = document.querySelectorAll(".developer");
     const container = document.querySelectorAll(".containerStart");
 
-    if (soyEber.length > 0 && fullstack.length > 0 && developer.length > 0 && container.length > 0) {
-      Timeline.from(soyEber, { y: 20, x: -300 })
-        .from(fullstack, { y: -10, x: -70, scale: 1 })
-        .from(developer, { y: -50, x: 150, scale: 1 }, "-=1")
-        .from(container, { y: -100, ease: "power4.out" });
+    // Detectar si es móvil
+    const isMobile = window.innerWidth <= 768;
+
+    if (
+      soyEber.length > 0 &&
+      fullstack.length > 0 &&
+      developer.length > 0 &&
+      container.length > 0
+    ) {
+      if (isMobile) {
+        // Animaciones optimizadas para móvil
+        Timeline.from(soyEber, { y: 30, opacity: 0 })
+          .from(fullstack, { y: 20, opacity: 0 }, "-=0.5")
+          .from(developer, { y: 20, opacity: 0 }, "-=0.5")
+          .from(container, { y: 30, opacity: 0 }, "-=0.3");
+      } else {
+        // Animaciones originales para desktop
+        Timeline.from(soyEber, { y: 20, x: -300 })
+          .from(fullstack, { y: -10, x: -70, scale: 1 })
+          .from(developer, { y: -50, x: 150, scale: 1 }, "-=1")
+          .from(container, { y: -100, ease: "power4.out" });
+      }
     }
   }, []);
 

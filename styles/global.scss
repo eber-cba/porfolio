@@ -349,6 +349,59 @@ h2.linea span {
 .containerStart {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.LabelScroll {
+  font-size: 1.2rem;
+  color: #155263;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.LabelScroll:hover {
+  color: #ff9a3c;
+  transform: scale(1.1);
+}
+
+.chevron {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #155263;
+  border-bottom: 2px solid #155263;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.chevron:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.chevron:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(45deg) translateY(-10px);
+  }
+  60% {
+    transform: rotate(45deg) translateY(-5px);
+  }
 }
 
 .aboutMe {
@@ -440,17 +493,21 @@ h2.linea span {
     border-radius: 10px;
   }
   .padreYoSoy {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 100vh;
+    gap: 30px;
+    padding: 30px 0;
   }
   .padreSobremi {
     position: relative;
     width: 100%;
     height: auto;
     background: #ff9a3c;
-    padding: 100px;
+    padding: 60px 20px;
   }
   .label-Aboutme {
     font-size: 16px;
@@ -460,32 +517,34 @@ h2.linea span {
     position: relative;
     top: 0%;
   }
+  .soyEber {
+    order: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   .fullstack {
-    grid-row-start: 1;
-    grid-column-start: 2;
-    grid-row-end: 3;
-    grid-column-end: 2;
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .developer {
-    grid-row-start: 2;
-    grid-column-start: 2;
-
-    grid-row-end: 3;
-    grid-column-end: 3;
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .containerStart {
-    grid-row-start: 3;
-    grid-column-start: 1;
-    grid-row-end: 4;
-    grid-column-end: 3;
-    margin: 12%;
+    order: 4;
+    width: 100%;
+    margin: 20px 0;
     display: flex;
     justify-content: center;
   }
   body {
     overflow-x: hidden;
     height: 100%;
-
     display: flex;
     flex-direction: initial;
     padding: 0;
@@ -495,5 +554,27 @@ h2.linea span {
   }
   .openBoton {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .padreYoSoy {
+    gap: 25px;
+    padding: 25px 0;
+  }
+  .padreSobremi {
+    padding: 40px 15px;
+  }
+  .containerStart {
+    margin: 15px 0;
+  }
+  .LabelScroll {
+    font-size: 1rem;
+  }
+  .chevron {
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid #155263;
+    border-bottom: 1.5px solid #155263;
   }
 }

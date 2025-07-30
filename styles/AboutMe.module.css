@@ -3,6 +3,9 @@
   font-family: "Quicksand", sans-serif;
   color: #ff9a3c;
   margin: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #contenedor2 {
   display: flex;
@@ -78,7 +81,6 @@
   display: flex;
   align-items: center;
 
-
   gap: 9px;
   color: #ff9a3c;
   width: 50%;
@@ -91,34 +93,44 @@
 .contenedorNavb {
   display: flex;
 }
+
 @media (max-width: 600px) {
   #contenedor {
-    margin: 4% 2% 2% 2%;
-    font-size: 1rem;
+    margin: 8% 4% 4% 4%;
+    text-align: center;
   }
   #contenedor2 {
     flex-direction: column;
-    margin: 0 0 0 0;
+    margin: 4% 0;
+    justify-content: center;
+    align-items: center;
   }
   #contenedor3 {
     flex-direction: column;
-    margin: 10% 0 0 0;
+    margin: 4% 0;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
   .soyEber {
-    font-size: 1.2rem;
-  }
-  .Developer, .fullStack {
     font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .Developer,
+  .fullStack {
+    font-size: 3rem;
+    font-weight: 700;
   }
   #paralelogramo {
-    width: 180px;
-    height: 50px;
+    width: 240px;
+    height: 75px;
+    transform: skew(15deg);
   }
   #paralelogramo3 {
-    width: 220px;
-    height: 80px;
+    width: 280px;
+    height: 100px;
+    transform: skew(-15deg);
   }
   .hola {
     font-size: 1.5rem;
@@ -128,18 +140,52 @@
     gap: 4px;
   }
 }
-@media (max-device-width: 410px) {
+
+@media (max-width: 480px) {
+  #contenedor {
+    margin: 6% 2% 2% 2%;
+  }
   #contenedor2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10% 0 0 -60%;
+    margin: 2% 0;
   }
   #contenedor3 {
-    text-align: center;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 30% 0 0 -30%;
+    margin: 2% 0;
+  }
+  .soyEber {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .Developer,
+  .fullStack {
+    font-size: 2.5rem;
+  }
+  #paralelogramo {
+    width: 200px;
+    height: 65px;
+  }
+  #paralelogramo3 {
+    width: 220px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 360px) {
+  .soyEber {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .Developer,
+  .fullStack {
+    font-size: 2rem;
+  }
+  #paralelogramo {
+    width: 180px;
+    height: 55px;
+  }
+  #paralelogramo3 {
+    width: 180px;
+    height: 70px;
   }
 }
