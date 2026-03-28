@@ -8,7 +8,7 @@ import { animatedScrollTo } from "../../utils/animatedScroll";
 
 export const ScrollContext = createContext();
 
-function Navbar({ nombre = "Invitado" }) {
+function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -195,7 +195,7 @@ function Navbar({ nombre = "Invitado" }) {
                 👋
               </span>
             </div>
-            <label className={styles.hola}>¡Hi {nombre}!</label>
+            <label className={styles.hola}>¡Hi!</label>
           </div>
 
           {!isMobile ? (
