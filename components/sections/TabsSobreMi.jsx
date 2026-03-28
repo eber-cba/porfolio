@@ -41,14 +41,17 @@ export default function TabsSobreMi({
             id="tabList"
             className={classes.tabs}
             onChange={handleTab}
-            aria-label="lab API tabs example"
+            aria-label="About me tabs"
             centered
             style={{
-              background: "rgba(255, 255, 255, 0.2)",
+              background: "rgba(5, 13, 24, 0.7)",
+              backdropFilter: "blur(16px)",
               borderRadius: "50px",
-              padding: "8px",
+              padding: "6px 8px",
               margin: "0 auto",
               maxWidth: "90%",
+              border: "1px solid rgba(0, 243, 255, 0.12)",
+              boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 0 20px rgba(0,243,255,0.06)",
             }}
           >
             <Tab

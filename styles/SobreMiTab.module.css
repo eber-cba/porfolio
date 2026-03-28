@@ -1,16 +1,47 @@
-/* Tab section styles for SobreMi */
+/* SobreMiTab.module.css — Dark Neon Ultra-Modern */
+
+/* ─── Main tab container ─── */
 .sobreMiTab {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(5, 13, 24, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  padding: 0 12px 32px 12px;
+  padding: 0 12px 40px 12px;
   min-height: 400px;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(0, 243, 255, 0.1);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 243, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Animated top glow line */
+.sobreMiTab::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00f3ff 30%, #ff9a3c 70%, transparent);
+  box-shadow: 0 0 16px rgba(0, 243, 255, 0.5);
+}
+
+/* Corner flourishes */
+.sobreMiTab::after {
+  content: '';
+  position: absolute;
+  top: -1px; right: -1px;
+  width: 40px; height: 40px;
+  border-top: 2px solid #00f3ff;
+  border-right: 2px solid #00f3ff;
+  border-radius: 0 24px 0 0;
+  box-shadow: 4px -4px 12px rgba(0, 243, 255, 0.3);
+}
+
+/* ─── Tab panel wrapper ─── */
 .tabSobreMi {
-  padding: 20px;
+  padding: 24px 8px 4px;
 }

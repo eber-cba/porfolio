@@ -26,28 +26,31 @@ import AboutCardBlock from "./AboutCardBlock";
 import TabsSobreMi from "./TabsSobreMi";
 import ExperienceModal from "./ExperienceModal";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   tabs: {
     "& .MuiTabs-indicator": {
-      backgroundColor: "#155263",
-      height: 4,
-      borderRadius: 4,
+      backgroundColor: "#00f3ff",
+      height: 3,
+      borderRadius: 3,
+      boxShadow: "0 0 10px rgba(0,243,255,0.8), 0 0 20px rgba(0,243,255,0.4)",
     },
     "& .MuiTab-root": {
-      color: "#155263",
+      color: "rgba(255,255,255,0.5)",
       fontFamily: "'Poppins', sans-serif",
-      fontWeight: 600,
-      fontSize: "1.1rem",
-      textTransform: "none",
-      padding: "12px 24px",
+      fontWeight: 500,
+      fontSize: "0.85rem",
+      textTransform: "uppercase",
+      letterSpacing: "1.5px",
+      padding: "10px 20px",
+      minWidth: "auto",
       transition: "all 0.3s ease",
       "&:hover": {
-        color: "#ff9a3c",
-        transform: "translateY(-2px)",
+        color: "rgba(255,255,255,0.9)",
       },
       "&.Mui-selected": {
-        color: "#155263",
+        color: "#00f3ff",
         fontWeight: 700,
+        textShadow: "0 0 10px rgba(0,243,255,0.6)",
       },
     },
   },
@@ -210,6 +213,48 @@ export default function SobreMi() {
       id="sobremi-section"
       className={`${sobreMiContainerStyles.padreSobremi} ${sobreMiContainerStyles.smoothTransition}`}
     >
+      {/* Section Header */}
+      <div data-aos="fade-up" style={{
+        textAlign: "center",
+        marginBottom: "2.5rem",
+        padding: "40px 20px 0",
+      }}>
+        <p style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: "0.75rem",
+          fontWeight: 700,
+          letterSpacing: "4px",
+          textTransform: "uppercase",
+          color: "rgba(0,243,255,0.6)",
+          marginBottom: "10px",
+        }}>My journey</p>
+        <h2 style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: "clamp(1.8rem, 4vw, 3rem)",
+          fontWeight: 800,
+          color: "#fff",
+          margin: 0,
+          lineHeight: 1.1,
+        }}>
+          About{" "}
+          <span style={{
+            background: "linear-gradient(90deg, #00f3ff, #ff9a3c)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            filter: "drop-shadow(0 0 12px rgba(0,243,255,0.4))",
+          }}>Me</span>
+        </h2>
+        <div style={{
+          width: "60px",
+          height: "3px",
+          background: "linear-gradient(90deg, #00f3ff, #ff9a3c)",
+          borderRadius: "3px",
+          margin: "14px auto 0",
+          boxShadow: "0 0 12px rgba(0,243,255,0.5)",
+        }} />
+      </div>
+
       <div className={sobreMiContainerStyles.profileAboutRow}>
         <ProfileBlock />
         <AboutCardBlock />

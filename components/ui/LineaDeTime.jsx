@@ -161,13 +161,17 @@ export default function LineaDeTime() {
             key={i}
             className={styles.timelineParticle}
             style={{
-              animationDelay: `${i * 0.5}s`,
-              left: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.6}s`,
+              left: `${(i * 8.3 + 5) % 90}%`,
               background: `radial-gradient(circle, ${
-                i % 3 === 0 ? "#ff9a3c" : i % 3 === 1 ? "#155263" : "#ffffff"
+                i % 3 === 0
+                  ? "rgba(0,243,255,0.8)"
+                  : i % 3 === 1
+                  ? "rgba(255,154,60,0.8)"
+                  : "rgba(255,255,255,0.6)"
               }, transparent)`,
-              width: `${Math.random() * 10 + 5}px`,
-              height: `${Math.random() * 10 + 5}px`,
+              width: `${(i % 5) + 3}px`,
+              height: `${(i % 5) + 3}px`,
             }}
           />
         ))}
