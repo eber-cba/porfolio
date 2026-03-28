@@ -1,55 +1,83 @@
+/* Contact.module.css — Dark Neon Theme */
+
+/* Page with dark background and neon glow blobs */
 .page {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #ff9a3c 0%, #ffc93c 100%);
+  background: transparent; /* controlled by global .padreContacto */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
+/* Neon blobs as glowing radial mist */
 .blob1,
 .blob2 {
   position: absolute;
-  background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(120px);
+  pointer-events: none;
 }
 
 .blob1 {
-  width: 500px;
-  height: 500px;
-  top: -150px;
-  left: -150px;
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  left: -200px;
+  background: radial-gradient(circle, rgba(0,243,255,0.12) 0%, transparent 70%);
+  animation: blobPulse 8s ease-in-out infinite;
 }
 
 .blob2 {
-  width: 600px;
-  height: 600px;
-  bottom: -200px;
-  right: -200px;
+  width: 700px;
+  height: 700px;
+  bottom: -250px;
+  right: -250px;
+  background: radial-gradient(circle, rgba(255,154,60,0.12) 0%, transparent 70%);
+  animation: blobPulse 10s ease-in-out infinite reverse;
 }
 
+@keyframes blobPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Glassmorphism Contact Card */
 .card {
   position: relative;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(15px);
+  background: rgba(10, 20, 40, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
   padding: 50px;
   width: 600px;
-  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0,243,255,0.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5),
+              0 0 40px rgba(0,243,255,0.08),
+              0 0 0 1px rgba(0,243,255,0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 2;
+  transition: box-shadow 0.4s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 80px rgba(0,0,0,0.7),
+              0 0 60px rgba(0,243,255,0.15),
+              0 0 0 1px rgba(0,243,255,0.12);
 }
 
 .card h1 {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 2.5rem;
-  color: #155263;
+  font-weight: 700;
+  color: #fff;
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 15px rgba(0,243,255,0.5);
+  letter-spacing: 1px;
 }
 
 .form {
@@ -61,23 +89,33 @@
 
 .input input,
 .textarea textarea {
-  font-family: "Quicksand", sans-serif !important;
+  font-family: 'Quicksand', sans-serif !important;
+  background: rgba(255,255,255,0.05) !important;
+  color: #fff !important;
 }
 
+/* Neon send button */
 .button {
-  background: #155263 !important;
-  color: #fff !important;
-  border-radius: 40px !important;
+  background: transparent !important;
+  color: #00f3ff !important;
+  border: 1.5px solid #00f3ff !important;
+  border-radius: 8px !important;
   padding: 16px 0 !important;
   font-size: 1.1rem !important;
-  box-shadow: 0 8px 32px rgba(21, 82, 99, 0.4) !important;
-  transition: transform 0.3s ease !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  box-shadow: 0 0 15px rgba(0,243,255,0.3) !important;
+  transition: all 0.3s ease !important;
 }
 
 .button:hover {
-  transform: translateY(-4px) !important;
+  background: rgba(0,243,255,0.1) !important;
+  box-shadow: 0 0 30px rgba(0,243,255,0.5) !important;
+  transform: translateY(-3px) !important;
+  text-shadow: 0 0 10px #00f3ff !important;
 }
 
+/* Social Icons */
 .socials {
   margin-top: 30px;
   display: flex;
@@ -85,68 +123,50 @@
 }
 
 .socials a {
-  color: #155263;
-  transition: transform 0.3s ease;
+  color: rgba(255,255,255,0.6);
+  transition: all 0.3s ease;
 }
 
 .socials a:hover {
+  color: #00f3ff;
   transform: scale(1.2);
+  filter: drop-shadow(0 0 8px #00f3ff);
 }
 
-@media (max-width: 768px) {
-  .card {
-    width: 90%;
-    padding: 30px;
-  }
-  .form {
-    gap: 15px;
-  }
-  .button {
-    padding: 12px 0 !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    width: 98vw;
-    padding: 14px;
-    border-radius: 12px;
-  }
-  .card h1 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
-  .form {
-    gap: 10px;
-  }
-  .button {
-    padding: 8px 0 !important;
-    font-size: 0.98rem !important;
-  }
-  .socials {
-    gap: 12px;
-    margin-top: 18px;
-  }
-}
-
+/* Alerts */
 .alert {
   width: 100%;
   padding: 16px 20px;
-  border-radius: 12px;
-  font-family: "Quicksand", sans-serif;
+  border-radius: 10px;
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.1rem;
   margin-bottom: 18px;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(21, 82, 99, 0.08);
   transition: opacity 0.3s;
 }
 .success {
-  background: #e6f9ec;
-  color: #217a4b;
-  border: 1.5px solid #7be495;
+  background: rgba(0,243,255,0.1);
+  color: #00f3ff;
+  border: 1.5px solid rgba(0,243,255,0.4);
+  box-shadow: 0 0 15px rgba(0,243,255,0.2);
 }
 .error {
-  background: #ffeaea;
-  color: #b00020;
-  border: 1.5px solid #ffb4b4;
+  background: rgba(255,60,60,0.1);
+  color: #ff6b6b;
+  border: 1.5px solid rgba(255,60,60,0.4);
+  box-shadow: 0 0 15px rgba(255,60,60,0.2);
+}
+
+@media (max-width: 768px) {
+  .card { width: 90%; padding: 30px; }
+  .form { gap: 15px; }
+  .button { padding: 12px 0 !important; }
+}
+
+@media (max-width: 480px) {
+  .card { width: 98vw; padding: 14px; border-radius: 12px; }
+  .card h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+  .form { gap: 10px; }
+  .button { padding: 8px 0 !important; font-size: 0.98rem !important; }
+  .socials { gap: 12px; margin-top: 18px; }
 }

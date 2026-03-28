@@ -55,12 +55,13 @@ function Navbar() {
       // Navbar background effect on scroll
       if (navbarRef.current) {
         const scrollY = window.scrollY;
-        const opacity = Math.min(0.95, scrollY / 300);
-        const scale = Math.max(0.9, 1 - scrollY / 2000);
-        const borderRadius = Math.max(0, 30 - scrollY / 20);
+        const opacity = Math.min(0.9, 0.5 + scrollY / 500);
+        const scale = Math.max(0.95, 1 - scrollY / 2000);
+        const borderRadius = Math.max(12, 24 - scrollY / 30);
 
         gsap.to(navbarRef.current, {
-          backgroundColor: `rgba(21, 82, 99, ${opacity})`,
+          backgroundColor: `rgba(10, 25, 47, ${opacity})`,
+          border: `1px solid rgba(0, 243, 255, ${Math.max(0.1, Math.min(0.4, scrollY / 500))})`,
           scale: scale,
           borderRadius: `${borderRadius}px`,
           duration: 0.3,
@@ -170,15 +171,16 @@ function Navbar() {
         ref={navbarRef}
         className="appbar"
         sx={{
-          backgroundColor: "#155263",
+          backgroundColor: "rgba(10, 25, 47, 0.5)",
           height: isMobile ? "70px" : "90px",
-          borderRadius: "30px 30px 30px 30px",
-          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+          borderRadius: "24px",
+          boxShadow: "none",
           margin: "10px 20px 0 20px",
           width: "calc(100% - 40px)",
-          overflow: "hidden",
+          overflow: "visible", /* Allow glowing borders */
           transformOrigin: "center top",
-          transition: "all 0.3s ease",
+          border: "1px solid rgba(0, 243, 255, 0.1)",
+          backdropFilter: "blur(12px)",
         }}
       >
         <div className={styles.navbarShape}></div>

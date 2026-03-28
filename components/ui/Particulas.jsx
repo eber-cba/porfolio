@@ -1,14 +1,8 @@
 import Particles from "react-tsparticles";
 
-const particlesInit = (main) => {
-  console.log(main);
+const particlesInit = (main) => {};
+const particlesLoaded = (container) => {};
 
-  // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-};
-
-const particlesLoaded = (container) => {
-  console.log(container);
-};
 const Particulas = () => {
   return (
     <div>
@@ -18,82 +12,78 @@ const Particulas = () => {
         loaded={particlesLoaded}
         options={{
           background: {
-            color: {
-              value: "#155263",
-            },
+            color: { value: "#050d18" },
           },
           fullScreen: {
             enable: true,
             zIndex: -1,
           },
-
           fpsLimit: 60,
           interactivity: {
             events: {
-              onClick: {
-                enable: false,
-                mode: "push",
-              },
+              onClick: { enable: false },
               onHover: {
                 enable: true,
-                mode: "repulse",
+                mode: "grab",
               },
               resize: false,
             },
             modes: {
-              attract: {
-                distance: 400,
-                duration: 2,
-                opacity: 0.8,
-                size: 100,
-              },
-              push: {
-                quantity: 4,
-              },
-              repulse: {
-                distance: 200,
-                duration: 0.4,
+              grab: {
+                distance: 180,
+                links: { opacity: 0.6, color: "#00f3ff" },
               },
             },
           },
           particles: {
+            /* ── Node dots ── */
             color: {
-              value: "#FFC93C",
+              value: ["#ffffff", "#a0e8ff", "#c8f0ff"],
             },
+            /* ── Constellation lines ── */
             links: {
               color: "#ffffff",
-              distance: 150,
+              distance: 140,
               enable: true,
-              opacity: 0.5,
-              width: 1,
+              opacity: 0.07,
+              width: 0.8,
+              triangles: { enable: false },
             },
-            collisions: {
-              enable: true,
-            },
+            collisions: { enable: false },
             move: {
               direction: "none",
               enable: true,
-              outMode: "bounce",
-              random: false,
-              speed:0.5,
+              outMode: "out",
+              random: true,
+              speed: 0.3,
               straight: false,
+              attract: { enable: false },
             },
             number: {
-              density: {
-                enable: true,
-                area: 800,
-              },
-              value: 80,
+              density: { enable: true, area: 900 },
+              value: 100,
             },
+            /* ── Twinkling opacity ── */
             opacity: {
-              value: 0.6,
+              value: { min: 0.05, max: 0.7 },
+              animation: {
+                enable: true,
+                speed: 0.8,
+                minimumValue: 0.05,
+                sync: false,
+              },
             },
-            shape: {
-              type: "circle",
-            },
+            shape: { type: "circle" },
+            /* ── Star sizes ── */
             size: {
+              value: { min: 0.5, max: 2.5 },
               random: true,
-              value: 7,
+              animation: {
+                enable: true,
+                speed: 1.5,
+                minimumValue: 0.3,
+                sync: false,
+              },
             },
           },
           detectRetina: true,

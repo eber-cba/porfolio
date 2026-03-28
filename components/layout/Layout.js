@@ -55,7 +55,7 @@ function Layout({ children }) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <title>Portfolio</title>
+        <title>Eber Coronel — Full Stack Developer</title>
       </Head>
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -65,7 +65,7 @@ function Layout({ children }) {
         crossOrigin="true"
       />
       <link
-        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&family=Poppins:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
       />
       <div>{children}</div>
