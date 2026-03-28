@@ -186,8 +186,8 @@
   font-size: 0.85rem;
   color: rgba(255,255,255,0.6);
   line-height: 1.5;
-  margin-top: auto; /* Push details to bottom if there's extra space */
-  height: 140px; /* Fixed height to perfectly align tops across all grid items */
+  margin-top: auto; 
+  flex-grow: 1;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
