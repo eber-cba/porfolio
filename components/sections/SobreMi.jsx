@@ -1,30 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import AOS from "aos";
-import { Card, Button } from "@nextui-org/react";
-import Box from "@mui/material/Box";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
 import { makeStyles } from "@mui/styles";
-import LineaDeTime from "../ui/LineaDeTime";
-import Acordion from "../ui/Acordion";
-import ModalCv from "../ui/ModalCv";
-import ExperienceCard from "../ui/ExperienceCard";
-import { experiences } from "../../data/experiencesData";
-import { Modal } from "@nextui-org/react";
 import sobreMiContainerStyles from "../../styles/SobreMiContainer.module.css";
-import profileStyles from "../../styles/ProfileSection.module.css";
-import aboutCardStyles from "../../styles/AboutCard.module.css";
-import skillsStyles from "../../styles/SkillsIcons.module.css";
-import sobreMiTabStyles from "../../styles/SobreMiTab.module.css";
-import experienceButtonsStyles from "../../styles/ExperienceButtons.module.css";
-import downloadButtonStyles from "../../styles/DownloadButton.module.css";
-import styles from "../../styles/ExperienceButtons.module.css";
 import ProfileBlock from "./ProfileBlock";
 import AboutCardBlock from "./AboutCardBlock";
 import TabsSobreMi from "./TabsSobreMi";
-import ExperienceModal from "./ExperienceModal";
+import ExperienceCard from "../ui/ExperienceCard";
+import { experiences } from "../../data/experiencesData";
+import { motion, AnimatePresence } from "framer-motion";
+import experienceStyles from "../../styles/ExperienceSection.module.css";
 
 const useStyles = makeStyles(() => ({
   tabs: {
@@ -56,82 +40,28 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const HolographicButton = ({ label, onClick, isPrimary, icon }) => {
-  const buttonRef = useRef(null);
-  const [particles, setParticles] = useState([]);
-
-  useEffect(() => {
-    // Crear partículas iniciales
-    const initialParticles = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 10 + 5,
-      speedX: (Math.random() - 0.5) * 0.5,
-      speedY: (Math.random() - 0.5) * 0.5,
-      color: isPrimary ? "rgba(255, 154, 60, 0.8)" : "rgba(21, 82, 99, 0.8)",
-      opacity: Math.random() * 0.6 + 0.2,
-    }));
-
-    setParticles(initialParticles);
-
-    // Animación de flotación
-    const interval = setInterval(() => {
-      setParticles((prev) =>
-        prev.map((p) => {
-          let newX = p.x + p.speedX;
-          let newY = p.y + p.speedY;
-          let newSpeedX = p.speedX;
-          let newSpeedY = p.speedY;
-
-          // Rebotar en los bordes
-          if (newX <= 0 || newX >= 100) newSpeedX = -newSpeedX;
-          if (newY <= 0 || newY >= 100) newSpeedY = -newSpeedY;
-
-          return {
-            ...p,
-            x: newX,
-            y: newY,
-            speedX: newSpeedX,
-            speedY: newSpeedY,
-          };
-        })
-      );
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [isPrimary]);
-
+const SciFiTab = ({ label, onClick, isActive, icon }) => {
   return (
-    <div
-      className={`${styles.holographicButton} ${
-        isPrimary ? styles.primaryButton : styles.secondaryButton
-      }`}
-      ref={buttonRef}
+    <motion.button
+      className={`${experienceStyles.scifiTab} ${isActive ? experienceStyles.activeTab : ""}`}
       onClick={onClick}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
-      <div className={styles.buttonContent}>
-        {icon && <div className={styles.buttonIcon}>{icon}</div>}
-        <div className={styles.buttonLabel}>{label}</div>
+      {/* Glow border effect */}
+      <div className={experienceStyles.tabGlow} />
+      <div className={experienceStyles.tabInner}>
+        <div className={experienceStyles.tabIcon}>{icon}</div>
+        <span>{label}</span>
       </div>
-
-      <div className={styles.floatingParticlesContainer}>
-        {particles.map((particle) => (
-          <div
-            key={particle.id}
-            className={styles.floatingParticle}
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              backgroundColor: particle.color,
-              opacity: particle.opacity,
-            }}
-          />
-        ))}
-      </div>
-    </div>
+      {isActive && (
+        <motion.div
+          className={experienceStyles.activeIndicator}
+          layoutId="activeTabIndicator"
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        />
+      )}
+    </motion.button>
   );
 };
 
@@ -143,69 +73,76 @@ export default function SobreMi() {
     });
   }, []);
 
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalSection, setModalSection] = useState(null);
+  const [activeExpTab, setActiveExpTab] = useState("developer");
   const [tab, setTab] = useState("2");
   const classes = useStyles();
 
-  const openModal = (section) => {
-    setModalSection(section);
-    setModalOpen(true);
-  };
+  // Renderiza todo el contenido de Experiencia
+  const renderExperienceContent = () => (
+    <div className={experienceStyles.expContainer}>
+      <div className={experienceStyles.tabsRow}>
+        <SciFiTab
+          label="Developer"
+          isActive={activeExpTab === "developer"}
+          onClick={() => setActiveExpTab("developer")}
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          }
+        />
+        <SciFiTab
+          label="Academic / Teacher"
+          isActive={activeExpTab === "academic"}
+          onClick={() => setActiveExpTab("academic")}
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          }
+        />
+      </div>
 
-  const closeModal = () => {
-    setModalOpen(false);
-    setModalSection(null);
-  };
-
-  // Renderiza los botones de experiencia para el tab de experiencia
-  const renderExperienceButtons = () => (
-    <>
-      <HolographicButton
-        label="Developer"
-        onClick={() => openModal("developer")}
-        isPrimary={true}
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <polyline points="16 18 22 12 16 6"></polyline>
-            <polyline points="8 6 2 12 8 18"></polyline>
-          </svg>
-        }
-      />
-      <HolographicButton
-        label="Academic / Teacher"
-        onClick={() => openModal("academic")}
-        isPrimary={false}
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        }
-      />
-    </>
+      <div className={experienceStyles.expGrid}>
+        <AnimatePresence mode="popLayout">
+          {experiences[activeExpTab].map((item, i) => (
+            <motion.div
+              key={`${activeExpTab}-${i}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3, delay: i * 0.1 }}
+            >
+              <ExperienceCard {...item} gradient={item.gradient} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    </div>
   );
 
   return (
@@ -263,17 +200,7 @@ export default function SobreMi() {
         tab={tab}
         setTab={setTab}
         classes={classes}
-        openModal={renderExperienceButtons}
-        experiences={experiences}
-        modalSection={modalSection}
-        modalOpen={modalOpen}
-        closeModal={closeModal}
-      />
-      <ExperienceModal
-        modalOpen={modalOpen}
-        closeModal={closeModal}
-        modalSection={modalSection}
-        experiences={experiences}
+        renderExperienceContent={renderExperienceContent}
       />
     </div>
   );

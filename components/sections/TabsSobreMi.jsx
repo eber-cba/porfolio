@@ -7,20 +7,14 @@ import TabPanel from "@mui/lab/TabPanel";
 import LineaDeTime from "../ui/LineaDeTime";
 import Acordion from "../ui/Acordion";
 import ModalCv from "../ui/ModalCv";
-import ExperienceCard from "../ui/ExperienceCard";
 import sobreMiTabStyles from "../../styles/SobreMiTab.module.css";
-import experienceButtonsStyles from "../../styles/ExperienceButtons.module.css";
 import downloadButtonStyles from "../../styles/DownloadButton.module.css";
 
 export default function TabsSobreMi({
   tab,
   setTab,
   classes,
-  openModal,
-  experiences,
-  modalSection,
-  modalOpen,
-  closeModal,
+  renderExperienceContent,
 }) {
   const handleTab = (_, val) => setTab(val);
   return (
@@ -80,10 +74,7 @@ export default function TabsSobreMi({
             <Acordion />
           </TabPanel>
           <TabPanel value="4">
-            <div className={experienceButtonsStyles.experienceButtonsContainer}>
-              {/* Los botones de experiencia se pasan desde el padre */}
-              {typeof openModal === "function" && openModal("renderButtons")}
-            </div>
+            {typeof renderExperienceContent === "function" && renderExperienceContent()}
           </TabPanel>
           <TabPanel value="5">
             <ModalCv />
