@@ -23,12 +23,12 @@ export const experiences = {
       shape: "rounded",
     },
     {
-      title: "AI Research Assistant",
-      company: "TECHNOLOGICAL UNIVERSITY",
-      period: "01/2021 - 12/2021",
-      summary: "Collaboration on artificial intelligence projects.",
+      title: "Data Scientist / ML",
+      company: "DIPLODATOS 2026",
+      period: "2026",
+      summary: "Urban inequality analysis using Machine Learning.",
       details:
-        "Participation in research teams, developing AI models and data analysis.",
+        "Applied K-Means clustering and GeoPandas on public datasets to segment urban vulnerability in Córdoba, launching an interactive React geospatial dashboard.",
       icon: "🤖",
       gradient: "135deg, #ff512f 60%, #dd2476 100%",
       shape: "blob",
