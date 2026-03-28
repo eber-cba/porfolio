@@ -98,6 +98,7 @@
   margin-bottom: 1.5rem;
   position: relative;
   z-index: 2;
+  min-height: 140px; 
 }
 
 .iconWrapper {
