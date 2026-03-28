@@ -97,21 +97,21 @@ export default function AboutMe() {
     const light = devLightRef.current;
     if (!el || !light) return;
 
-    // GSAP quickTo for butter-smooth tracking
-    const xTo = gsap.quickTo(el, "rotateY", { duration: 0.5, ease: "power2.out" });
-    const yTo = gsap.quickTo(el, "rotateX", { duration: 0.5, ease: "power2.out" });
-    const sTo = gsap.quickTo(el, "scale",   { duration: 0.4, ease: "power2.out" });
-
     const onMove = (e) => {
       const rect = el.getBoundingClientRect();
-      const mx = e.clientX - rect.left;   // 0 → width
-      const my = e.clientY - rect.top;    // 0 → height
-      const px = mx / rect.width;         // 0 → 1
-      const py = my / rect.height;        // 0 → 1
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const px = mx / rect.width;
+      const py = my / rect.height;
 
-      // Tilt: ±15 degrees
-      xTo(-(py - 0.5) * 22);
-      yTo((px - 0.5) * 28);
+      // Tilt: ±22° / ±28° tracking the cursor
+      gsap.to(el, {
+        rotateY:   (px - 0.5) * 28,
+        rotateX: -(py - 0.5) * 22,
+        duration: 0.5,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
 
       // Move specular light spot
       gsap.to(light, {
@@ -120,14 +120,15 @@ export default function AboutMe() {
         opacity: 1,
         duration: 0.25,
         ease: "power2.out",
+        overwrite: "auto",
       });
     };
     const onEnter = () => {
-      sTo(1.06);
-      gsap.to(light, { opacity: 1, duration: 0.3 });
+      gsap.to(el,    { scale: 1.06, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+      gsap.to(light, { opacity: 1,  duration: 0.3 });
     };
     const onLeave = () => {
-      xTo(0); yTo(0); sTo(1);
+      gsap.to(el,    { rotateY: 0, rotateX: 0, scale: 1, duration: 0.6, ease: "power3.out", overwrite: "auto" });
       gsap.to(light, { opacity: 0, duration: 0.4 });
     };
 
