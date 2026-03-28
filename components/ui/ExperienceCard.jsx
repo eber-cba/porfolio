@@ -51,9 +51,9 @@ const ExperienceCard = ({
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
           background:
-            "linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
-          backdropFilter: "blur(10px)",
-          borderRadius: "24px",
+            "linear-gradient(145deg, rgba(5,13,24,0.8), rgba(8,20,38,0.7))",
+          backdropFilter: "blur(16px)",
+          borderRadius: "20px",
           padding: "25px",
           minWidth: "250px",
           minHeight: "250px",
@@ -62,9 +62,9 @@ const ExperienceCard = ({
           transformStyle: "preserve-3d",
           transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
           boxShadow: isHovered
-            ? "0 20px 40px rgba(0,0,0,0.25)"
-            : "0 10px 30px rgba(0,0,0,0.15)",
-          border: "1px solid rgba(255,255,255,0.1)",
+            ? "0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(0,243,255,0.12)"
+            : "0 10px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,243,255,0.06)",
+          border: "1px solid rgba(0,243,255,0.1)",
           zIndex: 1,
         }}
       >
@@ -163,7 +163,7 @@ const ExperienceCard = ({
                 position: "absolute",
                 width: `${Math.random() * 8 + 2}px`,
                 height: `${Math.random() * 8 + 2}px`,
-                background: `radial-gradient(circle, rgba(255,154,60,0.8), transparent)`,
+                background: `radial-gradient(circle, rgba(0,243,255,0.7), transparent)`,
                 borderRadius: "50%",
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
@@ -186,8 +186,8 @@ const ExperienceCard = ({
             left: 0,
             right: 0,
             bottom: 0,
-            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,154,60,0.15), transparent 70%)`,
-            opacity: isHovered ? 1 : 0.3,
+            background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0,243,255,0.12), transparent 70%)`,
+            opacity: isHovered ? 1 : 0.2,
             zIndex: -1,
             transition: "opacity 0.3s ease",
           }}
@@ -221,10 +221,10 @@ const ExperienceCard = ({
           bottom: -2px;
           background: linear-gradient(
             45deg,
+            #00f3ff,
             #ff9a3c,
-            #155263,
-            #ff9a3c,
-            #155263
+            #00f3ff,
+            #ff9a3c
           );
           background-size: 400% 400%;
           border-radius: 25px;

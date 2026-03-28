@@ -1,98 +1,100 @@
-/* Download button and floating particles styles for SobreMi */
+/* DownloadButton.module.css — Dark Neon Ultra-Modern */
+
+/* Main button: dark base with animated neon border sweep */
 .neonDownloadButton {
   position: relative;
-  display: inline-block;
-  padding: 15px 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
   color: #fff;
   letter-spacing: 2px;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
   text-decoration: none;
   overflow: hidden;
-  transition: 0.2s;
-  font-weight: 600;
+  transition: all 0.35s ease;
   border-radius: 10px;
-  margin-top: 25px;
-  background: var(--primary-blue);
-  box-shadow: 0 0 10px rgba(21, 82, 99, 0.5);
+  margin-top: 28px;
+  background: rgba(5, 13, 24, 0.8);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0,243,255,0.1), 0 4px 20px rgba(0,0,0,0.4);
 }
 
 .neonDownloadButton:hover {
-  background: var(--dark-blue);
-  box-shadow: 0 0 10px var(--primary-blue), 0 0 40px rgba(21, 82, 99, 0.6),
-    0 0 80px rgba(21, 82, 99, 0.4);
+  background: rgba(0, 243, 255, 0.08);
+  border-color: rgba(0,243,255,0.5);
+  box-shadow:
+    0 0 20px rgba(0,243,255,0.4),
+    0 0 50px rgba(0,243,255,0.2),
+    0 4px 30px rgba(0,0,0,0.5);
   transform: translateY(-3px);
+  color: #00f3ff;
+  text-shadow: 0 0 10px rgba(0,243,255,0.6);
 }
 
+/* ─── Animated border sweep ─── */
 .neonDownloadButton span {
   position: absolute;
   display: block;
 }
 
+/* Top: left → right, cyan */
 .neonDownloadButton span:nth-child(1) {
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--primary-orange));
+  top: 0; left: -100%;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, transparent, #00f3ff);
 }
-
 .neonDownloadButton:hover span:nth-child(1) {
   left: 100%;
   transition: 0.5s;
 }
 
+/* Right: top → bottom, orange */
 .neonDownloadButton span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, var(--primary-orange));
+  top: -100%; right: 0;
+  width: 2px; height: 100%;
+  background: linear-gradient(180deg, transparent, #ff9a3c);
 }
-
 .neonDownloadButton:hover span:nth-child(2) {
   top: 100%;
   transition: 0.5s;
   transition-delay: 0.125s;
 }
 
+/* Bottom: right → left, cyan */
 .neonDownloadButton span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, var(--primary-orange));
+  bottom: 0; right: -100%;
+  width: 100%; height: 2px;
+  background: linear-gradient(270deg, transparent, #00f3ff);
 }
-
 .neonDownloadButton:hover span:nth-child(3) {
   right: 100%;
   transition: 0.5s;
   transition-delay: 0.25s;
 }
 
+/* Left: bottom → top, orange */
 .neonDownloadButton span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(0deg, transparent, var(--primary-orange));
+  bottom: -100%; left: 0;
+  width: 2px; height: 100%;
+  background: linear-gradient(0deg, transparent, #ff9a3c);
 }
-
 .neonDownloadButton:hover span:nth-child(4) {
   bottom: 100%;
   transition: 0.5s;
   transition-delay: 0.375s;
 }
 
+/* ─── Background floating particles (fixed, behind everything) ─── */
 .floatingParticles {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
   z-index: 0;
 }
-
 .particleBg {
   position: absolute;
   background: var(--color);
@@ -101,23 +103,13 @@
   height: var(--size);
   top: 0;
   left: calc(var(--i) * 7%);
-  animation: float var(--duration) infinite ease-in-out;
+  animation: floatBg var(--duration) infinite ease-in-out;
   animation-delay: var(--delay);
+  opacity: 0.5;
 }
-
-@keyframes float {
-  0% {
-    transform: translateY(100vh) scale(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(-20vh) scale(1.2);
-    opacity: 0;
-  }
+@keyframes floatBg {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-20vh) scale(1.2); opacity: 0; }
 }

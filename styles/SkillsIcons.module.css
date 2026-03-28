@@ -1,55 +1,69 @@
-/* Skills Icons styles for SobreMi */
+/* SkillsIcons.module.css — Dark Neon Ultra-Modern */
+
+/* Container row of brand logos below the about card */
 .skillsIcons {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-  background: rgba(21, 82, 99, 0.45);
-  border-radius: 20px;
-  padding: 20px 0;
+  gap: 16px;
+  margin-top: 24px;
+  background: rgba(5, 13, 24, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 16px 20px;
+  border: 1px solid rgba(0, 243, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+  flex-wrap: wrap;
 }
 
+/* Individual icon circle */
 .skillIcon {
   width: 50px;
   height: 50px;
-  background: white;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0,243,255,0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   position: relative;
-  transform: translateZ(10px);
+  cursor: default;
 }
-
 .skillIcon:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px) scale(1.12);
+  background: rgba(0, 243, 255, 0.08);
+  border-color: rgba(0,243,255,0.35);
+  box-shadow: 0 0 16px rgba(0,243,255,0.3), 0 8px 20px rgba(0,0,0,0.4);
 }
 
 .skillIcon svg {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.2));
+  transition: filter 0.3s ease;
+}
+.skillIcon:hover svg {
+  filter: drop-shadow(0 0 8px rgba(0,243,255,0.6));
 }
 
+/* Tooltip */
 .skillIcon::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: -30px;
-  left: 50%;
+  bottom: -30px; left: 50%;
   transform: translateX(-50%);
-  background: var(--primary-blue);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.8rem;
+  background: rgba(5,13,24,0.95);
+  border: 1px solid rgba(0,243,255,0.2);
+  color: #00f3ff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-family: 'Poppins', sans-serif;
   white-space: nowrap;
   opacity: 0;
-  transition: opacity 0.3s ease;
   pointer-events: none;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
 }
-
-.skillIcon:hover::after {
-  opacity: 1;
-}
+.skillIcon:hover::after { opacity: 1; }
