@@ -1,155 +1,224 @@
-/* Navbar.module.scss */
+/* Navbar.module.scss — Premium Dark Neon 2.0 */
+
+/* ══════════════════════════════
+   OVERALL CONTAINER
+══════════════════════════════ */
 .contenedorNavb {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 36px;
   position: relative;
   z-index: 1000;
-  min-height: 90px;
-  height: 90px;
+  min-height: 72px;
+  height: 72px;
   box-sizing: border-box;
 }
 
+/* Glass bar background layer */
 .navbarShape {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Cyberpunk Glassmorphism */
-  background: rgba(10, 25, 47, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 243, 255, 0.15);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(5, 13, 24, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   border-radius: inherit;
   z-index: -1;
-  transition: all 0.5s ease;
+  transition: all 0.4s ease;
 }
 
-.Hola {
+/* ══════════════════════════════
+   LOGO MARK (left side)
+══════════════════════════════ */
+.logoWrapper {
   display: flex;
   align-items: center;
-  position: relative;
-}
-
-.waveContainer {
-  position: relative;
-  margin-right: 15px;
-}
-
-.wave {
-  font-size: 2rem;
-  display: inline-block;
-  animation: wave 2s infinite;
-  transform-origin: 70% 70%;
-}
-
-.hola {
-  font-size: 1.8rem;
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.4), 0 0 20px rgba(0, 243, 255, 0.2);
-  position: relative;
-  animation: textGlow 3s ease-in-out infinite alternate;
-}
-
-.botones {
-  display: flex;
-  gap: 25px;
-  align-items: center;
-  position: relative;
-  height: 90px;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Neon Button Style */
-.liquidButton {
-  position: relative;
-  background: transparent;
-  border: 1px solid rgba(0, 243, 255, 0.25);
-  color: #00f3ff;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+  gap: 10px;
   cursor: pointer;
-  padding: 12px 24px;
+  text-decoration: none;
+  position: relative;
+}
+
+/* The angular bracket monogram */
+.logoMonogram {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 46px;
-  min-width: 120px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 1;
-  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+}
+
+.logoBracket {
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-family: 'Poppins', sans-serif;
+  color: #00f3ff;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(0, 243, 255, 0.8), 0 0 30px rgba(0, 243, 255, 0.4);
+  letter-spacing: -4px;
+  user-select: none;
+}
+
+.logoInitials {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  position: absolute;
+  user-select: none;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logoName {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.logoRole {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(0, 243, 255, 0.7);
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Neon dot accent on logo */
+.logoDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff9a3c;
+  box-shadow: 0 0 8px #ff9a3c, 0 0 16px rgba(255, 154, 60, 0.6);
+  animation: dotPulse 2s ease-in-out infinite;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 8px #ff9a3c, 0 0 16px rgba(255, 154, 60, 0.5); transform: scale(1); }
+  50%       { box-shadow: 0 0 14px #ff9a3c, 0 0 28px rgba(255, 154, 60, 0.8); transform: scale(1.2); }
+}
+
+/* Logo hover: glow intensifies */
+.logoWrapper:hover .logoBracket {
+  text-shadow: 0 0 20px rgba(0,243,255,1), 0 0 40px rgba(0,243,255,0.6);
+}
+.logoWrapper:hover .logoName {
+  color: #00f3ff;
+}
+
+/* ══════════════════════════════
+   DESKTOP NAV BUTTONS
+══════════════════════════════ */
+.botones {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+}
+
+/* Slim text-based nav link with animated underline */
+.navLink {
+  position: relative;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: color 0.3s ease;
   overflow: hidden;
 }
 
-.buttonText {
-  position: relative;
-  z-index: 2;
-  transition: all 0.3s ease;
-}
-
-.liquidButton::before {
+/* Sliding underline bar */
+.navLink::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 243, 255, 0.05);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s ease;
-  z-index: -1;
+  bottom: 4px; left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00f3ff, #ff9a3c);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(0,243,255,0.6);
 }
 
-.liquid {
-  display: none; // remove old liquid
-}
-
-.liquidButton:hover {
-  border-color: #00f3ff;
+.navLink:hover {
   color: #fff;
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.4), inset 0 0 10px rgba(0, 243, 255, 0.2);
-  transform: translateY(-3px);
-  text-shadow: 0 0 8px #00f3ff;
+}
+.navLink:hover::after {
+  width: calc(100% - 24px);
 }
 
-.liquidButton:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
+/* Active state */
+.navLinkActive {
+  color: #00f3ff !important;
+  background: rgba(0, 243, 255, 0.06);
+  border: 1px solid rgba(0, 243, 255, 0.15);
+}
+.navLinkActive::after {
+  width: calc(100% - 24px) !important;
 }
 
-.liquidActive {
-  background: rgba(0, 243, 255, 0.1);
-  border-color: #00f3ff;
-  color: #fff;
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.5), inset 0 0 15px rgba(0, 243, 255, 0.3);
-  text-shadow: 0 0 8px #00f3ff;
-  transform: translateY(-3px);
+/* CTA contact button: orange neon filled */
+.navLinkCta {
+  color: var(--bg-deep, #050d18) !important;
+  background: linear-gradient(135deg, #ff9a3c, #e68a35) !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 15px rgba(255,154,60,0.4) !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+.navLinkCta::after { display: none !important; }
+.navLinkCta:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 30px rgba(255,154,60,0.7), 0 4px 20px rgba(0,0,0,0.3) !important;
+  color: #fff !important;
 }
 
-/* Contact button Orange to pop out */
-#btnContacto {
-  border-color: rgba(255, 154, 60, 0.3);
-  color: #ff9a3c;
+/* Scroll progress pill */
+.scrollPill {
+  width: 40px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  margin-left: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.scrollPillFill {
+  position: absolute;
+  top: 0; left: 0; height: 100%;
+  background: linear-gradient(90deg, #00f3ff, #ff9a3c);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(0,243,255,0.5);
+  transition: width 0.2s linear;
 }
 
-#btnContacto:hover, #btnContacto.liquidActive {
-  border-color: #ff9a3c;
-  color: #fff;
-  box-shadow: 0 0 15px rgba(255, 154, 60, 0.4), inset 0 0 10px rgba(255, 154, 60, 0.2);
-  text-shadow: 0 0 8px #ff9a3c;
-}
-
-// Mobile Menu Styles
+/* ══════════════════════════════
+   MOBILE HAMBURGER
+══════════════════════════════ */
 .mobileMenuContainer {
   display: flex;
   align-items: center;
@@ -158,101 +227,74 @@
 
 .hamburgerButton {
   position: relative;
-  width: 44px;
-  height: 44px;
-  background: rgba(10, 25, 47, 0.6);
+  width: 42px; height: 42px;
+  background: rgba(5, 13, 24, 0.6);
   border: 1px solid rgba(0, 243, 255, 0.2);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 6px;
-  padding: 8px;
-  border-radius: 8px;
+  gap: 5px;
+  border-radius: 10px;
   transition: all 0.3s ease;
   z-index: 1001;
 }
-
 .hamburgerButton:hover {
-  background: rgba(0, 243, 255, 0.1);
+  background: rgba(0, 243, 255, 0.08);
   border-color: #00f3ff;
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+  box-shadow: 0 0 14px rgba(0,243,255,0.3);
 }
 
 .hamburgerLine {
-  width: 24px;
-  height: 2px;
-  background: #00f3ff;
+  width: 22px; height: 2px;
+  background: rgba(255,255,255,0.8);
   border-radius: 2px;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transform-origin: center;
-  box-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
 }
 
-.hamburgerActive {
-  background: rgba(255, 154, 60, 0.1);
-  border-color: #ff9a3c;
-  box-shadow: 0 0 15px rgba(255, 154, 60, 0.4);
-}
+/* Active X state */
+.hamburgerActive { border-color: #ff9a3c; background: rgba(255,154,60,0.08); }
+.hamburgerActive .hamburgerLine { background: #ff9a3c; }
+.hamburgerActive .hamburgerLine:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburgerActive .hamburgerLine:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburgerActive .hamburgerLine:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-.hamburgerActive .hamburgerLine {
-  background: #ff9a3c;
-  box-shadow: 0 0 5px rgba(255, 154, 60, 0.5);
-}
-
-.hamburgerActive .hamburgerLine:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-
-.hamburgerActive .hamburgerLine:nth-child(2) {
-  opacity: 0;
-  transform: scale(0);
-}
-
-.hamburgerActive .hamburgerLine:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
+/* ══════════════════════════════
+   MOBILE MENU OVERLAY
+══════════════════════════════ */
 .mobileMenuOverlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 999;
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease;
 }
-
-.mobileMenuOpen {
-  opacity: 1;
-  visibility: visible;
-}
+.mobileMenuOpen { opacity: 1; visibility: visible; }
 
 .mobileMenu {
   position: fixed;
-  top: 100px;
-  right: 20px;
-  width: 280px;
-  background: rgba(10, 25, 47, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 243, 255, 0.15);
-  transform: translateY(-20px) scale(0.95);
-  border: 1px solid rgba(0, 243, 255, 0.2);
-  z-index: 1000;
+  top: 90px; right: 16px;
+  width: min(300px, calc(100vw - 32px));
+  background: rgba(5, 13, 24, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 243, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 30px rgba(0,243,255,0.08);
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1000;
+  transform: translateY(-12px) scale(0.96);
   opacity: 0;
   visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 .mobileMenuOpen .mobileMenu {
   transform: translateY(0) scale(1);
   opacity: 1;
@@ -260,140 +302,86 @@
 }
 
 .mobileMenuHeader {
-  padding: 20px 25px 15px;
-  border-bottom: 1px solid rgba(0, 243, 255, 0.15);
-  background: rgba(0, 243, 255, 0.05);
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid rgba(0,243,255,0.1);
 }
-
 .mobileMenuTitle {
-  font-size: 1.2rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  color: #00f3ff;
+  color: rgba(0,243,255,0.6);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+  letter-spacing: 3px;
+  font-family: 'Poppins', sans-serif;
 }
 
-.mobileMenuItems {
-  padding: 15px 0;
-}
+.mobileMenuItems { padding: 12px 0 16px; }
 
 .mobileMenuItem {
   width: 100%;
-  padding: 18px 25px;
+  padding: 14px 24px;
   background: transparent;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   position: relative;
 }
-
 .mobileMenuItem::before {
-  content: "";
+  content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(0, 243, 255, 0.1), transparent);
-  transition: width 0.3s ease;
+  left: 0; top: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(to bottom, #00f3ff, #ff9a3c);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 0 2px 2px 0;
 }
-
-.mobileMenuItem:hover::before {
-  width: 100%;
-}
-
-.mobileMenuItem:hover {
-  padding-left: 35px;
-}
+.mobileMenuItem:hover::before { opacity: 1; }
+.mobileMenuItem:hover { padding-left: 30px; background: rgba(0,243,255,0.04); }
 
 .mobileMenuItemText {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255,255,255,0.75);
+  font-family: 'Poppins', sans-serif;
   position: relative;
   z-index: 1;
-  transition: all 0.3s ease;
+  transition: color 0.25s ease;
 }
-
 .mobileMenuItemIcon {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  color: rgba(0,243,255,0.5);
   position: relative;
   z-index: 1;
-  transition: transform 0.3s ease;
-  color: #00f3ff;
+  transition: all 0.25s ease;
 }
+.mobileMenuItem:hover .mobileMenuItemText { color: #fff; }
+.mobileMenuItem:hover .mobileMenuItemIcon { color: #00f3ff; transform: translateX(-4px); }
 
-.mobileMenuItem:hover .mobileMenuItemText {
-  color: #fff;
-  text-shadow: 0 0 8px #00f3ff;
-}
+.mobileMenuItemActive { background: rgba(0,243,255,0.06); }
+.mobileMenuItemActive .mobileMenuItemText { color: #00f3ff; font-weight: 600; }
+.mobileMenuItemActive::before { opacity: 1 !important; }
 
-.mobileMenuItem:hover .mobileMenuItemIcon {
-  transform: scale(1.2);
-  text-shadow: 0 0 10px #00f3ff;
-}
-
-.mobileMenuItemActive {
-  background: rgba(0, 243, 255, 0.05);
-  border-left: 4px solid #00f3ff;
-}
-
-.mobileMenuItemActive .mobileMenuItemText {
-  color: #00f3ff;
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
-}
-
-@keyframes wave {
-  0% { transform: rotate(0deg); }
-  15% { transform: rotate(14deg); }
-  30% { transform: rotate(-8deg); }
-  45% { transform: rotate(14deg); }
-  60% { transform: rotate(-4deg); }
-  75% { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
-}
-
+/* ══════════════════════════════
+   KEYFRAMES
+══════════════════════════════ */
 @keyframes textGlow {
-  0% { text-shadow: 0 0 5px rgba(0, 243, 255, 0.5), 0 0 10px rgba(0, 243, 255, 0.3); }
-  100% { text-shadow: 0 0 10px rgba(0, 243, 255, 0.8), 0 0 20px rgba(255, 154, 60, 0.5); }
+  0%   { text-shadow: 0 0 5px rgba(0,243,255,0.4), 0 0 10px rgba(0,243,255,0.2); }
+  100% { text-shadow: 0 0 12px rgba(0,243,255,0.9), 0 0 24px rgba(255,154,60,0.4); }
 }
 
-// Responsive design
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
 @media (max-width: 768px) {
-  .contenedorNavb {
-    padding: 0 20px;
-    min-height: 80px;
-    height: 80px;
-  }
-
-  .hola { font-size: 1.5rem; }
-  .wave { font-size: 1.8rem; }
+  .contenedorNavb { padding: 0 20px; min-height: 64px; height: 64px; }
+  .logoName { font-size: 0.95rem; }
+  .logoRole { display: none; }
 }
-
 @media (max-width: 480px) {
-  .contenedorNavb {
-    padding: 0 15px;
-    min-height: 70px;
-    height: 70px;
-  }
-
-  .hola { font-size: 1.3rem; }
-  .wave { font-size: 1.5rem; margin-right: 8px; }
-
-  .hamburgerButton {
-    width: 40px;
-    height: 40px;
-  }
-
-  .mobileMenu {
-    top: 90px;
-    right: 15px;
-    width: calc(100% - 30px);
-  }
+  .contenedorNavb { padding: 0 14px; min-height: 60px; height: 60px; }
+  .mobileMenu { top: 78px; }
+  .hamburgerButton { width: 38px; height: 38px; }
 }
-
