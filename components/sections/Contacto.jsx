@@ -183,12 +183,12 @@ export default function Contact() {
         >
           <p className={styles.eyebrow}>Get in touch</p>
           <h2 className={styles.infoTitle}>
-            Let's build something<br />
+            Let&apos;s build something<br />
             <span className={styles.infoGradient}>amazing together</span>
           </h2>
           <p className={styles.infoDesc}>
             Open to full-time opportunities, freelance projects and interesting collaborations.
-            Drop me a message and I'll reply within 24 hours.
+            Drop me a message and I&apos;ll reply within 24 hours.
           </p>
 
           {/* Contact info rows */}

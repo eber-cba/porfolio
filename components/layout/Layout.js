@@ -23,7 +23,7 @@ function Layout({ children }) {
     return () => {
       window.removeEventListener("mousemove", moveCursor);
     };
-  }, []);
+  }, [cursorX, cursorY]);
   return (
     <>
       <motion.div
@@ -34,9 +34,8 @@ function Layout({ children }) {
         }}
       />
 
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
       <Head>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -55,19 +54,19 @@ function Layout({ children }) {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
         <title>Eber Coronel — Full Stack Developer</title>
       </Head>
 
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="true"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-      />
       <div>{children}</div>
 
       <Particulas />
