@@ -12,12 +12,12 @@ export const experiences = {
       shape: "rounded",
     },
     {
-      title: "Frontend Developer",
+      title: "Full Stack Developer",
       company: "CODEMATE",
-      period: "10/2022 - 1/2023",
-      summary: "Creation of a modern SPA using React.",
+      period: "10/2022 - 2024",
+      summary: "Creation of a modern SPA using React and stack FREMP.",
       details:
-        "Development of a modern SPA using React, API integration, and cloud deployment.",
+        "Development of a modern SPA using React, API integration, cloud deployment, and the FREMP stack.",
       icon: "🖥️",
       gradient: "135deg, #ffb347 60%, #155263 100%",
       shape: "rounded",
@@ -36,12 +36,12 @@ export const experiences = {
   ],
   academic: [
     {
-      title: "Teacher and tutor in the full stack career",
+      title: "Senior Full Stack Instructor & Academic Mentor",
       company: "DESAFIO LATAM",
       period: "04/2023 - Present",
-      summary: "Teacher and tutor in React and Node.js.",
+      summary: "Teacher and mentor in React and Node.js with 30% dropout reduction.",
       details:
-        "Responsible for training and supporting students in real projects.",
+        "Responsible for training and supporting students in real projects. Guided 40+ cohorts and 500+ students, mentoring and evaluating final projects.",
       icon: "🌐",
       gradient: "135deg, #ffb347 60%, #155263 100%",
       shape: "wave",
@@ -56,6 +56,25 @@ export const experiences = {
       gradient: "135deg, #155263 60%, #ffb347 100%",
       shape: "hex",
     },
-    // ... más experiencias
+    {
+      title: "Instructor de Programación",
+      company: "PLATAFORMA 5",
+      period: "2021 - 2023",
+      summary: "Docente y tutor en HTML, CSS, JavaScript.",
+      details: "Mentoría en cursos intensivos de desarrollo web y bootcamp fullstack.",
+      icon: "💻",
+      gradient: "135deg, #ff512f 60%, #dd2476 100%",
+      shape: "rounded",
+    },
+    {
+      title: "Tutor Full Stack / Desarrollo Web",
+      company: "CODERHOUSE",
+      period: "2021 - 2023",
+      summary: "Tutor en cursos de desarrollo web y full stack.",
+      details: "Seguimiento de alumnos, corrección de entregas y soporte técnico en vivo.",
+      icon: "🏫",
+      gradient: "135deg, #ffb347 60%, #155263 100%",
+      shape: "blob",
+    },
   ],
 };

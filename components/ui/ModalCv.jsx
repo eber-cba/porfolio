@@ -85,9 +85,9 @@ export default function ModalCv() {
         {/* Mini timeline */}
         <div className={styles.miniTimeline}>
           {[
-            { year: "2024–Now",  role: "Full Stack Dev",       place: "Code & Mate / TECHO" },
-            { year: "2023",      role: "Front-End Instructor",  place: "Digital House"       },
-            { year: "2022",      role: "Junior Dev",            place: "Freelance"            },
+            { year: "2023–Now",  role: "Senior Instructor",    place: "Desafío Latam" },
+            { year: "2022–Now",  role: "Full Stack Dev",       place: "Code & Mate / Abstract" },
+            { year: "2021–2023", role: "Tutor & Developer",    place: "Plataforma 5 / Coderhouse" },
           ].map((item, i) => (
             <div key={i} className={styles.timelineRow}>
               <div className={styles.timelineDot} />
@@ -113,10 +113,10 @@ export default function ModalCv() {
           </motion.button>
 
           <motion.a
-            href="./Eber_Coronel_CV.pdf"
+            href="/cv-EberCoronel-FullstackDeveloper.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            download="Eber_Coronel_CV.pdf"
+            download="EberCoronel-FullstackDeveloper.pdf"
             className={styles.downloadBtn}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
@@ -166,7 +166,7 @@ export default function ModalCv() {
                 {/* PDF embed */}
                 <div className={styles.pdfWrapper}>
                   <embed
-                    src="/FullStack_Eber_Coronel.pdf"
+                    src="/cv-EberCoronel-FullstackDeveloper.pdf"
                     type="application/pdf"
                     width="100%"
                     height="100%"
@@ -175,8 +175,8 @@ export default function ModalCv() {
                 {/* Modal footer */}
                 <div className={styles.modalFooter}>
                   <a
-                    href="./Eber_Coronel_CV.pdf"
-                    download="Eber_Coronel_CV.pdf"
+                    href="/cv-EberCoronel-FullstackDeveloper.pdf"
+                    download="EberCoronel-FullstackDeveloper.pdf"
                     className={styles.modalDownload}
                   >
                     <FiDownload size={14} /> Download a copy

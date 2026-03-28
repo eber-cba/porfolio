@@ -40,6 +40,14 @@ const skillsCategories = [
         name: "Express",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
       },
+      {
+        name: "Docker",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+      },
+      {
+        name: "N8N",
+        icon: "https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png",
+      },
     ],
   },
   {
