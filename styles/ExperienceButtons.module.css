@@ -1,98 +1,90 @@
-/* Experience and holographic button styles for SobreMi */
+/* ExperienceButtons.module.css — Dark Neon Ultra-Modern */
+
 .experienceButtonsContainer {
   display: flex;
-  gap: 24px;
-  margin: 32px 0;
+  gap: 20px;
+  margin: 36px 0 24px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
+/* ─── Holographic button base ─── */
 .holographicButton {
   position: relative;
   overflow: hidden;
   border: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  padding: 16px 40px;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(0);
+  font-weight: 700;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 10px;
+  padding: 14px 36px;
+  transition: all 0.35s ease;
   cursor: pointer;
   outline: none;
-  color: white;
+  color: #050d18;
   z-index: 1;
+  letter-spacing: 0.5px;
 }
 
+/* ─── Primary — Cyan neon ─── */
 .primaryButton {
-  background: linear-gradient(
-    135deg,
-    var(--primary-orange),
-    var(--dark-orange)
-  );
-  box-shadow: 0 6px 20px rgba(255, 154, 60, 0.3);
+  background: linear-gradient(135deg, #00f3ff, #00bcd4);
+  box-shadow: 0 0 20px rgba(0,243,255,0.4), 0 4px 20px rgba(0,0,0,0.3);
 }
-
-.secondaryButton {
-  background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-  box-shadow: 0 6px 20px rgba(21, 82, 99, 0.3);
-}
-
-.holographicButton:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-}
-
 .primaryButton:hover {
-  box-shadow: 0 12px 30px rgba(255, 154, 60, 0.4);
+  box-shadow: 0 0 35px rgba(0,243,255,0.65), 0 8px 30px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+  color: #050d18;
 }
 
+/* ─── Secondary — Orange neon ─── */
+.secondaryButton {
+  background: linear-gradient(135deg, #ff9a3c, #e68a35);
+  box-shadow: 0 0 20px rgba(255,154,60,0.4), 0 4px 20px rgba(0,0,0,0.3);
+}
 .secondaryButton:hover {
-  box-shadow: 0 12px 30px rgba(21, 82, 99, 0.4);
+  box-shadow: 0 0 35px rgba(255,154,60,0.65), 0 8px 30px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
 }
 
 .holographicButton:active {
-  transform: translateY(2px) scale(0.98);
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 0 10px rgba(0,243,255,0.3);
 }
 
+/* ─── Button inner layout ─── */
 .buttonContent {
   position: relative;
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
-
 .buttonIcon {
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
 }
-
 .holographicButton:hover .buttonIcon {
-  transform: scale(1.2) rotate(10deg);
+  transform: scale(1.2) rotate(8deg);
 }
-
 .buttonLabel {
   position: relative;
   overflow: hidden;
   height: 1.2em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
+/* Floating micro-particles inside button */
 .floatingParticlesContainer {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   pointer-events: none;
   z-index: 2;
 }
-
 .floatingParticle {
   position: absolute;
   border-radius: 50%;
@@ -100,14 +92,15 @@
   z-index: 1;
   transform: translate(-50%, -50%);
   animation: particleFloat 3s ease-in-out infinite;
+  opacity: 0.5;
+}
+@keyframes particleFloat {
+  0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
+  50%       { transform: translate(-50%, -50%) translate(0, -8px); }
 }
 
-@keyframes particleFloat {
-  0%,
-  100% {
-    transform: translate(-50%, -50%) translate(0, 0);
-  }
-  50% {
-    transform: translate(-50%, -50%) translate(0, -10px);
-  }
+/* Responsive */
+@media (max-width: 600px) {
+  .experienceButtonsContainer { flex-direction: column; align-items: center; gap: 14px; }
+  .holographicButton { width: 90%; padding: 12px 24px; font-size: 0.9rem; }
 }

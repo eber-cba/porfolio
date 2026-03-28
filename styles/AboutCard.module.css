@@ -1,147 +1,138 @@
-/* About Card styles for SobreMi */
+/* AboutCard.module.css — Dark Neon Ultra-Modern */
+
 .aboutCard {
-  max-width: 500px;
+  max-width: 520px;
   min-width: 300px;
-  background: rgba(21, 84, 101, 0.445);
+  background: rgba(5, 13, 24, 0.65);
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  padding: 30px;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 243, 255, 0.05);
+  padding: 30px 28px;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 243, 255, 0.1);
   transform-style: preserve-3d;
   z-index: 2;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.aboutCard:hover {
+  border-color: rgba(0,243,255,0.2);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.7), 0 0 30px rgba(0,243,255,0.08);
 }
 
+/* Corner accent: top-right */
+.aboutCard::after {
+  content: '';
+  position: absolute;
+  top: -1px; right: -1px;
+  width: 32px; height: 32px;
+  border-top: 2px solid #00f3ff;
+  border-right: 2px solid #00f3ff;
+  border-radius: 0 20px 0 0;
+  box-shadow: 4px -4px 10px rgba(0,243,255,0.25);
+}
+/* Corner accent: bottom-left */
+.aboutCard::before {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: -1px;
+  width: 32px; height: 32px;
+  border-bottom: 2px solid rgba(255,154,60,0.5);
+  border-left: 2px solid rgba(255,154,60,0.5);
+  border-radius: 0 0 0 20px;
+  box-shadow: -4px 4px 10px rgba(255,154,60,0.15);
+}
+
+/* Shine sweep on hover */
 .cardShine {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
   background: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 100%
+    rgba(0,243,255,0) 0%,
+    rgba(0,243,255,0.06) 100%
   );
   transform: skewX(-25deg);
-  transition: all 0.8s;
+  transition: all 0.8s ease;
+  pointer-events: none;
 }
+.aboutCard:hover .cardShine { left: 150%; }
 
-.aboutCard:hover .cardShine {
-  left: 150%;
-}
-
+/* ─── Title row ─── */
 .aboutTitleContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
-  transform: translateZ(10px);
+  margin-bottom: 22px;
 }
-
 .titleLine {
   flex: 1;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    var(--primary-orange),
+    rgba(0,243,255,0.4),
     transparent
   );
 }
-
 .aboutTitle {
-  font-size: 1.8rem;
-  color: var(--primary-blue);
-  margin: 0 20px;
+  font-size: 1rem;
+  color: #00f3ff;
+  margin: 0 16px;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 0 12px rgba(0,243,255,0.5);
 }
 
-.aboutTitle::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: var(--primary-orange);
-  border-radius: 3px;
-}
-
+/* ─── Text content ─── */
 .aboutText {
-  font-size: 1.1rem;
+  font-size: 0.97rem;
   line-height: 1.8;
-  color: #fff;
-  margin-bottom: 25px;
-  transform: translateZ(5px);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 22px;
+  font-family: 'Poppins', sans-serif;
 }
-
 .aboutText p {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   position: relative;
-  padding-left: 20px;
+  padding-left: 18px;
 }
-
 .aboutText p::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 8px;
-  width: 8px;
-  height: 8px;
-  background: var(--primary-orange);
+  left: 0; top: 9px;
+  width: 6px; height: 6px;
+  background: #00f3ff;
   border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0,243,255,0.7);
 }
 
+/* Highlights */
 .highlight {
-  background: linear-gradient(120deg, #ff9a3c 60%, #ffb347 100%);
-  color: #fff;
-  padding: 0 5px;
-  border-radius: 3px;
+  background: linear-gradient(120deg, rgba(255,154,60,0.25) 60%, rgba(255,154,60,0.1) 100%);
+  color: #ff9a3c;
+  padding: 1px 6px;
+  border-radius: 4px;
   font-weight: 600;
-  position: relative;
+  border: 1px solid rgba(255,154,60,0.25);
   transition: all 0.3s ease;
 }
-
 .highlight:hover {
-  background: linear-gradient(120deg, #ffb347 60%, #ff9a3c 100%);
-  color: #fff;
-  transform: translateY(-2px);
+  background: linear-gradient(120deg, rgba(255,154,60,0.4) 60%, rgba(255,154,60,0.2) 100%);
+  box-shadow: 0 0 10px rgba(255,154,60,0.3);
+  transform: translateY(-1px);
 }
 
+/* ─── Responsive ─── */
 @media (max-width: 600px) {
-  .aboutCard {
-    max-width: 95vw;
-    min-width: unset;
-    padding: 16px;
-    border-radius: 14px;
-  }
-  .aboutTitle {
-    font-size: 1.2rem;
-    margin: 0 8px;
-  }
-  .aboutTitle::after {
-    width: 40px;
-    height: 2px;
-  }
-  .aboutText {
-    font-size: 0.98rem;
-    line-height: 1.5;
-    margin-bottom: 16px;
-  }
-  .aboutText p {
-    margin-bottom: 12px;
-    padding-left: 12px;
-  }
-  .highlight {
-    padding: 0 3px;
-    font-size: 0.98rem;
-  }
+  .aboutCard { max-width: 95vw; min-width: unset; padding: 16px 14px; border-radius: 14px; }
+  .aboutTitle { font-size: 0.85rem; margin: 0 8px; letter-spacing: 2px; }
+  .aboutText { font-size: 0.9rem; line-height: 1.6; margin-bottom: 14px; }
+  .aboutText p { margin-bottom: 10px; padding-left: 14px; }
 }
