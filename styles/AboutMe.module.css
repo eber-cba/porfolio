@@ -129,6 +129,7 @@
   background: linear-gradient(to bottom, #00f3ff, rgba(0,243,255,0.2));
   box-shadow: 0 0 10px rgba(0,243,255,0.7);
   border-radius: 2px 0 0 2px;
+  transition: box-shadow 0.3s ease;
 }
 /* Scan line sweep */
 .badgeWrap::after {
@@ -143,6 +144,44 @@
 @keyframes scanBadge {
   0%   { top: -100%; }
   100% { top: 200%; }
+}
+
+/* ── HOVER: terminal becomes 'active' ── */
+#contenedorLabel1:hover .badgeWrap {
+  border-color: rgba(0,243,255,0.6);
+  box-shadow:
+    0 0 0 1px rgba(0,243,255,0.15),
+    0 0 30px rgba(0,243,255,0.35),
+    0 0 60px rgba(0,243,255,0.15),
+    0 12px 40px rgba(0,0,0,0.6);
+  transform: skew(-8deg) translateY(-4px);
+  background: rgba(0, 12, 28, 0.9);
+}
+#contenedorLabel1:hover .badgeWrap::before {
+  box-shadow: 0 0 20px rgba(0,243,255,1), 0 0 40px rgba(0,243,255,0.5);
+  width: 4px;
+}
+/* Speed up scan line on hover */
+#contenedorLabel1:hover .badgeWrap::after {
+  animation-duration: 0.8s;
+  background: linear-gradient(to bottom, transparent, rgba(0,243,255,0.1), transparent);
+}
+#contenedorLabel1:hover .promptSign {
+  animation: none;
+  opacity: 1;
+  text-shadow: 0 0 16px rgba(0,243,255,1), 0 0 32px rgba(0,243,255,0.6);
+}
+#contenedorLabel1:hover .soyEber {
+  color: #fff;
+  letter-spacing: 2px;
+}
+#contenedorLabel1:hover .dot3 {
+  animation: dotBlink 0.3s step-start infinite;
+  box-shadow: 0 0 10px rgba(39,201,63,1);
+}
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
 }
 
 /* Traffic-light dots (macOS terminal style) */
@@ -280,10 +319,51 @@
   background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.18) 50%, transparent 80%);
   animation: devShimmer 4s linear infinite;
   z-index: 0;
+  pointer-events: none;
 }
 @keyframes devShimmer {
   0%   { transform: translateX(-100%); }
   100% { transform: translateX(200%); }
+}
+
+/* ── Energy ripple ring (shown on hover) ── */
+.devRipple {
+  position: absolute;
+  inset: -4px;
+  border-radius: 10px;
+  border: 2px solid rgb(255, 154, 60);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1);
+  z-index: 3;
+}
+
+/* ── HOVER: energy pulse on Developer block ── */
+#contenedorLabel2:hover .devBlock {
+  transform: skew(-14deg) translateY(-6px);
+  box-shadow:
+    0 0 50px rgba(255,154,60,0.9),
+    0 0 120px rgba(255,154,60,0.4),
+    0 0 200px rgba(255,154,60,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+  background: linear-gradient(135deg, #ffb347 0%, #ff9a3c 40%, #ff6000 100%);
+}
+#contenedorLabel2:hover .devGlow {
+  animation-duration: 1s;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.35) 50%, transparent 80%);
+}
+#contenedorLabel2:hover .devRipple {
+  animation: rippleExpand 0.8s ease-out forwards;
+}
+#contenedorLabel2:hover .Developer {
+  letter-spacing: 0px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.2);
+  transform: skew(14deg) scale(1.04);
+}
+@keyframes rippleExpand {
+  0%   { opacity: 0.9; transform: scale(1); border-color: rgba(255,154,60,0.9); }
+  40%  { opacity: 0.5; transform: scale(1.08); border-color: rgba(255,200,100,0.6); }
+  100% { opacity: 0;   transform: scale(1.18); border-color: rgba(255,154,60,0); }
 }
 
 /* "Developer" text inside the block */
