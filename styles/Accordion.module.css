@@ -1,405 +1,394 @@
-/* Accordion.module.css — Dark Neon Ultra-Modern */
+/* Accordion.module.css — Cyberpunk Bento Grid */
 
-/* ─── Container ─── */
 .container {
-  max-width: 900px;
-  margin: 2rem auto;
+  max-width: 1100px;
+  margin: 4rem auto;
   padding: 0 1.5rem;
   font-family: 'Poppins', -apple-system, sans-serif;
+  position: relative;
+  z-index: 10;
 }
 
 /* ─── Section Header ─── */
 .headerSection {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
   position: relative;
 }
 
 .sectionTitle {
-  font-size: 2.6rem;
+  font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
   letter-spacing: -0.5px;
-  background: linear-gradient(90deg, #00f3ff, #ff9a3c);
+  background: linear-gradient(135deg, #00f3ff, #ff9a3c);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 16px rgba(0,243,255,0.35));
+  filter: drop-shadow(0 0 20px rgba(0,243,255,0.4));
+  text-transform: uppercase;
 }
 
 .sectionSubtitle {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.45);
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.5);
   font-weight: 400;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
-  letter-spacing: 0.3px;
+  letter-spacing: 1px;
 }
 
-/* Decorative line under header */
+/* Decorative grid behind header */
 .headerSection::after {
   content: '';
-  display: block;
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(90deg, #00f3ff, #ff9a3c);
-  margin: 12px auto 0;
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0,243,255,0.5);
-}
-
-/* ─── Accordion Wrapper ─── */
-.accordion {
-  border-radius: 18px;
-  overflow: hidden;
-  background: rgba(5, 13, 24, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(0, 243, 255, 0.08);
-  border: 1px solid rgba(0, 243, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Top glowing line on accordion */
-.accordion::before {
-  content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00f3ff 30%, #ff9a3c 70%, transparent);
-  box-shadow: 0 0 16px rgba(0,243,255,0.5);
-  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 200%;
+  background-image: radial-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: -1;
+  pointer-events: none;
+  /* fade out edges */
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 60%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 60%);
 }
 
-/* ─── Item ─── */
-.accordionItem {
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+/* ─── Bento Grid ─── */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  perspective: 1000px;
+}
+
+/* ─── Magnetic Card ─── */
+.cardWrapper {
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  height: 100%;
+  min-height: 400px;
+  /* Hover scale managed by framer-motion */
+  transition: transform 0.1s ease-out;
+}
+
+/* The actual glass card */
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: rgba(5, 12, 24, 0.6);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 1px 1px rgba(255,255,255,0.02);
   overflow: hidden;
-  transition: all 0.3s ease;
-  background: transparent;
-  position: relative;
-}
-.accordionItem:last-child { border-bottom: none; }
-
-.accordionItem.active {
-  background: rgba(0, 243, 255, 0.03);
-}
-
-/* Left colored bar on active */
-.accordionItem.active::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 3px; height: 100%;
-  background: linear-gradient(to bottom, #00f3ff, #ff9a3c);
-  box-shadow: 2px 0 12px rgba(0,243,255,0.4);
-  border-radius: 0 2px 2px 0;
-}
-
-/* ─── Header row ─── */
-.accordionHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.6rem 1.8rem;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s ease;
-}
-.accordionHeader:hover {
-  background: rgba(0,243,255,0.035);
-}
-
-.headerContent h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 0.25rem;
-  letter-spacing: -0.2px;
-  font-family: 'Poppins', sans-serif;
-}
-.headerContent p {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
-  margin: 0;
-  font-weight: 400;
-  letter-spacing: 0.3px;
-}
-
-/* Arrow icon */
-.accordionIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(0,243,255,0.07);
-  border: 1px solid rgba(0,243,255,0.12);
-  color: #00f3ff;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-.accordionItem.active .accordionIcon {
-  background: rgba(0,243,255,0.14);
-  border-color: rgba(0,243,255,0.3);
-  box-shadow: 0 0 12px rgba(0,243,255,0.3);
-}
-
-/* ─── Content panel ─── */
-.accordionContent {
-  overflow: hidden;
-  border-top: 1px solid rgba(255,255,255,0.04);
-}
-.contentInner {
-  padding: 0 2rem 2rem;
-}
-
-.description {
-  color: rgba(255,255,255,0.55);
-  font-size: 1rem;
-  line-height: 1.75;
-  margin: 1.2rem 0 2rem;
-  padding-left: 0.5rem;
-  border-left: 2px solid rgba(0,243,255,0.2);
-}
-
-/* ─── Tech stack ─── */
-.techStack { margin-bottom: 1.5rem; }
-.techStack h4 {
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  margin-bottom: 1.2rem;
-  position: relative;
-  padding-bottom: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-.techStack h4::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 40px; height: 2px;
-  background: linear-gradient(90deg, #00f3ff, #ff9a3c);
-  border-radius: 2px;
-  box-shadow: 0 0 8px rgba(0,243,255,0.4);
-}
-
-.techIcons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin: 0 auto;
-}
-
-.techItem {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 75px;
-  padding: 0.9rem 0.7rem;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  background: rgba(5, 13, 24, 0.5);
-  border: 1px solid rgba(255,255,255,0.05);
+  justify-content: flex-end; /* content pushed to bottom initially */
+  padding: 2.5rem;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.techItem:hover {
-  background: rgba(0,243,255,0.06);
-  border-color: rgba(0,243,255,0.2);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,243,255,0.1);
-}
-.techIcon {
-  font-size: 2rem;
-  margin-bottom: 0.6rem;
-  width: 50px; height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-.techItem span {
-  color: rgba(255,255,255,0.6);
-  font-size: 0.8rem;
-  text-align: center;
-  font-weight: 500;
-  font-family: 'Poppins', sans-serif;
-}
-.techItem:hover span { color: #fff; }
 
-/* ─── Buttons ─── */
-.projectLinks {
+.cardWrapper:hover .cardInner {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 3px rgba(255, 255, 255, 0.1);
+  background: rgba(8, 16, 32, 0.8);
+}
+
+/* Base spotlight tracking (CSS hover alternative if JS fails) */
+.cardInner::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  padding: 2px; /* Border thickness */
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255,255,255,0.1),
+    transparent 40%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 10;
+}
+.cardWrapper:hover .cardInner::before {
+  opacity: 1;
+}
+
+/* Blurred background accent for each card */
+.accentGlow {
+  position: absolute;
+  top: -20%; right: -20%;
+  width: 60%; height: 60%;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.cardWrapper:hover .accentGlow {
+  opacity: 0.4;
+  transform: scale(1.2);
+}
+
+/* ─── Content ─── */
+.cardContent {
+  position: relative;
+  z-index: 3;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardHeader {
+  margin-top: auto; /* Pushes header to bottom when hiddenContent is collapsed */
+  transition: transform 0.4s ease;
+}
+
+.cardWrapper:hover .cardHeader {
+  transform: translateY(-10px);
+}
+
+.suptitle {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  /* Will be colored inline via JS accentColor */
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ─── Hidden Content (Revealed on Hover) ─── */
+.hiddenContent {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+              margin-top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.cardWrapper:hover .hiddenContent {
+  max-height: 400px; /* arbitrary large value */
+  opacity: 1;
   margin-top: 1.5rem;
 }
 
-/* Live Demo — cyan neon outline */
-.linkButton {
+.description {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── Tech Stack ─── */
+.techRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.techPill {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.8rem;
-  color: #050d18;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 8px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9rem;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-.linkButton:hover {
-  transform: translateY(-3px);
-  filter: brightness(1.15);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
-/* View Code — secondary dark glass */
-.linkButton.secondary {
-  background: rgba(255,255,255,0.07) !important;
-  color: rgba(255,255,255,0.75) !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  box-shadow: none;
-}
-.linkButton.secondary:hover {
-  background: rgba(0,243,255,0.1) !important;
-  border-color: rgba(0,243,255,0.3) !important;
-  color: #00f3ff !important;
-  box-shadow: 0 0 18px rgba(0,243,255,0.2) !important;
+.techPill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.2);
 }
 
-/* ─── Footer note ─── */
-.footerNote {
-  text-align: center;
-  margin-top: 2rem;
-  color: rgba(255,255,255,0.25);
-  font-size: 0.82rem;
-  font-family: 'Poppins', sans-serif;
+.techIcon {
+  font-size: 1rem;
+}
+
+/* ─── Links ─── */
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.linkButton {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
-  padding-top: 1.2rem;
-  letter-spacing: 0.5px;
+  overflow: hidden;
+  z-index: 1;
 }
-.footerNote::before {
+
+.linkButton.primary {
+  color: #050d18;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.linkButton.primary::before {
   content: "";
   position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 80px; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,243,255,0.3), transparent);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: inherit;
+  filter: brightness(1.2);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* ─── Notification ─── */
+.linkButton.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+.linkButton.primary:hover::before {
+  opacity: 1;
+}
+
+.linkButton.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.linkButton.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ─── Notifications ─── */
 .notification {
   position: fixed;
   z-index: 10000;
   background: rgba(5, 13, 24, 0.97);
   backdrop-filter: blur(16px);
   border-radius: 16px;
-  padding: 2rem 3rem;
+  padding: 1.5rem 2.5rem;
   border: 1px solid rgba(0,243,255,0.3);
   box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(0,243,255,0.15);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 1.5rem;
   max-width: 90vw;
-  min-width: 220px;
   pointer-events: all;
 }
-.notificationContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  flex: 1;
-  text-align: center;
-}
+
 .notificationIcon {
-  font-size: 40px;
+  font-size: 2.5rem;
   color: #00f3ff;
-  display: flex;
-  justify-content: center;
   animation: notifPulse 1.5s infinite;
 }
-@keyframes notifPulse {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(0,243,255,0.5)); }
-  50%       { transform: scale(1.15); filter: drop-shadow(0 0 12px rgba(0,243,255,0.9)); }
-}
+
 .notificationText {
-  color: rgba(255,255,255,0.9);
-  font-size: 1.1rem;
+  color: #fff;
+  font-size: 1rem;
   margin: 0;
   font-weight: 500;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
 }
+
 .closeButton {
-  position: absolute;
-  top: 10px; right: 10px;
   background: transparent;
   border: none;
-  color: rgba(255,255,255,0.4);
-  font-size: 20px;
+  color: rgba(255,255,255,0.3);
+  font-size: 1.5rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px; height: 32px;
-  border-radius: 50%;
   transition: all 0.3s ease;
+  margin-left: auto;
+  align-self: flex-start;
+  margin-top: -0.5rem;
+  margin-right: -1rem;
 }
 .closeButton:hover {
-  background: rgba(255,60,60,0.15);
   color: #ff6b6b;
-  transform: rotate(90deg);
-}
-.smileIcon {
-  color: #00f3ff;
-  animation: notifPulse 1.5s infinite;
+  transform: rotate(90deg) scale(1.1);
 }
 
-/* ─── Hover float on item ─── */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-3px); }
+@keyframes notifPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(0,243,255,0.5)); }
+  50%       { transform: scale(1.1); filter: drop-shadow(0 0 12px rgba(0,243,255,0.9)); }
 }
-.accordionItem:not(.active):hover { animation: float 3s ease-in-out infinite; }
 
 /* ─── Responsive ─── */
-@media (max-width: 768px) {
-  .container { padding: 0 1rem; }
-  .sectionTitle { font-size: 2rem; }
-  .accordionHeader { padding: 1.2rem 1.2rem; }
-  .headerContent h3 { font-size: 1rem; }
-  .contentInner { padding: 0 1.2rem 1.5rem; }
-  .projectLinks { flex-direction: column; gap: 0.8rem; }
-  .linkButton { justify-content: center; }
-  .techIcons { gap: 0.7rem; }
-  .techItem { min-width: 65px; padding: 0.7rem; }
+
+/* Span configurations for asymmetric grid display on desktop */
+@media (min-width: 992px) {
+  .bentoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Project 1 takes 2 columns */
+  .cardWrapper:nth-child(1) { grid-column: span 2; }
+  /* Project 2 takes 1 column */
+  .cardWrapper:nth-child(2) { grid-column: span 1; }
+  /* Project 3 takes 1 column */
+  .cardWrapper:nth-child(3) { grid-column: span 1; }
+  /* Project 4 takes 2 columns */
+  .cardWrapper:nth-child(4) { grid-column: span 2; }
 }
-@media (max-width: 600px) {
-  .container { max-width: 100vw; margin: 1rem auto; padding: 0 0.3rem; }
-  .sectionTitle { font-size: 1.4rem; }
-  .sectionSubtitle { font-size: 0.88rem; }
-  .accordionHeader { padding: 1rem; }
-  .headerContent h3 { font-size: 0.95rem; }
-  .accordionIcon { width: 28px; height: 28px; }
-  .contentInner { padding: 0 0.5rem 1rem; }
-  .description { font-size: 0.9rem; margin-bottom: 1rem; }
-  .techIcon { font-size: 1.3rem; width: 36px; height: 36px; }
-  .linkButton { padding: 0.7rem 1.2rem; font-size: 0.85rem; }
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .bentoGrid { grid-template-columns: repeat(2, 1fr); }
+  .cardWrapper { min-height: 380px; }
+}
+
+@media (max-width: 767px) {
+  .bentoGrid { grid-template-columns: 1fr; }
+  .cardWrapper { min-height: 350px; perspective: none; }
+  /* On mobile, hidden content might need to be partially visible or scrollable, 
+     but hover works on tap. Disable 3D transforms for performance */
+  .cardInner { padding: 1.5rem; }
+  .title { font-size: 1.8rem; }
 }
