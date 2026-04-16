@@ -299,6 +299,12 @@ h2.linea span {
 @media only screen and (max-width: 768px) {
   .sobreMi-img { max-height: 180px; min-height: 100px; border-radius: 10px; }
 
+  /* Hero wrapper: auto height on mobile */
+  .padreIntro {
+    height: auto;
+    min-height: auto;
+  }
+
   /* ════════════════════════════════
      MOBILE HERO — Diseño premium vertical
      ════════════════════════════════ */
@@ -308,9 +314,9 @@ h2.linea span {
     align-items: center;
     justify-content: center;
     height: auto;
-    min-height: 100vh;
+    min-height: auto;
     gap: 0;
-    padding: 0;
+    padding: 0 0 20px;
     position: relative;
 
     /* Animated gradient backdrop solo mobile */
@@ -351,7 +357,7 @@ h2.linea span {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 110px; /* clearance from navbar */
+    padding-top: 90px; /* clearance from navbar */
     position: relative;
     z-index: 2;
     animation: mobileSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
@@ -363,7 +369,7 @@ h2.linea span {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 18px;
+    margin-top: 16px;
     position: relative;
     z-index: 2;
     animation: mobileSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
@@ -375,7 +381,7 @@ h2.linea span {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 22px;
+    margin-top: 16px;
     position: relative;
     z-index: 2;
     animation: mobileSlideUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
@@ -385,7 +391,7 @@ h2.linea span {
   .containerStart {
     order: 4;
     width: 100%;
-    margin: 36px 0 24px;
+    margin: 24px 0 16px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -405,19 +411,22 @@ h2.linea span {
 
   /* Sections con clip-path más suave en mobile */
   .padreSobremi {
-    padding: 80px 20px 70px;
-    clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 98%);
-    margin: -2vh 0;
+    padding: 50px 16px 50px;
+    clip-path: none;
+    margin: 0;
+    min-height: auto;
   }
   .PadreHabilidades {
-    clip-path: polygon(0 2%, 50% 0%, 100% 2%, 100% 98%, 50% 100%, 0 98%);
-    padding: 80px 20px;
-    margin: -2vh 0;
+    clip-path: none;
+    padding: 50px 16px;
+    margin: 0;
+    min-height: auto;
   }
   .padreContacto {
-    clip-path: polygon(0 3%, 100% 0%, 100% 100%, 0 100%);
-    padding: 100px 20px 60px;
-    margin: -3vh 0;
+    clip-path: none;
+    padding: 50px 16px 40px;
+    margin: 0;
+    min-height: auto;
   }
 
   .label-Aboutme { font-size: 16px; }
@@ -432,16 +441,16 @@ h2.linea span {
     letter-spacing: 4px;
   }
   .container {
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .padreYoSoy { gap: 0; padding: 0; }
-  .soyEber    { padding-top: 100px; }
-  .padreSobremi { padding: 60px 15px; }
-  .PadreHabilidades { padding: 80px 15px; }
-  .padreContacto { padding: 80px 15px 50px; }
-  .containerStart { margin: 28px 0 20px; }
+  .padreYoSoy { gap: 0; padding: 0 0 16px; }
+  .soyEber    { padding-top: 80px; }
+  .padreSobremi { padding: 40px 12px; }
+  .PadreHabilidades { padding: 40px 12px; }
+  .padreContacto { padding: 40px 12px 30px; }
+  .containerStart { margin: 20px 0 12px; }
   .LabelScroll { font-size: 0.7rem; }
 }
