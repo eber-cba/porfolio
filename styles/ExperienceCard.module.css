@@ -197,3 +197,79 @@
 .details p {
   margin: 0;
 }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — Mobile Experience Cards
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Glass panel más prominente en mobile */
+  .glassPanel {
+    padding: 1.4rem;
+    background: rgba(4, 12, 24, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* Header: sin altura fija — se adapta al contenido */
+  .header {
+    min-height: unset;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+
+  /* Icono: más compacto */
+  .iconWrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+    flex-shrink: 0;
+  }
+  .icon { font-size: 1.3rem; }
+
+  /* Texto header */
+  .company { font-size: 0.78rem; letter-spacing: 0.5px; }
+  .title   { font-size: 1.15rem; line-height: 1.25; }
+  .period  { font-size: 0.72rem; }
+
+  /* Summary más legible en mobile */
+  .summary {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    padding-left: 0.75rem;
+    border-left-width: 2px;
+  }
+
+  /* Details: altura auto en mobile (no fija) */
+  .details {
+    height: auto;
+    min-height: unset;
+    max-height: none;
+    font-size: 0.78rem;
+    padding: 0.85rem;
+    border-radius: 8px;
+    line-height: 1.45;
+    /* Glassmorphism en el bloque de detalles */
+    background: rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Corners: más visibles en mobile */
+  .cornerTopLeft,
+  .cornerBottomRight {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glassPanel { padding: 1.1rem; }
+  .header { gap: 0.8rem; margin-bottom: 1rem; }
+  .iconWrapper { width: 38px; height: 38px; }
+  .icon { font-size: 1.1rem; }
+  .title { font-size: 1.05rem; }
+  .summary { font-size: 0.83rem; }
+  .details { font-size: 0.73rem; padding: 0.7rem; }
+}

@@ -385,10 +385,93 @@
 }
 
 @media (max-width: 767px) {
-  .bentoGrid { grid-template-columns: 1fr; }
-  .cardWrapper { min-height: 350px; perspective: none; }
-  /* On mobile, hidden content might need to be partially visible or scrollable, 
-     but hover works on tap. Disable 3D transforms for performance */
-  .cardInner { padding: 1.5rem; }
-  .title { font-size: 1.8rem; }
+  /* Container más compacto */
+  .container {
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+  }
+
+  /* Header compacto */
+  .headerSection {
+    margin-bottom: 2rem;
+  }
+  .sectionTitle { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+  .sectionSubtitle { font-size: 0.9rem; letter-spacing: 0.5px; }
+
+  /* Grid: single column en mobile */
+  .bentoGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    perspective: none;
+  }
+
+  /* Cards en mobile: altura adaptable, sin min-height rigido */
+  .cardWrapper {
+    min-height: 280px;
+    border-radius: 16px;
+  }
+
+  .cardInner {
+    padding: 1.4rem;
+    border-radius: 16px;
+    /* En mobile: justify desde arriba, no abajo */
+    justify-content: flex-start;
+    /* Glassmorphism más pronunciado */
+    background: rgba(4, 11, 22, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Deshabilitar hover transform en mobile */
+  .cardWrapper:hover .cardHeader { transform: none; }
+
+  /* En mobile: mostrar directamente el contenido oculto sin hover */
+  .cardHeader { margin-top: 0; }
+
+  .hiddenContent {
+    max-height: none;
+    opacity: 1;
+    margin-top: 1rem;
+    overflow: visible;
+    transition: none;
+  }
+
+  /* Typography */
+  .suptitle { font-size: 0.75rem; letter-spacing: 1px; }
+  .title    { font-size: 1.6rem; letter-spacing: -0.5px; }
+  .subtitle { font-size: 0.9rem; }
+  .description {
+    font-size: 0.88rem;
+    -webkit-line-clamp: 4;
+    margin-bottom: 1rem;
+  }
+
+  /* Tech pills adaptadas a touch */
+  .techRow { gap: 0.4rem; margin-bottom: 1.2rem; }
+  .techPill {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+    border-radius: 6px;
+  }
+  .techPill:hover { transform: none; }
+
+  /* Botones: full width en mobile */
+  .projectLinks { flex-direction: column; gap: 0.6rem; }
+  .linkButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+  .linkButton.primary:hover,
+  .linkButton.secondary:hover { transform: none; }
+
+  /* Notificación: centrada y más compacta */
+  .notification {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .notificationIcon { font-size: 2rem; }
+  .notificationText { font-size: 0.88rem; }
 }

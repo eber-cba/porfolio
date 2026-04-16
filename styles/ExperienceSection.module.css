@@ -92,12 +92,36 @@
 }
 
 @media (max-width: 768px) {
+  /* Tabs: scroll horizontal type pill en mobile */
   .tabsRow {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    padding: 4px 2px 12px; /* espacio para scrollbar y shadow */
+    /* Ocultar scrollbar pero mantener scroll funcional */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: flex-start;
   }
+  .tabsRow::-webkit-scrollbar { display: none; }
+
   .scifiTab {
-    width: 100%;
+    flex-shrink: 0;
+    min-width: auto;
+    width: auto;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-radius: 50px; /* pill shape en mobile */
+    white-space: nowrap;
+  }
+
+  /* Grid: single column en mobile */
+  .expGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
 }
