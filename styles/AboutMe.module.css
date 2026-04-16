@@ -384,33 +384,81 @@
 }
 
 /* ══════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE MOBILE
 ══════════════════════════════════════════ */
 @media (max-width: 768px) {
-  #contenedor  { margin: 8% 4% 4% 4%; justify-content: center; }
-  #contenedor2 { margin: 2% 0; justify-content: center; }
-  #contenedor3 { justify-content: center; margin: 2% 0; }
+  /* Contenedores: centrados en mobile */
+  #contenedor  { margin: 0; padding: 0 16px; justify-content: center; width: 100%; }
+  #contenedor2 { margin: 0; justify-content: center; width: 100%; padding: 0 16px; }
+  #contenedor3 { justify-content: center; margin: 0; width: 100%; padding: 0 16px; }
 
-  .fsEyebrow { font-size: 3rem; letter-spacing: -1px; }
-
-  .devBlock {
-    width: 260px; height: 90px;
-    transform: skew(-10deg);
+  /* ══ BADGE: sin skew en mobile, más ancho y centrado ══ */
+  .badgeWrap {
+    min-width: unset;
+    width: min(280px, 85vw);
+    /* Eliminar el skew—en mobile es incomodo visualmente */
+    transform: none;
+    padding: 12px 20px 14px 16px;
+    /* Glassmorphism más pronunciado en mobile */
+    background: rgba(3, 10, 22, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-color: rgba(0,243,255,0.35);
+    box-shadow:
+      0 0 0 1px rgba(0,243,255,0.08),
+      0 0 40px rgba(0,243,255,0.15),
+      0 12px 40px rgba(0,0,0,0.6);
+    border-radius: 12px;
   }
-  .Developer { font-size: 2.2rem; transform: skew(10deg); }
+  /* Los dots y el texto tampoco necesitan contra-skew en mobile */
+  .badgeDots { transform: none; }
+  .soyEber   { transform: none; font-size: 1rem; gap: 6px; }
+  .promptSign { font-size: 1.1rem; }
 
-  .badgeWrap { min-width: 180px; transform: skew(-5deg); padding: 8px 18px 10px 14px; }
-  .soyEber   { font-size: 0.95rem; transform: skew(5deg); }
-  .badgeDots { transform: skew(5deg); }
+  /* ══ FULL STACK: tamaño calibrado para mobile ══ */
+  .fsEyebrow {
+    font-size: clamp(2.8rem, 12vw, 3.5rem);
+    letter-spacing: -1px;
+    text-align: center;
+  }
+  .fullStackWrap { align-items: center; }
+  .fsBar { max-width: 200px; }
+
+  /* ══ DEVELOPER BLOCK: sin skew en mobile, ancho controlado ══ */
+  .devBlock {
+    width: min(280px, 82vw);
+    height: 82px;
+    /* Sin skew en mobile: más limpio y legible */
+    transform: none;
+    border-radius: 14px;
+    /* Border neon sutil en mobile */
+    box-shadow:
+      0 0 30px rgba(255,154,60,0.5),
+      0 0 60px rgba(255,154,60,0.15),
+      0 4px 24px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  /* Sin contra-skew en texto ya que el bloque no tiene skew */
+  .Developer {
+    transform: none;
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+    letter-spacing: 0;
+  }
+
+  /* ══ START CTA ══ */
+  .startLabel { font-size: 0.7rem; letter-spacing: 5px; }
 }
+
 @media (max-width: 480px) {
-  .fsEyebrow { font-size: 2.4rem; }
-  .devBlock  { width: 210px; height: 74px; }
-  .Developer { font-size: 1.8rem; }
-  .soyEber   { font-size: 0.85rem; }
+  .fsEyebrow { font-size: clamp(2.4rem, 11vw, 3rem); }
+  .devBlock  { width: min(240px, 80vw); height: 74px; }
+  .Developer { font-size: clamp(1.7rem, 7.5vw, 2.2rem); }
+  .soyEber   { font-size: 0.9rem; }
+  .badgeWrap { width: min(250px, 82vw); }
 }
+
 @media (max-width: 360px) {
   .fsEyebrow { font-size: 2rem; }
-  .devBlock  { width: 180px; height: 66px; }
-  .Developer { font-size: 1.5rem; }
+  .devBlock  { width: min(210px, 80vw); height: 66px; }
+  .Developer { font-size: 1.6rem; }
 }

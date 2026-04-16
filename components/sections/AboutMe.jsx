@@ -97,6 +97,10 @@ export default function AboutMe() {
     const light = devLightRef.current;
     if (!el || !light) return;
 
+    // Disable tilt on touch devices — no hover events on mobile
+    const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+    if (isTouchDevice) return;
+
     const onMove = (e) => {
       const rect = el.getBoundingClientRect();
       const mx = e.clientX - rect.left;
