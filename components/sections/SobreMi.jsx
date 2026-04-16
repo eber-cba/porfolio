@@ -18,6 +18,12 @@ const useStyles = makeStyles(() => ({
       borderRadius: 3,
       boxShadow: "0 0 10px rgba(0,243,255,0.8), 0 0 20px rgba(0,243,255,0.4)",
     },
+    "& .MuiTabs-scrollButtons": {
+      color: "rgba(0,243,255,0.5)",
+      "&.Mui-disabled": {
+        opacity: 0.2,
+      },
+    },
     "& .MuiTab-root": {
       color: "rgba(255,255,255,0.5)",
       fontFamily: "'Poppins', sans-serif",
@@ -35,6 +41,12 @@ const useStyles = makeStyles(() => ({
         color: "#00f3ff",
         fontWeight: 700,
         textShadow: "0 0 10px rgba(0,243,255,0.6)",
+      },
+      "@media (max-width: 600px)": {
+        fontSize: "0.7rem",
+        letterSpacing: "1px",
+        padding: "8px 12px",
+        minWidth: "auto",
       },
     },
   },

@@ -279,25 +279,31 @@
 
 /* ─── Responsive ─── */
 @media (max-width: 900px) {
-  .timeline  { left: 28px; }
-  .timelineItems { padding-left: 4px; }
-  .timelineItem  { width: 82%; margin-left: 60px; }
-  .timelineItemRight { left: 0; }
+  .timelineContainer { padding: 16px 12px; }
+  .timeline  { left: 28px; transform: none; }
+  .timelineItems { padding-left: 0; }
+  .timelineItem  { width: calc(100% - 70px); margin-left: 60px; left: 0 !important; }
+  .timelineItemRight { left: 0 !important; }
   .timelineItemLeft .timelineDot,
   .timelineItemRight .timelineDot { left: -42px; right: auto; }
 }
 
 @media (max-width: 600px) {
-  .timelineContainer { padding: 8px 0; margin: 16px auto; }
+  .timelineContainer { padding: 8px 8px; margin: 16px auto; overflow: hidden; }
   .timeline { left: 14px; transform: none; width: 3px; }
-  .timelineItem { width: 88vw; margin-bottom: 40px; margin-left: 44px; left: 0 !important; }
+  .timelineItem {
+    width: calc(100% - 52px);
+    margin-bottom: 40px;
+    margin-left: 44px;
+    left: 0 !important;
+  }
   .timelineItemLeft, .timelineItemRight { left: 0 !important; }
   .timelineDot { left: -36px !important; right: auto !important; width: 20px; height: 20px; }
   .timelineDotInner { width: 12px; height: 12px; }
-  .timelineContent { padding: 14px 50px 14px 14px; border-radius: 12px; }
+  .timelineContent { padding: 14px 42px 14px 14px; border-radius: 12px; }
   .timelineDate { font-size: 0.72rem; }
   .timelineTitle { font-size: 1.05rem; }
   .timelineDescription { font-size: 0.88rem; }
-  .timelineIcon { width: 34px; height: 34px; top: 12px; right: 12px; }
-  .timelineIcon svg { width: 17px; height: 17px; }
+  .timelineIcon { width: 30px; height: 30px; top: 12px; right: 10px; }
+  .timelineIcon svg { width: 15px; height: 15px; }
 }

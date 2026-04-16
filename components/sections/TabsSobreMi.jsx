@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -17,6 +17,15 @@ export default function TabsSobreMi({
   renderExperienceContent,
 }) {
   const handleTab = (_, val) => setTab(val);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <Box
       className={sobreMiTabStyles.sobreMiTab}
@@ -36,14 +45,18 @@ export default function TabsSobreMi({
             className={classes.tabs}
             onChange={handleTab}
             aria-label="About me tabs"
-            centered
+            centered={!isMobile}
+            variant={isMobile ? "scrollable" : "standard"}
+            scrollButtons={isMobile ? "auto" : false}
+            allowScrollButtonsMobile
             style={{
               background: "rgba(5, 13, 24, 0.7)",
               backdropFilter: "blur(16px)",
-              borderRadius: "50px",
-              padding: "6px 8px",
+              borderRadius: isMobile ? "14px" : "50px",
+              padding: isMobile ? "4px 2px" : "6px 8px",
               margin: "0 auto",
-              maxWidth: "90%",
+              maxWidth: isMobile ? "100%" : "90%",
+              width: isMobile ? "100%" : "auto",
               border: "1px solid rgba(0, 243, 255, 0.12)",
               boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 0 20px rgba(0,243,255,0.06)",
             }}
