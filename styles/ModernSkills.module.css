@@ -310,20 +310,107 @@
   text-shadow: 0 0 8px rgba(0,243,255,0.6);
 }
 
-/* Responsive */
+/* ═══════════════════════════════
+   RESPONSIVE — Mobile Skills
+═══════════════════════════════ */
 @media (max-width: 768px) {
-  .skillsGrid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 1.5rem; }
-  .categorySection { padding: 1.8rem; }
-  .title { font-size: 2.5rem; }
-  .categoryTitle { font-size: 1.6rem; margin-bottom: 1.5rem; }
-  .hexagonContainer { width: 95px; height: 110px; }
+  /* Section spacing */
+  .skillsSection {
+    padding: 4rem 1rem 3rem;
+    min-height: auto;
+  }
+
+  /* Header más compacto */
+  .header {
+    margin-bottom: 2.5rem;
+  }
+  .title {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+  }
+  .divider {
+    width: 60px;
+    margin-bottom: 1rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 4px;
+  }
+
+  /* Container gap reducido */
+  .categoriesContainer {
+    gap: 2rem;
+  }
+
+  /* Category cards: más compactas con glassmorphism reforzado */
+  .categorySection {
+    padding: 1.6rem 1rem;
+    border-radius: 16px;
+    /* Glassmorphism más pronunciado en mobile */
+    background: rgba(5, 13, 24, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    /* Neon border sutil */
+    border-color: rgba(0,243,255,0.12);
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(0,243,255,0.06),
+      inset 0 1px 0 rgba(255,255,255,0.03);
+    /* Desactivar hover transform en mobile (lento en touch) */
+    transition: none;
+  }
+  .categorySection:hover {
+    transform: none;
+    border-color: rgba(0,243,255,0.18);
+  }
+
+  /* Title de categoría más pequeño */
+  .categoryTitle {
+    font-size: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+
+  /* Grid: 3 columnas en mobile, bien ajustadas */
+  .skillsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-items: center;
+  }
+
+  /* Hexagonales más pequeños y centrados */
+  .hexagonContainer {
+    width: 80px;
+    height: 92px;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Skill name más pequeño */
+  .skillName {
+    font-size: 0.72rem;
+    max-width: 80px;
+  }
+
+  /* Ocultar formas geométricas de fondo en mobile (rendimiento) */
+  .backgroundShapes { display: none; }
+
+  /* Partículas menos en mobile */
+  .particle:nth-child(n+6) { display: none; }
 }
 
 @media (max-width: 480px) {
-  .skillsGrid { grid-template-columns: repeat(3, 1fr); }
-  .header { margin-bottom: 3rem; }
-  .title { font-size: 2.2rem; }
-  .subtitle { font-size: 1rem; }
-  .categoriesContainer { gap: 3rem; }
-  .hexagonContainer { width: 85px; height: 100px; }
+  .skillsSection { padding: 3.5rem 0.75rem 2.5rem; }
+  .header { margin-bottom: 2rem; }
+  .title { font-size: clamp(1.8rem, 9vw, 2.2rem); }
+  .subtitle { font-size: 0.88rem; }
+  .categoriesContainer { gap: 1.5rem; }
+  .categorySection { padding: 1.2rem 0.75rem; }
+  .skillsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+  .hexagonContainer { width: 70px; height: 80px; margin-bottom: 0.5rem; }
+  .skillName { font-size: 0.65rem; max-width: 70px; }
+  .categoryTitle { font-size: 1.2rem; margin-bottom: 1rem; }
 }
